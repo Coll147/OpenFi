@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  background: #6b6b6b;
+  color: white;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background: #474747;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.logo {
+  display: block;
+  width: 5em;
+  margin: 14px 20px;
+  padding: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.logo img {
+  width: 5em;
+  padding: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.menu li.active {
+  background: #5a39ff;
+}
+
+.menu li:hover {
+  background: #555;
+}
+
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+  background: #333;
+}
+
+footer a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+footer a:visited {
+  color: #ccc;
+}
+
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-btn {
+  background: #5a39ff;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #6c4fff;
+}
+
+/* Table */
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background: #707070;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+thead {
+  background: #5a5a5a;
+  text-align: left;
+}
+
+th, td {
+  padding: 14px 18px;
+  border-bottom: 1px solid #666;
+}
+
+tbody tr:hover {
+  background: #808080;
+}
+
+
+/* Status */
+.status.online {
+  color: #9cff9c;
+}
+
+.status.warning {
+  color: #ffd866;
+}
+
+.status.error {
+  color: #f30e0e;
+}
+
+
+/* Actions */
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+button.edit, button.restart {
+  background: none;
+  border: 2px solid #5a39ff;
+  color: #5a39ff;
+  font-size: 1.1rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+button.restart {
+  border-color: #ff4b4b;
+  color: #ff4b4b;
+}
+
+button.edit:hover {
+  background: #5a39ff;
+  color: white;
+}
+
+button.restart:hover {
+  background: #ff4b4b;
+  color: white;
+}

@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+}
+
+/* ===== Estilo general ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #6b6b6b;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* ===== Sidebar ===== */
+.sidebar {
+  max-width: 400px;
+  background: #474747;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+
+.logo {
+  display: block;
+  width: 260px;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+}
+
+footer a {
+  color: #ccc;
+  text-decoration: none;
+}
+
+footer a:visited {
+  color: #ccc;
+}
+
+/* ===== Login box ===== */
+.login-box {
+  width: 60%;
+  background: #6b6b6b;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box h2 {
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* ===== Formulario ===== */
+form {
+  background: #474747;
+  padding: 40px 50px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 340px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border-bottom: 2px solid #666;
+  padding-bottom: 5px;
+}
+
+.input-group .icon {
+  font-size: 1.3rem;
+}
+
+.input-group input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 1rem;
+  flex: 1;
+}
+
+.input-group input::placeholder {
+  color: #ccc;
+}
+
+/* ===== Botón ===== */
+.login-btn {
+  background: #5a39ff;
+  border: none;
+  padding: 12px 0;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.login-btn:hover {
+  background: #6a4fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    max-width: 800px;
+    text-align: center;
+    padding: 30px;
+    align-items: center;
+  }
+
+  .logo {
+    margin: 0 auto; 
+  }
+
+  .login-box {
+    width: 100%;
+    padding: 20px 0;
+  }
+
+  form {
+    min-width: 0;
+    width: 80%;
+    max-width: 400px;
+  }
+}
