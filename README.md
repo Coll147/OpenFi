@@ -1,4 +1,1 @@
-# OpenFi
-OpenFi its a management UI for devices running OpenWrt.
-
-For now, just a school proyect
+Now working on the frontend side. This works with a little bit of dreams and magic
