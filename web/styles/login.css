@@ -1,12 +1,12 @@
-* {
-  box-sizing: border-box;
-}
-
 /* ===== Estilo general ===== */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
   background: #6b6b6b;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .container {

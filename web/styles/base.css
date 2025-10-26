@@ -1,3 +1,5 @@
+/* ===== Estilo general ===== */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -6,7 +8,7 @@ body {
   color: white;
 }
 
-/* Sidebar */
+/* ===== Sidebar ===== */
 .sidebar {
   width: 220px;
   background: #474747;
@@ -64,7 +66,7 @@ footer {
   background: #333;
 }
 
-footer a {
+a {
   color: #ccc;
   text-decoration: none;
 }
@@ -74,7 +76,7 @@ footer a:visited {
 }
 
 
-/* Main content */
+/* ===== Contenido ===== */
 .main {
   flex: 1;
   padding: 30px;
@@ -100,7 +102,7 @@ footer a:visited {
   background: #6c4fff;
 }
 
-/* Table */
+  /* ===== Tabla ===== */
 table {
   width: 100%;
   margin-top: 20px;
@@ -125,7 +127,7 @@ tbody tr:hover {
 }
 
 
-/* Status */
+  /* ===== Status ===== */
 .status.online {
   color: #9cff9c;
 }
@@ -139,7 +141,7 @@ tbody tr:hover {
 }
 
 
-/* Actions */
+  /* ===== Acciones ===== */
 .actions {
   display: flex;
   gap: 10px;
