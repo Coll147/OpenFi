@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenFi Network</title>
+  <meta name="description" content="OpenFi Network">
+  <link rel="stylesheet" type="text/css" href="./styles/base.css">
+</head>
+
+<body>
+  <nav class="sidebar">
+    <h1 class="logo">
+      <img src="./assets/logo.png" alt="OpenFi Logo" draggable="false">
+    </h1>
+
+    <ul class="menu">
+      <li page="devices" class="active">📊 Dashboard</li>
+      <li page="topology">🧭 Topology</li>
+      <li page="devices">📶 Devices</li>
+      <li page="logs">📜 Logs</li>
+      <li page="wifi">📡 Wi-Fi</li>
+      <li page="network">🌐 Network</li>
+      <li page="settings">⚙️ Settings</li>
+      <li page="information">📞 Information</li>
+    </ul>
+
+    <footer>
+      <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
+    </footer>
+  </nav>
+
+  <main class="main">
+    <iframe id="content-frame" src="https://soggy.cat/" frameborder="0">test</iframe>
+  </main>
+  <script>
+  document.querySelectorAll('.menu li').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+
+      // Actualizar el SRC del iframe
+      const page = this.getAttribute('page');
+      console.log(page)
+      document.getElementById('content-frame').src = "./dashboard/" + page + '.html';
+      
+      // Actualizar clase activa del NAV
+      document.querySelectorAll('.menu li').forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
