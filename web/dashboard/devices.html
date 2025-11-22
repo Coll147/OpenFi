@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenFi - Devices</title>
   <meta name="description" content="OpenFi Devices Page">
-  <link rel="stylesheet" type="text/css" href="../styles/base.css">
+  <link rel="stylesheet" type="text/css" href="../styles/main-default.css">
 </head>
 
 <body>
+
   <section class="main">
     <div class="header">
       <h2>Devices</h2>
@@ -29,12 +30,12 @@
       </thead>
       <tbody>
         <tr>
-          <td>AP Salón</td>
-          <td>192.168.5.2</td>
-          <td class="status online">Online</td>
-          <td>2d 5h 12m</td>
-          <td>Xiaomi Redmi Router AX6S</td>
-          <td>OpenWrt 24.10.3</td>
+          <td>Device Nickname</td>
+          <td>device ip address</td>
+          <td class="status error">Unknown</td>
+          <td>0d 0m 0s</td>
+          <td>device model</td>
+          <td>firmware version</td>
           <td class="actions">
             <button class="edit">✏️</button>
             <button class="restart">🔁</button>
@@ -60,12 +61,64 @@
           <td>Ubiquiti EdgeRouter 4</td>
           <td>OpenWrt 24.10-SNAPSHOT</td>
           <td class="actions">
-            <button class="edit">✏️</button>
+            <button class="edit" onclick="toggleMenu('context-menu')">✏️</button>
             <button class="restart">🔁</button>
           </td>
         </tr>
       </tbody>
     </table>
   </section>
+
+  <section style="display: none;" id="context-menu" class="context-menu">
+
+    <!-- <img src="https://i01.appmifile.com/webfile/globalimg/products/m/xiaomi-router-ax3200/mSpecs_img.png"> -->
+    <h1>Device Name</h1>
+    
+    <table id="wifi-status">
+      <h3>Wi-Fi Status</h3>
+      <tbody>
+        <tr>
+          <td>radio0</td>
+          <td>Ch. 13 20MHz <br> (2.472 GHz)</td>
+          <td>? Mbit/s</td>
+          <td>Wifi 4</td>
+          <td>0 clients</td>
+        </tr>
+        <tr>
+          <td>radio1</td>
+          <td>Ch. 52 80MHz <br> (5.260 GHz)</td>
+          <td>? Mbit/s</td>
+          <td>Wifi 6</td>
+          <td>0 clients</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table class="wifi-status">
+      <h3>Device Status</h3>
+      <tbody>
+        <tr>
+          <td>Model</td>
+          <td>Xiaomi Redmi Router AX6S</td>
+        </tr>
+        <tr>
+          <td>IP</td>
+          <td>192.168.5.2</td>
+        </tr>
+        <tr>
+          <td>Version</td>
+          <td>OpenWrt 24.10.3</td>
+        </tr>
+        <tr>
+          <td>RAM / CPU Usage</td>
+          <td>47% / 2.5%</td>
+        </tr>
+      </tbody>
+    </table>
+    
+
+  </section>
+
+<script src="../scripts/actions.js"></script>
 </body>
 </html>

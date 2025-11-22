@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OpenFi Network</title>
   <meta name="description" content="OpenFi Network">
-  <link rel="stylesheet" type="text/css" href="./styles/base.css">
+  <link rel="stylesheet" type="text/css" href="./styles/main-default.css">
+  <link rel="stylesheet" type="text/css" href="./styles/main-mobile.css">
 </head>
 
 <body>
@@ -71,23 +72,23 @@
     // Click en el menú
     document.querySelectorAll('.menu li').forEach(link => {
       link.addEventListener('click', function(e) { // listener en el click
-        e.preventDefault();
+        e.preventDefault()
 
         const page = this.dataset.page;
 
-        updateiframe(page, this, true);
+        updateiframe(page, this, true)
       });
     });
 
 
     // Cuando el usuario usa ATRÁS o ADELANTE
     window.addEventListener('popstate', (e) => {
-      const page = e.state?.page || "dashboard";
+      const page = e.state?.page || "dashboard"
 
       // Buscar el <li> correspondiente
-      const li = document.querySelector(`.menu li[data-page="${page}"]`);
+      const li = document.querySelector(`.menu li[data-page="${page}"]`)
 
-      updateiframe(page, li, false);
+      updateiframe(page, li, false)
     });
 
 
@@ -95,13 +96,13 @@
     window.addEventListener("DOMContentLoaded", () => { // cuando cargue...
       
       // o pillo el enlace (desde los parámetros) o mando a dashboard
-      const urlPage = new URLSearchParams(window.location.search).get("page") || "dashboard"; 
+      const urlPage = new URLSearchParams(window.location.search).get("page") || "dashboard"
       
       // busco el li correspondiente
-      const li = document.querySelector(`.menu li[data-page="${urlPage}"]`); 
+      const li = document.querySelector(`.menu li[data-page="${urlPage}"]`) 
       
       // actualizo la web
-      updateiframe(urlPage, li, false); 
+      updateiframe(urlPage, li, false)
     });
   </script>
 </body>
