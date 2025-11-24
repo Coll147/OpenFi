@@ -28,43 +28,8 @@
           <th>ACTIONS</th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td>Device Nickname</td>
-          <td>device ip address</td>
-          <td class="status error">Unknown</td>
-          <td>0d 0m 0s</td>
-          <td>device model</td>
-          <td>firmware version</td>
-          <td class="actions">
-            <button class="edit">✏️</button>
-            <button class="restart">🔁</button>
-          </td>
-        </tr>
-        <tr>
-          <td>AP Dormitorio</td>
-          <td>192.168.5.3</td>
-          <td class="status warning">Update Available</td>
-          <td>1d 3h 45m</td>
-          <td>Cudy WR3000E v1</td>
-          <td>OpenWrt 24.10.3</td>
-          <td class="actions">
-            <button class="edit">✏️</button>
-            <button class="restart">🔁</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Router</td>
-          <td>192.168.5.1</td>
-          <td class="status online">Online</td>
-          <td>5d 1h 23m</td>
-          <td>Ubiquiti EdgeRouter 4</td>
-          <td>OpenWrt 24.10-SNAPSHOT</td>
-          <td class="actions">
-            <button class="edit" onclick="toggleMenu('context-menu')">✏️</button>
-            <button class="restart">🔁</button>
-          </td>
-        </tr>
+      <tbody id="devices-tbody">
+        <!-- ./devices.js -->
       </tbody>
     </table>
   </section>
@@ -74,29 +39,18 @@
     <!-- <img src="https://i01.appmifile.com/webfile/globalimg/products/m/xiaomi-router-ax3200/mSpecs_img.png"> -->
     <h1>Device Name</h1>
     
+    <h3>Device WIFI</h3>
     <table id="wifi-status">
-      <h3>Wi-Fi Status</h3>
-      <tbody>
-        <tr>
-          <td>radio0</td>
-          <td>Ch. 13 20MHz <br> (2.472 GHz)</td>
-          <td>? Mbit/s</td>
-          <td>Wifi 4</td>
-          <td>0 clients</td>
-        </tr>
-        <tr>
-          <td>radio1</td>
-          <td>Ch. 52 80MHz <br> (5.260 GHz)</td>
-          <td>? Mbit/s</td>
-          <td>Wifi 6</td>
-          <td>0 clients</td>
-        </tr>
-      </tbody>
+      <!-- tbody from ./devices.js -->
     </table>
 
-    <table class="wifi-status">
-      <h3>Device Status</h3>
+    <h3>Device Status</h3>
+    <table id="device-status">
       <tbody>
+        <tr>
+          <td>Name</td>
+          <td>ap salon</td>
+        </tr>
         <tr>
           <td>Model</td>
           <td>Xiaomi Redmi Router AX6S</td>
@@ -120,5 +74,8 @@
   </section>
 
 <script src="../scripts/actions.js"></script>
+<script src="../data/db.js"></script>
+<script src="./devices.js"></script>
+
 </body>
 </html>
