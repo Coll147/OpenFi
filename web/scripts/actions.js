@@ -1,6 +1,5 @@
 // Funcion usada para cambiar el nickname de un dispositivo
 function changeNick(index) {
-    console.log("funcion llamada")
     console.log(index)
 
     const contenido = document.getElementById("device-nick").value
