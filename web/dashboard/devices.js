@@ -1,5 +1,11 @@
-// Creación de la tabla - de dispositivos
-const tabla = document.getElementById("devices-tbody")
+function loadTable(){ // Creación de la tabla - de dispositivos
+    
+    const tabla = document.getElementById("devices-tbody")
+
+    // Limpiar si hay cosas
+    while (tabla.firstChild) {
+        tabla.removeChild(tabla.firstChild)
+    }
 
     // Crear filas de la tabla
     for (let i = 0; i < devices.length; i++) {
@@ -53,6 +59,7 @@ const tabla = document.getElementById("devices-tbody")
         
         tabla.appendChild(tr)
     }
+}
 
 
 
