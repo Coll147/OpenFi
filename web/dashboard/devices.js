@@ -101,6 +101,7 @@ function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
         wifiTable.appendChild(tbody)
     }
 
+
     // Crear filas de la tabla de <status>
     let statusTable = document.getElementById("device-status")
 
@@ -117,7 +118,8 @@ function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
             tr.appendChild(td1)
         
             td2 = document.createElement("td")
-            td2.textContent = devices[device].nickname
+            //td2.textContent = devices[device].nickname
+            td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nickname}" onblur="changeNick(${device})">`
             tr.appendChild(td2)
         
 
