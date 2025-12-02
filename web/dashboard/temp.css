@@ -1,0 +1,54 @@
+  body { 
+    background:#5a5a5a; 
+    margin:0; 
+    font-family:Arial; 
+    color:#fff; 
+  }
+
+  .main { 
+    padding: 5px
+  }
+
+  .row { 
+    display:flex; 
+    gap:25px; 
+    margin-bottom:25px; 
+  }
+
+  .card { 
+    background:#4e4e4e; 
+    padding:20px; 
+    border-radius:20px; 
+    flex:1; 
+  }
+  
+  .card h2 { 
+    margin:0 0 5px 0; 
+    font-size:28px; 
+  }
+
+  .status-green{ 
+    color:#31d843; 
+    font-weight:bold; 
+  }
+
+  .metric{ 
+    margin-top:10px; 
+    line-height:22px; 
+  }
+
+  .throughput, .alerts { 
+    background:#4e4e4e; 
+    padding:20px; 
+    border-radius:20px; 
+  }
+
+  .throughput h2, .alerts h2{ 
+    margin-top:0; 
+  }
+
+  .alert-item{ 
+    display:flex; 
+    justify-content:space-between; 
+    margin:8px 0; 
+  }

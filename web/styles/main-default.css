@@ -12,18 +12,22 @@ body {
 
 /* ===== Sidebar ===== */
 .sidebar {
-  height: 99.4vH;
-  width: 220px;
+  height: 99.6vH;
+  min-width: 220px;
+  max-width: 300px;
   background: #474747;
   display: flex;
+  flex: 1;
   flex-direction: column;
   justify-content: space-between;
   
 }
 
 .logo {
-  display: block;
-  width: 5em;
+  width: 80%;
+  max-width: 250px;
+  display: flex;
+  justify-content: center;
   margin: 14px 20px;
   padding: 0;
   user-select: none;
@@ -82,15 +86,14 @@ footer a:visited {
 
 /* ===== Context Menu ===== */
 .context-menu {
-  color: white
+  color: white  /* medio innecesario, deberia quitarlo*/
 }
 
 
 /* ===== Main ===== */
 .main {
   flex: 1;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 20px;
 
 }
 

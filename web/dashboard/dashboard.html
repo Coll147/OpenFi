@@ -4,16 +4,89 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../styles/main-default.css">
+  <style>
+    .row { 
+      display:flex; 
+      gap:25px; 
+      margin-bottom:25px; 
+    }
+
+    .card { 
+      background:#4e4e4e; 
+      padding:20px; 
+      border-radius:20px; 
+      flex:1; 
+    }
+
+    .card h2 { 
+      margin:0 0 5px 0; 
+      font-size:28px; 
+      display:inline
+    }
+
+    .card h3 { 
+      display:inline;
+      padding-left: 30px;
+    }
+
+    .card p { 
+      margin: 3px;
+    }
+
+    .status-green{ 
+      color:#31d843; 
+      font-weight:bold; 
+    }
+  </style>
 </head>
 
 <body>
   <section class="main">
-    <div class="header">
-      <h2>Dashboard</h2>
+
+    <div class="row">
+      <div class="card">
+        <h2>Internet</h2>
+        <h3 class="status online">[ Online ]</h3>
+        <p class="metric">Public IP: 192.168.1.1</p>
+        <p class="metric">Latency: 10ms</p>
+        <p class="metric">Download: 150Mbps</p>
+        <p class="metric">Upload: 50Mbps</p>
+      </div>
+
+      <div class="card">
+        <h2>Devices</h2>
+        <h3 class="status online">[ All Working ]</h3>
+        <p class="metric">APs: 3</p>
+        <p class="metric">Switches: 2</p>
+        <p class="metric">Gateways: 1</p>
+      </div>
+
+      <div class="card">
+        <h2>Clients</h2>
+        <h3 class="status online">[ Optimal Experience ]</h3>
+        <p class="metric">Wireless: 30</p>
+        <p class="metric">Wired: 15</p>
+      </div>
     </div>
 
-    <p>Debería poner algo pero no sé que xd</p>
+
+    <div class="row">
+      <div class="card" id="throughput" style="flex:2;">
+        <h2>Throughput</h2>
+        <div style="width:100%; height:260px; background:#333; border-radius:15px; display:flex; align-items:center; justify-content:center; font-size:40px; opacity:0.4;">placeholder</div>
+      </div>
+
+      <div class="card" id="alerts" style="flex:1;">
+        <h2>Recent Alerts</h2>
+        <div class="alert-item"><span>Update available for &lt;device&gt;</span><span>2 minutes ago</span></div>
+        <div class="alert-item"><span>High CPU usage on &lt;gateway&gt;</span><span>12 minutes ago</span></div>
+        <div class="alert-item"><span>Internet connection restored</span><span>14 minutes ago</span></div>
+        <div class="alert-item"><span>New login from 192.168.5.23</span><span>20 minutes ago</span></div>
+        <div class="alert-item"><span>Internet connection lost</span><span>25 minutes ago</span></div>
+      </div>
+    </div>
 
   </section>
+
 </body>
 </html>
