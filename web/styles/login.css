@@ -67,15 +67,26 @@ footer a:visited {
 }
 
 /* ===== Formulario ===== */
-form {
+.card {
   background: #474747;
-  padding: 40px 50px;
+  padding: 20px 50px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
   min-width: 340px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card p {
+  text-align: center;
+  font-size: 25px;
+}
+
+#alertBox {
+  padding: 1px;
+  margin: 1px;
+  background-color: rgba(52, 52, 52, 0.204);
 }
 
 .input-group {

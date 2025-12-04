@@ -19,19 +19,49 @@
         </div>
 
         <div class="login-box">
-        <h2>My Network</h2>
-        <form>
-            <div class="input-group">
-            <span class="icon">👤</span>
-            <input type="text" value="admin" readonly>
+            
+            <div class="card hidden" id="alertBox" style="display: none;">
+                <p class="text" id="cardText"></p>
             </div>
-            <div class="input-group">
-            <span class="icon">🔒</span>
-            <input type="password" placeholder="password">
-            </div>
-            <button onclick="window.location.href='./main.html'" type="button" class="login-btn">Log in</button>    
-        </form>
+
+            <h2>My Network</h2>
+            <form class="card">
+                <div class="input-group">
+                  <span class="icon">👤</span>
+                  <input type="text" value="admin" readonly>
+                </div>
+                <div class="input-group">
+                  <span class="icon">🔒</span>
+                  <input type="password" id='password' placeholder="password">
+                </div>
+                <button onclick="login('password')" type="button" class="login-btn">Log in</button>
+            </form>
         </div>
     </div>
+
+    <script>
+        function showText(text) {
+            console.log("text function")
+            const box = document.getElementById('alertBox')
+            box.style.display = 'flex'
+
+            const textCont = document.getElementById('cardText')
+            textCont.textContent = text
+            textCont.style.color = "#ff9898"
+        }
+
+
+        function login(id) {
+            console.log("login function")
+            const password = document.getElementById(id).value
+            console.log(password)
+            if (password == "coll147") {
+                window.location.href='./main.html'
+            }
+            else {
+                showText("Contraseña Incorrecta")
+            }
+        }
+    </script>
 </body>
 </html>
