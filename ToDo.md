@@ -1,0 +1,1 @@
+- Añadir un slideshow / pagina principal en el login o algo
