@@ -41,6 +41,7 @@ function loadTable(){ // Creación de la tabla - de dispositivos
 
             // Botón de editar
             let btnEdit = document.createElement("button")
+            btnEdit.classList.add("btn")
             btnEdit.classList.add("edit")
             btnEdit.textContent = "✏️"
             btnEdit.setAttribute("onclick", `toggleMenu(${i})`)
@@ -48,6 +49,7 @@ function loadTable(){ // Creación de la tabla - de dispositivos
 
             // Botón de reiniciar
             let btnRestart = document.createElement("button")
+            btnRestart.classList.add("btn")
             btnRestart.classList.add("restart")
             btnRestart.textContent = "🔁"
             btnEdit.id = "restart-" + devices[i].id

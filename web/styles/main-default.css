@@ -13,11 +13,11 @@ body {
 /* ===== Sidebar ===== */
 .sidebar {
   height: 99.6vH;
-  min-width: 220px;
-  max-width: 300px;
+  min-width: 190px;
+  max-width: 220px;
   background: #474747;
   display: flex;
-  flex: 1;
+  flex: .7;
   flex-direction: column;
   justify-content: space-between;
   
@@ -115,20 +115,6 @@ footer a:visited {
   align-items: center;
 }
 
-.add-btn {
-  background: #5a39ff;
-  border: none;
-  color: white;
-  font-size: 1rem;
-  padding: 10px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.add-btn:hover {
-  background: #6c4fff;
-}
-
 
 
 /* ===== Table ===== */
@@ -172,14 +158,14 @@ tbody tr:hover {
 
 
 
-/* ===== Acciones ===== */
+/* ===== Botones ===== */
 
 .actions {
   display: flex;
   gap: 10px;
 }
 
-button.edit, button.restart {
+.btn {
   background: none;
   border: 2px solid #5a39ff;
   color: #5a39ff;
@@ -189,17 +175,45 @@ button.edit, button.restart {
   cursor: pointer;
 }
 
-button.restart {
-  border-color: #ff4b4b;
-  color: #ff4b4b;
-}
+  /* -- Login page */
+  .login-btn {
+    background: #5a39ff;
+    border: none;
+    padding: 12px 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
 
-button.edit:hover {
-  background: #5a39ff;
-  color: white;
-}
+  /* -- Devices page */
+  .btn.add-new {
+    background: #5a39ff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  .btn.add-new:hover {
+    background: #6c4fff;
+  }
 
-button.restart:hover {
-  background: #ff4b4b;
-  color: white;
-}
+  .btn.edit {
+    border-color: #1729e9;
+    color: white;
+  }
+  .btn.edit:hover {
+    background: #5a39ff;
+    color: white;
+  }
+
+  .btn.restart {
+    border-color: #ff4b4b;
+    color: #ff4b4b;
+  }
+  .btn.restart:hover {
+    background: #ff4b4b;
+    color: white;
+  }
