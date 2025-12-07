@@ -12,11 +12,11 @@ body {
 
 .layout {
   display: flex;
+  height: 100vh;
 }
 
 /* ===== Sidebar ===== */
 .sidebar {
-  height: 99.6vH;
   min-width: 190px;
   max-width: 220px;
   background: #474747;
