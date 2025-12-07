@@ -9,43 +9,43 @@
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="./styles/main-default.css">
-  <link rel="stylesheet" type="text/css" href="./styles/main-mobile.css">
+  <!-- <link rel="stylesheet" type="text/css" href="./styles/main-mobile.css"> -->
 </head>
 
 <body>
-  <nav class="sidebar">
-    <h1 >
+  <div class="layout">
+    <nav class="sidebar">
       <img class="logo" src="./assets/logo.png" alt="OpenFi Logo" draggable="false">
-    </h1>
 
-    <ul class="menu">
-      <li data-page="dashboard" class="active">📊 Dashboard</li>
-      <li data-page="topology">🧭 Topology</li>
-      <li data-page="devices">📶 Devices</li>
-      <li data-page="logs">📜 Logs</li>
-      <li data-page="wifi">📡 Wi-Fi</li>
-      <li data-page="network">🌐 Network</li>
-      <li data-page="settings">⚙️ Settings</li>
-      <li data-page="information">📞 Information</li>
-    </ul>
+      <ul class="menu">
+        <li data-page="dashboard" class="active">📊 Dashboard</li>
+        <li data-page="topology">🧭 Topology</li>
+        <li data-page="devices">📶 Devices</li>
+        <li data-page="logs">📜 Logs</li>
+        <li data-page="wifi">📡 Wi-Fi</li>
+        <li data-page="network">🌐 Network</li>
+        <li data-page="settings">⚙️ Settings</li>
+        <li data-page="information">📞 Information</li>
+      </ul>
 
 
-    <footer>
-      <p> <!-- Good CSS tag :D -->
-        <a href="https://jigsaw.w3.org/css-validator/check/referer">
-            <img style="border:0;width:88px;height:31px"
-                src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-                alt="Valid CSS!" />
-        </a>
-      </p>
+      <footer>
+        <p> <!-- Good CSS tag :D -->
+          <a href="https://jigsaw.w3.org/css-validator/check/referer">
+              <img style="border:0;width:88px;height:31px"
+                  src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
+                  alt="Valid CSS!" />
+          </a>
+        </p>
 
-      <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
-    </footer>
-  </nav>
+        <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
+      </footer>
+    </nav>
 
-  <main class="main">
-    <iframe id="content-frame" src="error absoluto - iframe default">test</iframe>
-  </main>
+    <main class="main">
+      <iframe id="content-frame" src="error absoluto - iframe default">test</iframe>
+    </main>
+  </div>
 
   <script>
     function updateiframe(page, element, push = true) {
