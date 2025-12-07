@@ -1,0 +1,29 @@
+  /* -- Devices page */
+  .btn.add-new {
+    background: #5a39ff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+  }
+  .btn.add-new:hover {
+    background: #6c4fff;
+  }
+
+  .btn.edit {
+    border-color: #1729e9;
+    color: white;
+  }
+  .btn.edit:hover {
+    background: #5a39ff;
+    color: white;
+  }
+
+  .btn.restart {
+    border-color: #ff4b4b;
+    color: #ff4b4b;
+  }
+  .btn.restart:hover {
+    background: #ff4b4b;
+    color: white;
+  }

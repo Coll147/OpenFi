@@ -6,49 +6,50 @@
   <title>OpenFi - Devices</title>
   <meta name="description" content="OpenFi Devices Page">
   <link rel="stylesheet" type="text/css" href="../styles/main-default.css">
+  <link rel="stylesheet" type="text/css" href="../styles/pages/devices.css">
 </head>
 
 <body>
+  <div class="layout">
+    <section class="main">
+      <div class="header">
+        <h2>Devices</h2>
+        <button class="btn add-new">Add Device</button>
+      </div>
 
-  <section class="main">
-    <div class="header">
-      <h2>Devices</h2>
-      <button class="btn add-new">Add Device</button>
-    </div>
+      <table>
+        <thead>
+          <tr>
+            <th>DEVICE</th>
+            <th>IP ADDRESS</th>
+            <th>STATUS</th>
+            <th>UPTIME</th>
+            <th>MODEL</th>
+            <th>VERSION</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody id="devices-tbody">
+          <!-- ./devices.js -->
+        </tbody>
+      </table>
+    </section>
 
-    <table>
-      <thead>
-        <tr>
-          <th>DEVICE</th>
-          <th>IP ADDRESS</th>
-          <th>STATUS</th>
-          <th>UPTIME</th>
-          <th>MODEL</th>
-          <th>VERSION</th>
-          <th>ACTIONS</th>
-        </tr>
-      </thead>
-      <tbody id="devices-tbody">
-        <!-- ./devices.js -->
-      </tbody>
-    </table>
-  </section>
+    <section style="display: none;" id="context-menu" class="context-menu">
+      <h1>Device Name</h1>
+      
+      <h3>Device WIFI</h3>
+      <table id="wifi-status">
+        <!-- tbody from ./devices.js -->
+      </table>
 
-  <section style="display: none;" id="context-menu" class="context-menu">
-    <h1>Device Name</h1>
-    
-    <h3>Device WIFI</h3>
-    <table id="wifi-status">
-      <!-- tbody from ./devices.js -->
-    </table>
-
-    <h3>Device Status</h3>
-    <table id="device-status">
-      <!-- tbody from ./devices.js -->
-    </table>
-    
-
-  </section>
+      <h3>Device Status</h3>
+      <table id="device-status">
+        <!-- tbody from ./devices.js -->
+      </table>
+      
+    </section>
+  </div>
 
 <script src="../scripts/actions.js"></script>
 <script src="../data/db.js"></script>

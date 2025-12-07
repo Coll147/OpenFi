@@ -65,18 +65,20 @@
 }
 
 /* ===== Botón ===== */
-.login-btn {
-  background: #5a39ff;
-  border: none;
-  padding: 12px 0;
-  color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: 0.2s;
-}
 
-.login-btn:hover {
-  background: #6a4fff;
-}
+  /* -- Login page */
+  .login-btn {
+    background: #5a39ff;
+    border: none;
+    padding: 12px 0;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .login-btn:hover {
+    background: #6a4fff;
+  }
