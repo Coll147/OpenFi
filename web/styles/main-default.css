@@ -37,13 +37,6 @@ body {
   -webkit-user-drag: none;
   pointer-events: none;
 }
-  .logo img {
-    width: 5em;
-    padding: 0;
-    user-select: none;
-    -webkit-user-drag: none;
-    pointer-events: none;
-  }
 
 .menu {
   list-style: none;
