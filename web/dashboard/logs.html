@@ -3,17 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenFi - Logs</title>
+  <meta name="description" content="OpenFi Logs Page">
   <link rel="stylesheet" type="text/css" href="../styles/main-default.css">
+  <link rel="stylesheet" type="text/css" href="../styles/pages/logs.css">
 </head>
 
 <body>
-  <section class="main">
-    <div class="header">
-      <h2>Logs</h2>
-    </div>
+  <div class="layout">
+    <section class="main">
+      <div class="header">
+        <h2>Logs</h2>
+      </div>
 
-    <p>Debería poner algo pero no sé que xd</p>
+      <table>
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Device</th>
+            <th>Time</th>
+            <th>Risk</th>
+            <th>Information</th>
+          </tr>
+        </thead>
+        <tbody id="devices-tbody">
+          <!-- ./devices.js -->
+        </tbody>
+      </table>
+    </section>
 
-  </section>
+    <section style="display: none;" id="context-menu" class="context-menu">
+      <h1>Logs Information</h1>
+
+      <table id="context-data">
+        <!-- tbody from ./devices.js -->
+      </table>
+      
+    </section>
+  </div>
+
+<script src="../scripts/actions.js"></script>
+<script src="../data/db.js"></script>
+<script src="../scripts/pages/logs.js"></script>
+<script>
+  loadTable()
+</script>
+
 </body>
 </html>

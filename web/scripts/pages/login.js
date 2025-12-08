@@ -27,7 +27,7 @@ document.querySelectorAll(".input-group").forEach(input => {
     // Meto el listener a los dos grupos de input aunque ahora solo se puede escribir en password
     input.addEventListener("keyup", (e) => {
         if (e.key === "Enter") {
-            login(e.target.id);
+            login(e.target.id); // fix later
         }
     });
 });

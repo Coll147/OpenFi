@@ -75,6 +75,21 @@ window.devices = [
         firmware: "OpenWrt 24.10-SNAPSHOT",
         version: "OpenWrt 24.10-SNAPSHOT",
         ram_cpu: "47% / 2.5%",
-        radios: []   // Router sin radios
+        radios: []
+    }
+];
+
+
+
+// Logs
+window.logs = [
+    {
+        id: 1,
+        type: "Disconnection",
+        device: "Router Principal",
+        time: "11-12-2025 11:43pm",
+        risk: "High",
+        info: "The device has beed disconected from the networkj. Check it",
+        comments: ""
     }
 ];

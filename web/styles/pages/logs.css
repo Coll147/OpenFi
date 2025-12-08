@@ -1,0 +1,13 @@
+textarea {
+  width: 100%;          /* Ocupa todo el ancho del contenedor */
+  height: 150px;        /* Altura por defecto */
+  padding: 10px;        /* Espaciado interior */
+  resize: vertical;     /* Permite redimensionar solo verticalmente */
+  font-size: 16px;      /* Tamaño de texto */
+  line-height: 1.4;     /* Altura de línea */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; /* Para que padding no modifique el ancho real */
+}
+
+/* el ñordo de arriba es un apaño de chatgpt, después lo reviso */
