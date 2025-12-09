@@ -10,10 +10,11 @@ function showText(text) {
 
 
 function login(id) {
-    console.log("login function")
+    console.log("login function called")
+    let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
     const password = document.getElementById(id).value
     console.log(password)
-    if (password == "coll147") {
+    if (password == account[0].password) {
         window.location.href='./main.html'
     }
     else {
@@ -23,6 +24,7 @@ function login(id) {
 
 // Para activar la función si pulso enter
 // https://stackoverflow.com/questions/7060750/detect-the-enter-key-in-a-text-input-field
+
 document.querySelectorAll(".input-group").forEach(input => { 
     // Meto el listener a los dos grupos de input aunque ahora solo se puede escribir en password
     input.addEventListener("keyup", (e) => {

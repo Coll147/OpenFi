@@ -99,7 +99,7 @@ logs = [
 // Account data
 account = [
     {
-        id: 1,
+        id: 0,
         username: "admin",
         password: "coll147",
         firsttime: "yes",
