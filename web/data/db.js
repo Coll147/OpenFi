@@ -113,8 +113,12 @@ function resetdb() {
     localStorage.removeItem("devices")
     localStorage.removeItem("logs")
     localStorage.removeItem("account")
+    console.log("Deleted old DB")
 
     localStorage.setItem("devices", JSON.stringify(devices))
     localStorage.setItem("logs", JSON.stringify(logs))
-    localStorage.setItem("account", JSON.stringify(account));
+    localStorage.setItem("account", JSON.stringify(account))
+    console.log("Created DB")
+
+    log('Database Reset', `OpenFi System`, 'High', `La base de datos ha sido reestablecida.`)
 }
