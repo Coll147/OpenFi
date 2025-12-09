@@ -28,5 +28,3 @@ function log(event, device, risk, info) {
 
     console.log("Nuevo log añadido:", newLog)
 }
-
-log('Ready', 'Software', 'Info', 'Logging system is ready ;D')

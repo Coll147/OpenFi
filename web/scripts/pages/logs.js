@@ -154,3 +154,10 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
             console.log(actualState)
     }
 }
+
+
+
+setTimeout(() => {
+  log('Ready', 'Software', 'Info', 'Logging system is ready ;D')
+  loadTable()
+}, 2000)
