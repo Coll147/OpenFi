@@ -1,5 +1,5 @@
 function loadTable(){ // Creación de la tabla
-    let logs = JSON.parse(localStorage.getItem("logs")) // sistema de localstorage
+    let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     const tabla = document.getElementById("devices-tbody")
 
     // Limpiar si hay cosas

@@ -2,20 +2,23 @@
 function changeNick(index) {
     console.log(index)
 
+    let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
     const contenido = document.getElementById("device-nick").value
 
     console.log(`Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
+    log('Nick changed', `${devices[index].model}`, 'Warn', `Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
+
     devices[index].nickname = contenido
 
-    log('Nick changed', `${devices[index].model}`, 'Info', `Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
-
     // recargar tabla
+    localStorage.setItem("devices", JSON.stringify(devices)) // guardar localstorage
     loadTable()
 }
 
 
 function loadTable(){ // Creación de la tabla - de dispositivos
     
+    let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
     const tabla = document.getElementById("devices-tbody")
 
     // Limpiar si hay cosas
@@ -84,6 +87,8 @@ function loadTable(){ // Creación de la tabla - de dispositivos
 
     
 function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
+    
+    let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
 
     // Crear filas de la tabla de <radios>
     let wifiTable = document.getElementById("wifi-status")
@@ -143,7 +148,7 @@ function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
             tr.appendChild(td1)
         
             td2 = document.createElement("td")
-            //td2.textContent = devices[device].nickname
+            //td2.textContent = devices[device].nickname -- pendiente cambiarlo por unos create element pero por ahora funciona :v
             td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nickname}" onblur="changeNick(${device})">`
             tr.appendChild(td2)
         
