@@ -1,4 +1,5 @@
 >> A hacer
+- Inicializar la DB para cuando se abre por primera vez la web y proporcionar comando para reestablecer (si hace falta)
 - Revisar division de las funciones de mounttable y showtable y migrar a la pagina de logs
 - Permitir OCULTAR el menu secundario haciendo click en cualquier lado del body (o del iframe?)
 - Comenzar las paginas de Red y después Wifi
