@@ -154,7 +154,7 @@ tbody tr:hover {
 /* ===== Botones ===== */
 
 .btn {
-  background: #5a39ff;
+  background: #5a39ff57;
   border: 2px solid #5a39ff;
   color: white;
   font-size: 15px;
@@ -163,7 +163,7 @@ tbody tr:hover {
   cursor: pointer;
 }
   .btn:hover {
-    background: #6c4fff;
+    background: #6c4fff21;
     border: 2px solid #6c4fff;
   }
   /* more at devices.css and login.css */
