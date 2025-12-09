@@ -81,7 +81,8 @@ footer {
 /* ===== Context Menu ===== */
 .context-menu {
   color: white;  /* medio innecesario, deberia quitarlo*/
-  height: 94vh;
+  min-width: 480px;
+  height: 90%;
   background-color: #8d8d8d;
   border-radius: 10px;
   margin: 10px;
