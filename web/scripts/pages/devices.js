@@ -105,7 +105,7 @@ function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
                 document.createTextNode(" "),
                 document.createTextNode(devices[device].radios[i].bandwidth),
                 document.createElement("br"),
-                devices[device].radios[i].frequency
+                document.createTextNode(devices[device].radios[i].frequency)
             );
             tr.appendChild(td2)
 
