@@ -1,5 +1,8 @@
 >> A hacer
-- Añadir una función global para aumentar el array de logs y después aparezcan en el menú de logs << en progreso, acabar funcion log() >>
+- Revisar division de las funciones de mounttable y showtable y migrar a la pagina de logs
+- Permitir OCULTAR el menu secundario haciendo click en cualquier lado del body (o del iframe?)
+- Comenzar las paginas de Red y después Wifi
 
 >> Más adelante
 - Añadir un slideshow / pagina principal en el login o algo
+- Multiidioma :_v

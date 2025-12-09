@@ -63,7 +63,7 @@ function loadTable(){ // Creación de la tabla - de dispositivos
             btnEdit.classList.add("btn")
             btnEdit.classList.add("edit")
             btnEdit.textContent = "✏️"
-            btnEdit.setAttribute("onclick", `toggleMenu(${i})`)
+            btnEdit.setAttribute("onclick", `mountMenu(${i})`)
             btnEdit.id = "edit-" + devices[i].id
 
             // Botón de reiniciar
@@ -85,8 +85,36 @@ function loadTable(){ // Creación de la tabla - de dispositivos
 
 
 
-    
-function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
+function toogleMenu() {
+    // Enseñar menú
+    const element = document.getElementById("context-menu")
+    const actualState = element.style.display
+
+    let statusTable = document.getElementById("device-status")
+    let wifiTable = document.getElementById("wifi-status")
+
+    switch (actualState){
+        case "none":
+            element.style.display = "block"
+            break;
+
+        case "block":
+            element.style.display = "none"
+            while (statusTable.firstChild) {
+                statusTable.removeChild(statusTable.firstChild)
+            }
+            while (wifiTable.firstChild) {
+                wifiTable.removeChild(wifiTable.firstChild)
+            }
+            break;
+
+        default:
+            console.log('actions.js > toogleMenu > Error al cambiar, valor inesperado')
+            console.log(actualState)
+    }
+}
+
+function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     
     let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
 
@@ -196,27 +224,6 @@ function toggleMenu(device){ // Mostrar menú extra de cada dispositivo
 
         statusTable.appendChild(tbody)
 
-
-    // Enseñar menú
-    const element = document.getElementById("context-menu")
-    const actualState = element.style.display
-    switch (actualState){
-        case "none":
-            element.style.display = "block"
-            break;
-
-        case "block":
-            element.style.display = "none"
-            while (statusTable.firstChild) {
-                statusTable.removeChild(statusTable.firstChild)
-            }
-            while (wifiTable.firstChild) {
-                wifiTable.removeChild(wifiTable.firstChild)
-            }
-            break;
-
-        default:
-            console.log('actions.js > toogleMenu > Error al cambiar, valor inesperado')
-            console.log(actualState)
-    }
+        toogleMenu()
 }
+

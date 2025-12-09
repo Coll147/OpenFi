@@ -139,7 +139,13 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
         dataTable.appendChild(tbody)
 
 
-    // Enseñar menú
+        toogleMenu()
+
+
+}
+
+function toogleMenu() {
+    // Enseñar menú (o no)
     const element = document.getElementById("context-menu")
     const actualState = element.style.display
     switch (actualState){
@@ -159,7 +165,6 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
             console.log(actualState)
     }
 }
-
 
 
 setTimeout(() => {
