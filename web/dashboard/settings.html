@@ -3,17 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenFi - Settings</title>
+  <meta name="description" content="OpenFi Settings Page">
   <link rel="stylesheet" type="text/css" href="../styles/main-default.css">
+  <link rel="stylesheet" type="text/css" href="../styles/pages/settings.css">
 </head>
 
 <body>
-  <section class="main">
-    <div class="header">
-      <h2>Ajustes</h2>
-    </div>
+  <div class="layout">
+    <section class="main">
+      <div class="header">
+        <h1>Settings</h1>
+      </div>
 
-    <p>Debería poner algo pero no sé que xd</p>
 
-  </section>
+      <div class="row">
+        <div class="card">
+          <h2>Interface</h2>
+          <div class="option">
+            <p>Idioma: </p>
+            <select class="selector" id="selector" name="operador">
+              <option value="spanish">spanish</option>
+              <option value="english">english</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="card">
+          <h2>Account</h2>
+          <div class="option">
+            <p>Idioma: </p>
+            <button onclick="window.top.location.href = '../login.html'" type="button" class="logout-btn">Log Out</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+<script src="../scripts/actions.js"></script>
+<script src="../data/db.js"></script>
+<script src="../scripts/pages/devices.js"></script>
+<script>
+  loadTable()
+</script>
+
 </body>
 </html>
