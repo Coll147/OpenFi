@@ -1,4 +1,11 @@
   /* -- Devices page */
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+
 .btn {
   padding: 4px 8px;
   font-size: 20px;
