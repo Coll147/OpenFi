@@ -1,5 +1,5 @@
 function loadTable(){ // Creación de la tabla
-    
+    let logs = JSON.parse(localStorage.getItem("logs")) // sistema de localstorage
     const tabla = document.getElementById("devices-tbody")
 
     // Limpiar si hay cosas
@@ -64,6 +64,7 @@ function loadTable(){ // Creación de la tabla
 // Funcion usada para cambiar el texto de un evento
 function changeText(index) {
     console.log(index)
+    let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
 
     const contenido = document.getElementById("event-commentaries").value
 
@@ -71,12 +72,16 @@ function changeText(index) {
     logs[index].comments = contenido
 
     // recargar tabla
+    localStorage.setItem("logs", JSON.stringify(logs)) // guardar localstorage
     loadTable()
 }
+
+
 
 function toggleMenu(id){ // Mostrar menú extra de cada evento
 
     // Crear filas de la tabla
+    let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     let dataTable = document.getElementById("context-data")
 
     let tbody = document.createElement("tbody")

@@ -1,5 +1,7 @@
 // Loguear un evento
 function log(event, device, risk, info) {
+    let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
+
     // Tomar fecha actual
     const ahora = new Date()
 
@@ -26,5 +28,6 @@ function log(event, device, risk, info) {
     // Añadir al array
     logs.unshift(newLog)
 
+    localStorage.setItem("logs", JSON.stringify(logs)) // guardar localstorage
     console.log("Nuevo log añadido:", newLog)
 }

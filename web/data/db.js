@@ -1,5 +1,5 @@
 // Dispositivos
-window.devices = [
+devices = [
     {
         id: 1,
         nickname: "AP Salón",
@@ -82,7 +82,7 @@ window.devices = [
 
 
 // Logs
-window.logs = [
+logs = [
     {
         id: 1,
         type: "Disconnection",
@@ -94,3 +94,27 @@ window.logs = [
     }
 ];
 
+
+
+// Account data
+account = [
+    {
+        id: 1,
+        username: "admin",
+        password: "coll147",
+        firsttime: "yes",
+        avatar: "cat.png"
+    }
+];
+
+
+
+function resetdb() {
+    localStorage.removeItem("devices")
+    localStorage.removeItem("logs")
+    localStorage.removeItem("account")
+
+    localStorage.setItem("devices", JSON.stringify(devices))
+    localStorage.setItem("logs", JSON.stringify(logs))
+    localStorage.setItem("account", JSON.stringify(account));
+}
