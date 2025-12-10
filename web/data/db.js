@@ -115,7 +115,7 @@ function resetdb() {
     //localStorage.removeItem("account")
     localStorage.clear()
     console.log("Deleted DB")
-
+    window.top.location.href = '../../index.html'
     //log('Database Reset', `OpenFi System`, 'High', `La base de datos ha sido eliminada.`)
 }
 
