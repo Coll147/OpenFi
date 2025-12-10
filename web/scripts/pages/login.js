@@ -1,3 +1,15 @@
+function initDB() {
+    const DBdata = localStorage.getItem("account")
+    // just in case: localStorage.clear()
+
+    if (DBdata) {
+        console.log("La DB ya está lista")
+    } else {
+        console.log("La DB no existe, creando...")
+        resetdb();
+    }
+}
+
 function showText(text) {
     console.log("text function")
     const box = document.getElementById('alertBox')
