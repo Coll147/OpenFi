@@ -2,7 +2,7 @@ function loadTable(){ // Creación de la tabla
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     const tabla = document.getElementById("devices-tbody")
 
-    // Limpiar si hay cosas
+    // Limpiar contenido anterior
     while (tabla.firstChild) {
         tabla.removeChild(tabla.firstChild)
     }
@@ -13,7 +13,7 @@ function loadTable(){ // Creación de la tabla
         let tr = document.createElement("tr")
 
         tr.addEventListener("click", () => {
-            toggleMenu(i) // No más boton de editar :D
+            loadMenu(i) // No más boton de editar :D
         });
         
         let td0 = document.createElement("td") // Event type
@@ -78,11 +78,16 @@ function changeText(index) {
 
 
 
-function toggleMenu(id){ // Mostrar menú extra de cada evento
+function loadMenu(index){ // Mostrar menú extra de cada evento
 
     // Crear filas de la tabla
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     let dataTable = document.getElementById("context-data")
+
+    // Limpiar contenido anterior
+    while (dataTable.firstChild) {
+        dataTable.removeChild(dataTable.firstChild)
+    }
 
     let tbody = document.createElement("tbody")
 
@@ -97,7 +102,7 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
             tr.appendChild(td1)
         
             td2 = document.createElement("td")
-            td2.textContent = logs[id].id
+            td2.textContent = logs[index].id
             tr.appendChild(td2)
         
 
@@ -110,7 +115,7 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
             tr.appendChild(td1)
         
             td2 = document.createElement("td")
-            td2.textContent = logs[id].device
+            td2.textContent = logs[index].device
             tr.appendChild(td2)
         
 
@@ -130,7 +135,7 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
 
             td2 = document.createElement("td")
             td2.colSpan = 2
-            td2.innerHTML = `<textarea type="text" id="event-commentaries" placeholder="${logs[id].comments}" onblur="changeText(${id})">`
+            td2.innerHTML = `<textarea type="text" id="event-commentaries" placeholder="${logs[index].comments}" onblur="changeText(${index})">`
             tr.appendChild(td2)
         
 
@@ -138,23 +143,26 @@ function toggleMenu(id){ // Mostrar menú extra de cada evento
 
         dataTable.appendChild(tbody)
 
+        let deleteBtn = document.getElementById('deleteBtn')
+            deleteBtn.setAttribute("onclick", `removeLog(${index})`)
 
-        toogleMenu()
-
-
+        toggleMenu()
 }
 
-function toogleMenu() {
+
+function toggleMenu() {
     // Enseñar menú (o no)
-    const element = document.getElementById("context-menu")
-    const actualState = element.style.display
+    let menu = document.getElementById("context-menu")
+    let dataTable = document.getElementById("context-data")
+
+    const actualState = menu.style.display
     switch (actualState){
         case "none":
-            element.style.display = "block"
+            menu.style.display = "block"
             break;
 
         case "block":
-            element.style.display = "none"
+            menu.style.display = "none"
             while (dataTable.firstChild) {
                 dataTable.removeChild(dataTable.firstChild)
             }
@@ -164,6 +172,22 @@ function toogleMenu() {
             console.log('logs.js > toogleMenu > Error al cambiar, valor inesperado')
             console.log(actualState)
     }
+}
+
+
+function removeLog(index) {
+    let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
+    let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+    const logID = logs[index].id
+
+    logs.splice(index, 1)
+    localStorage.setItem("logs", JSON.stringify(logs)) // guardar localstorage
+
+    log('Removed Log', 'OpenFi System', 'Warn', `Log ${logs[index].id} has been removed by ${account[0].username}`)
+    console.log('removed log :>')
+    
+    loadTable()
+    toggleMenu()
 }
 
 
