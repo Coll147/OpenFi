@@ -85,11 +85,11 @@ devices = [
 logs = [
     {
         id: 1,
-        type: "Disconnection",
-        device: "Router Principal",
+        type: "Placeholder",
+        device: "OpenFi SelfTest",
         time: "11-12-2025 11:43pm",
         risk: "High",
-        info: "The device has beed disconected from the networkj. Check it",
+        info: "Default event from the database",
         comments: ""
     }
 ];
@@ -110,15 +110,20 @@ account = [
 
 
 function resetdb() {
-    localStorage.removeItem("devices")
-    localStorage.removeItem("logs")
-    localStorage.removeItem("account")
-    console.log("Deleted old DB")
+    //localStorage.removeItem("devices")
+    //localStorage.removeItem("logs")
+    //localStorage.removeItem("account")
+    localStorage.clear()
+    console.log("Deleted DB")
 
+    //log('Database Reset', `OpenFi System`, 'High', `La base de datos ha sido eliminada.`)
+}
+
+function initdb() {
     localStorage.setItem("devices", JSON.stringify(devices))
     localStorage.setItem("logs", JSON.stringify(logs))
     localStorage.setItem("account", JSON.stringify(account))
-    console.log("Created DB")
+    console.log("DB Ready")
 
-    log('Database Reset', `OpenFi System`, 'High', `La base de datos ha sido reestablecida.`)
+    log('Database Init', `OpenFi System`, 'Info', `The database has been created :) Welcome to OpenFi`)
 }

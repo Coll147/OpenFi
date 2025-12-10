@@ -1,12 +1,13 @@
 function initDB() {
     const DBdata = localStorage.getItem("account")
-    // just in case: localStorage.clear()
 
     if (DBdata) {
         console.log("La DB ya está lista")
     } else {
         console.log("La DB no existe, creando...")
-        resetdb();
+        localStorage.setItem("devices", JSON.stringify(devices))
+        localStorage.setItem("logs", JSON.stringify(logs))
+        localStorage.setItem("account", JSON.stringify(account))
     }
 }
 
