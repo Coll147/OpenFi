@@ -12,9 +12,10 @@ function loadTable(){ // Creación de la tabla
 
         let tr = document.createElement("tr")
 
-        tr.addEventListener("click", () => {
+        tr.addEventListener("click", (event) => {
             loadMenu(i) // No más boton de editar :D
-        });
+            event.stopPropagation()
+        })
         
         let td0 = document.createElement("td") // Event type
         td0.textContent = logs[i].type
@@ -79,6 +80,7 @@ function changeText(index) {
 
 
 function loadMenu(index){ // Mostrar menú extra de cada evento
+    console.log('LoadMenu called')
 
     // Crear filas de la tabla
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
@@ -150,10 +152,18 @@ function loadMenu(index){ // Mostrar menú extra de cada evento
 }
 
 
-function toggleMenu() {
+function toggleMenu(show = true) {
     // Enseñar menú (o no)
     let menu = document.getElementById("context-menu")
     let dataTable = document.getElementById("context-data")
+
+    if (show === false) {
+        menu.style.display = "none"
+        while (dataTable.firstChild) {
+            dataTable.removeChild(dataTable.firstChild)
+        }
+        return;
+    }
 
     const actualState = menu.style.display
     switch (actualState){

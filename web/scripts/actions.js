@@ -35,7 +35,7 @@ function log(event, device, risk, info) {
 
 
 // Cerrar menús secundarios al pulsar dondesea
-/* document.body.addEventListener("click", function(data) {
+ document.body.addEventListener("click", function(data) {
     console.log("Hiciste click en alguna parte del body");
-    toogleMenu()
-}); no va, conflicto entre click normal y uno en el body, revisar*/
+    toggleMenu(false)
+})
