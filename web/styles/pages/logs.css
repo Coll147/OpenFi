@@ -11,3 +11,7 @@ textarea {
 }
 
 /* el ñordo de arriba es un apaño de chatgpt, después lo reviso */
+
+.context-menu {
+  min-width: 250px;
+}
