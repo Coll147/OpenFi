@@ -87,7 +87,7 @@ logs = [
         id: 1,
         type: "Placeholder",
         device: "OpenFi SelfTest",
-        time: "11-12-2025 11:43pm",
+        time: "11-12-2025 11:43",
         risk: "High",
         info: "Default event from the database",
         comments: ""
