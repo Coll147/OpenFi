@@ -85,7 +85,7 @@ function loadTable(){ // Creación de la tabla - de dispositivos
 
 
 
-function toogleMenu() {
+function toggleMenu() {
     // Enseñar menú
     const element = document.getElementById("context-menu")
     const actualState = element.style.display
@@ -224,6 +224,6 @@ function mountMenu(device){ // Mostrar menú extra de cada dispositivo
 
         statusTable.appendChild(tbody)
 
-        toogleMenu()
+        toggleMenu()
 }
 
