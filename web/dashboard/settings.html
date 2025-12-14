@@ -10,48 +10,51 @@
 </head>
 
 <body>
-  <div class="layout">
-    <section class="main">
-      <div class="header">
-        <h1>Settings</h1>
-      </div>
+  <div class="main_layout">
 
+    <header class="main_header">
+      <h1>Settings</h1>
+    </header>
 
-      <div class="row">
-        <div class="card">
-          <h2>Interface</h2>
-          <div class="option">
-            <p>Language: </p>
-            <select class="btn selector" id="selector" name="operador">
-              <option value="spanish">spanish</option>
-              <option value="english">english</option>
-            </select>
-            <p><-- that shit doesnt do anything </p>
+    <div class="main_div">
+      <main class="main_content">
+        
+        <div class="row">
+          <div class="card">
+            <h2>Interface</h2>
+            <div class="option">
+              <p>Language: </p>
+              <select class="btn selector" id="selector" name="operador">
+                <option value="spanish">spanish</option>
+                <option value="english">english</option>
+              </select>
+              <p><-- that shit doesnt do anything </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="card">
-          <h2>Account</h2>
-          <div class="option">
-            <p>></p>
-            <button onclick="window.top.location.href = '../login.html'" type="button" class="btn logout-btn">Log Out</button>
-          </div>
-          <div class="option">
-            <p>Change Password</p> <br>
-              <input type="text" id="new-passwd" placeholder="new password">
-              <button onclick="changePassword('new-passwd')" type="button" class="btn">Change</button>
-          </div>
-          <div class="option">
-            <p>></p>
-            <button onclick="resetdb()" type="button" class="btn reset-btn critical">Reset Storage</button>
+        <div class="row">
+          <div class="card">
+            <h2>Account</h2>
+            <div class="option">
+              <p>></p>
+              <button onclick="window.top.location.href = '../login.html'" type="button" class="btn logout-btn">Log Out</button>
+            </div>
+            <div class="option">
+              <p>Change Password</p> <br>
+                <input type="text" id="new-passwd" placeholder="new password">
+                <button onclick="changePassword('new-passwd')" type="button" class="btn">Change</button>
+            </div>
+            <div class="option">
+              <p>></p>
+              <button onclick="resetdb()" type="button" class="btn reset-btn critical">Reset Storage</button>
+            </div>
           </div>
         </div>
-      </div>
 
-    </section>
-
+      </main>
+    </div>
+  </div>
 <script src="../scripts/actions.js"></script>
 <script src="../data/db.js"></script>
 <script src="../scripts/pages/settings.js"></script>
