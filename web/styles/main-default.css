@@ -1,4 +1,4 @@
-/* ===== Estilo general ===== */
+/* ===== Estilo general > main ===== */
 * {
   box-sizing: border-box;
 }
@@ -16,7 +16,7 @@ body {
 }
 
 /* ===== Sidebar ===== */
-.sidebar {
+.nav {
   min-width: 190px;
   max-width: 220px;
   background: #474747;
@@ -26,7 +26,7 @@ body {
   justify-content: space-between;
 }
 
-.logo {
+.nav_logo {
   width: 80%;
   max-width: 250px;
   display: flex;
@@ -38,64 +38,63 @@ body {
   pointer-events: none;
 }
 
-.menu {
+.nav_menu {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-  .menu li {
-    padding: 14px 20px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 20px;
+
+.nav_menu li {
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
   }
 
-  .menu li.active {
+  .nav_menu li.active {
     background: #5a39ff;
   }
 
-  .menu li:hover {
+  .nav_menu li:hover {
     background: #555;
   }
 
 
-footer {
+.nav footer {
   text-align: center;
   font-size: 12px;
   padding: 10px;
   background: #333;
 }
 
-  footer a {
+  .nav footer a {
     color: #ccc;
     text-decoration: none;
   }
 
-    footer a:visited {
+    .nav footer a:visited {
       color: #ccc;
     }
 
 
-/* ===== Context Menu ===== */
-.context-menu {
-  color: white;  /* medio innecesario, deberia quitarlo*/
-  min-width: 480px;
-  height: 90%;
-  background-color: #8d8d8d;
-  border-radius: 10px;
-  margin: 10px;
+
+/* ===== Main Content > iframe ===== */
+.main_layout {
+  display: flex;
+  flex-direction: column;
+}
+.main_content {
+  flex: 1;
   padding: 10px;
 }
 
-
-/* ===== Main ===== */
-.main {
-  flex: 1;
-  padding: 20px;
-
+.main_div {
+  display: flex;
+  
 }
+
   iframe#content-frame {
     flex: 1;
     width: 100%;
@@ -103,9 +102,9 @@ footer {
     border: none;
   }
 
-.header {
+.main_header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -114,7 +113,7 @@ footer {
 /* ===== Table ===== */
 table {
   width: 100%;
-  margin-top: 20px;
+  margin-top: 10px;
   border-collapse: collapse;
   background: #707070;
   border-radius: 10px;
@@ -135,6 +134,18 @@ tbody tr:hover {
   background: #808080;
 }
 
+
+
+/* ===== Context Menu ===== */
+.context-menu {
+  color: white;  /* medio innecesario, deberia quitarlo*/
+  min-width: 480px;
+  height: 90%;
+  background-color: #8d8d8d;
+  border-radius: 10px;
+  margin: 10px;
+  padding: 10px;
+}
 
 
 /* ===== Status ===== */

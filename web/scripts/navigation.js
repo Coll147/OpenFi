@@ -6,7 +6,7 @@ function updatePage(page, element, push = true) {
   frame.contentWindow.location.replace(src)
 
   // Actualizar NAV
-  document.querySelectorAll('.menu li').forEach(l => l.classList.remove('active'))
+  document.querySelectorAll('.nav_menu li').forEach(l => l.classList.remove('active'))
   if (element) element.classList.add('active')
 
   // Actualizar URL
@@ -17,7 +17,7 @@ function updatePage(page, element, push = true) {
 
 
 // Listener de click en los elementos del nav
-document.querySelectorAll('.menu li').forEach(link => {
+document.querySelectorAll('.nav_menu li').forEach(link => {
   link.addEventListener('click', function(e) { // listener en el click
     e.preventDefault()
 
@@ -44,7 +44,7 @@ window.addEventListener("popstate", e => {
   const url = new URLSearchParams(window.location.search)
   const page = url.get("page") || "dashboard"
   
-  const li = document.querySelector(`.menu li[data-page="${page}"]`)
+  const li = document.querySelector(`.nav_menu li[data-page="${page}"]`)
   updatePage(page, li, false)
   console.log(page, li, false)
 })
