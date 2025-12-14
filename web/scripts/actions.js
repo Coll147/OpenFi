@@ -31,11 +31,3 @@ function log(event, device, risk, info) {
     localStorage.setItem("logs", JSON.stringify(logs)) // guardar localstorage
     console.log("Nuevo log añadido:", newLog)
 }
-
-
-
-// Cerrar menús secundarios al pulsar dondesea
- document.body.addEventListener("click", function(data) {
-    console.log("Hiciste click en alguna parte del body");
-    toggleMenu(false)
-})

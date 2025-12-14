@@ -227,3 +227,8 @@ function mountMenu(device){ // Mostrar menú extra de cada dispositivo
         toggleMenu()
 }
 
+// Cerrar menús secundarios al pulsar dondesea
+document.body.addEventListener("click", function(data) {
+    console.log("Hiciste click en alguna parte del body");
+    toggleMenu(false)
+})

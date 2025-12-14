@@ -202,6 +202,12 @@ function removeLog(index) {
 
 
 setTimeout(() => {
-  log('Ready', 'Software', 'Info', 'Logging system is ready ;D')
-  loadTable()
+    log('Ready', 'Software', 'Info', 'Logging system is ready ;D')
+    loadTable()
 }, 2000)
+
+// Cerrar menús secundarios al pulsar dondesea
+document.body.addEventListener("click", function(data) {
+    console.log("Hiciste click en alguna parte del body");
+    toggleMenu(false)
+})
