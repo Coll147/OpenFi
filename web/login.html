@@ -8,52 +8,62 @@
 
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
 
-  <link rel="stylesheet" href="styles/main-default.css">
-  <link rel="stylesheet" href="styles/pages/login.css">
+  <link rel="stylesheet" href="./styles/main-default.css">
+	<link rel="stylesheet" href="styles/pages/login.css">
 </head>
 
 <body>
-    <div class="layout">
-        <nav class="sidebar">
-            <img class="logo" src="assets/logo.png" alt="OpenFi Logo" draggable="false">
-            
-            <footer>
-                <p> <!-- Good CSS tag :D -->
-                    <a href="https://jigsaw.w3.org/css-validator/check/referer">
-                        <img style="border:0;width:88px;height:31px"
-                            src="https://jigsaw.w3.org/css-validator/images/vcss-blue"
-                            alt="Valid CSS!" />
-                    </a>
-                </p>
-                
-                <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
-            </footer>
-        </nav>
+<div class="layout">
+	<nav class="nav">
+    <img class="nav_logo" src="assets/logo.png" alt="OpenFi Logo" draggable="false">
 
-        <div class="login-box">
-            
-            <div class="card hidden" id="alertBox" style="display: none;">
-                <p class="text" id="cardText"></p>
-            </div>
+    <footer>
+      <p> <!-- Good CSS tag :D -->
+        <a href="https://jigsaw.w3.org/css-validator/check/referer">
+          <img style="border:0;width:88px;height:31px" src="https://jigsaw.w3.org/css-validator/images/vcss-blue" alt="Valid CSS!"/>
+        </a>
+      </p>
 
-            <h2>My Network</h2>
-            <form class="card">
-                <div class="input-group">
-                  <span class="icon">👤</span>
-                  <input type="text" value="admin" readonly>
-                </div>
-                <div class="input-group">
-                  <span class="icon">🔒</span>
-                  <input type="password" id='password' placeholder="password">
-                </div>
-                <button onclick="login('password')" type="button" class="login-btn">Log in</button>
-            </form>
-        </div>
-    </div>
+      <a href="https://github.com/Coll147/OpenFi"> OpenFi project | FOOS | &#169 2025 </a>
+    </footer>
+  </nav>
 
-    <script src="./data/db.js"></script>
-    <script src="./scripts/actions.js"></script>
-    <script src="./scripts/pages/login.js"></script>
-    <script> initDB() </script>
+	<div class="main_content">
+			<header class="main_header">
+				<h1 id="title">YOUR local network <br> under YOUR control</h1>
+			</header>
+
+			<aside class="card hidden" id="alertBox" style="display: none;">
+				<p class="text" id="cardText"></p>
+			</aside>
+		
+
+			<main class="login-box">
+						<div class="login_input_div">
+						<form class="card">
+							<h2>Local Network</h2>
+
+							<div class="input-group">
+								<span class="icon">👤</span>
+								<input type="text" value="admin" readonly>
+							</div>
+							<div class="input-group">
+								<span class="icon">🔒</span>
+								<input type="password" id="password" placeholder="password">
+							</div>
+							<button onclick="login('password')" type="button" class="login-btn">
+								Log in
+							</button>
+						</form>
+						</div>
+			</main>
+	</div>
+</div>
+    
+
+  <script src="./data/db.js"></script>
+  <script src="./scripts/actions.js"></script>
+  <script src="./scripts/pages/login.js"></script>
+  <script>initDB()</script>
 </body>
 </html>
