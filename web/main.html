@@ -35,69 +35,60 @@
     </nav>
 
     <main class="main">
-      <iframe id="content-frame" src="no data"></iframe>
+      <iframe id="content-frame" src="./assets/favicon.ico"></iframe>
     </main>
   </div>
 
   <script>
-    function updateiframe(page, element, push = true) {
-      console.log("=== updateiframe Called")
-      // Actualizar SRC del iframe
-      document.getElementById('content-frame').src = "./dashboard/" + page + '.html';
-      console.log("> updateiframe > src actualizado")
+// Actualizar contenido
+function updatePage(page, element, push = true) {
+  // Actualizar iframe
+  document.getElementById('content-frame').src = "./dashboard/" + page + '.html'
 
-      // Actualizar URL si se ha navegado desde un click
-      if (push) {
-        history.pushState({page}, "", `?page=${page}`)
-        document.title = page; // también el título :D
-        console.log("> updateiframe > url pushed")
-      }
-      
+  // Actualizar NAV
+  document.querySelectorAll('.menu li').forEach(l => l.classList.remove('active'))
+  if (element) element.classList.add('active')
 
-      // Actualizar clases del nav
-      document.querySelectorAll('.menu li').forEach(l => l.classList.remove('active'))
-      console.log("> updateiframe > removed color menu")
-          // if, en caso de que no se pase valor en element
-      if (element) element.classList.add('active')
-      console.log("> updateiframe > added color menu")
-    }
+  // Actualizar URL
+  if (push) { // solo cuando se navegue (no direct load)
+    history.pushState({ page }, "", `?page=${page}`)
+  }
+}
 
 
-    // Click en el menú
-    document.querySelectorAll('.menu li').forEach(link => {
-      link.addEventListener('click', function(e) { // listener en el click
-        e.preventDefault()
+// Listener de click en los elementos del nav
+document.querySelectorAll('.menu li').forEach(link => {
+  link.addEventListener('click', function(e) { // listener en el click
+    e.preventDefault()
 
-        const page = this.dataset.page;
-
-        updateiframe(page, this, true)
-      });
-    });
-
-
-    // Cuando el usuario usa ATRÁS o ADELANTE
-    window.addEventListener('popstate', (e) => {
-      const page = e.state?.page || "dashboard"
-
-      // Buscar el <li> correspondiente
-      const li = document.querySelector(`.menu li[data-page="${page}"]`)
-
-      updateiframe(page, li, false)
-    });
+    const page = this.dataset.page
+    console.log(this)
+    console.log(page)
+    updatePage(page, this, true)
+  })
+})
 
 
-    // Cargar página inicial si llega desde URL completa (con el ?)
-    window.addEventListener("DOMContentLoaded", () => { // cuando cargue...
-      
-      // o pillo el enlace (desde los parámetros) o mando a dashboard
-      const urlPage = new URLSearchParams(window.location.search).get("page") || "dashboard"
-      
-      // busco el li correspondiente
-      const li = document.querySelector(`.menu li[data-page="${urlPage}"]`) 
-      
-      // actualizo la web
-      updateiframe(urlPage, li, false)
-    });
+// Soporte para botón atrás/adelante del navegador
+window.addEventListener("popstate", e => {
+  const page = e.state?.page || "dashboard"
+  const li = document.querySelector(`.menu li[data-page="${page}"]`)
+
+  updatePage(page, li, false)
+})
+
+
+// Cargar página inicial si llega desde URL completa (con el ?)
+  window.addEventListener("DOMContentLoaded", () => { // cuando cargue el dom
+    
+  const url = new URLSearchParams(window.location.search)
+  const page = url.get("page") || "dashboard"
+  
+  const li = document.querySelector(`.menu li[data-page="${page}"]`)
+  updatePage(page, li, false)
+  console.log(page, li, false)
+})
+
   </script>
 </body>
 </html>
