@@ -43,7 +43,9 @@
 // Actualizar contenido
 function updatePage(page, element, push = true) {
   // Actualizar iframe
-  document.getElementById('content-frame').src = "./dashboard/" + page + '.html'
+  const frame = document.getElementById('content-frame')
+  const src = "./dashboard/" + page + ".html"
+  frame.contentWindow.location.replace(src)
 
   // Actualizar NAV
   document.querySelectorAll('.menu li').forEach(l => l.classList.remove('active'))
