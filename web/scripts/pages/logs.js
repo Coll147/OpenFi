@@ -148,6 +148,11 @@ function loadMenu(index){ // Mostrar menú extra de cada evento
         let deleteBtn = document.getElementById('deleteBtn')
             deleteBtn.setAttribute("onclick", `removeLog(${index})`)
 
+        const contextMenu = document.getElementById('context-menu')
+        contextMenu.addEventListener("click", (event) => {
+            event.stopPropagation()
+        })
+
         toggleMenu()
 }
 
