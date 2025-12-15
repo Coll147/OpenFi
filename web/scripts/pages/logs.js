@@ -1,4 +1,4 @@
-function loadTable(Filterrisk = 'all'){ // Creación de la tabla
+function loadTable(filterRisk = "All"){ // Creación de la tabla
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     const tabla = document.getElementById("devices-tbody")
 
@@ -7,8 +7,20 @@ function loadTable(Filterrisk = 'all'){ // Creación de la tabla
         tabla.removeChild(tabla.firstChild)
     }
 
+    console.log(`= logs.js > loadTable: cargando tabla con <${filterRisk}>`)
     // Crear filas de la tabla
     for (let i = 0; i < logs.length; i++) {
+
+        if (filterRisk === "All") {
+            //console.log('todo cargado')
+        } 
+        else if (logs[i].risk === filterRisk) {
+            //console.log('fitrado por riesgo')
+        }
+        else {
+            //console.log('omitido')
+            continue
+        }
 
         let tr = document.createElement("tr")
 
@@ -32,7 +44,6 @@ function loadTable(Filterrisk = 'all'){ // Creación de la tabla
         let td3 = document.createElement("td") // Risk / Importancy
         switch (logs[i].risk) {
             case 'High':
-                if ()
                 td3.textContent = logs[i].risk
                 td3.style.color = "red"
                 break;
@@ -64,6 +75,12 @@ function loadTable(Filterrisk = 'all'){ // Creación de la tabla
 }
 
 
+// Filtrar logs
+function filterLogs() {
+    const option = document.getElementById('riskFilter').value
+    console.log(`= logs.js > filterLogs: filtrar por ${option}`)
+    loadTable(option)
+}
 
 
 // Funcion usada para cambiar el texto de un evento
@@ -73,7 +90,7 @@ function changeText(index) {
 
     const contenido = document.getElementById("event-commentaries").value
 
-    console.log(`comentario del evento ${logs[index].id} cambiado :)`)
+    console.log(`= logs.js > changeText: comentario del evento ${logs[index].id} cambiado :)`)
     logs[index].comments = contenido
 
     // recargar tabla
@@ -220,8 +237,3 @@ document.body.addEventListener("click", function(data) {
     console.log("Hiciste click en alguna parte del body");
     toggleMenu(false)
 })
-
-
-
-
-// Filtrar logs

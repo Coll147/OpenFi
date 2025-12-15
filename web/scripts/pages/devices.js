@@ -1,84 +1,84 @@
 // Funcion usada para cambiar el nickname de un dispositivo
 function changeNick(index) {
-    console.log(index)
+  console.log(index)
 
-    let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
-    const contenido = document.getElementById("device-nick").value
+  let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
+  const contenido = document.getElementById("device-nick").value
 
-    console.log(`Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
-    log('Nick changed', `${devices[index].model}`, 'Warn', `Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
+  console.log(`Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
+  log('Nick changed', `${devices[index].model}`, 'Warn', `Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
 
-    devices[index].nickname = contenido
+  devices[index].nickname = contenido
 
-    // recargar tabla
-    localStorage.setItem("devices", JSON.stringify(devices)) // guardar localstorage
-    loadTable()
+  // recargar tabla
+  localStorage.setItem("devices", JSON.stringify(devices)) // guardar localstorage
+  loadTable()
 }
 
 
 function loadTable(){ // Creación de la tabla - de dispositivos
+
+  let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
+  const tabla = document.getElementById("devices-tbody")
+
+  // Limpiar si hay cosas
+  while (tabla.firstChild) {
+    tabla.removeChild(tabla.firstChild)
+  }
+
+  // Crear filas de la tabla
+  for (let i = 0; i < devices.length; i++) {
+
+  let tr = document.createElement("tr")
+
+    let td1 = document.createElement("td") // Nick
+    td1.textContent = devices[i].nickname
+    tr.appendChild(td1)
     
-    let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
-    const tabla = document.getElementById("devices-tbody")
+    let td2 = document.createElement("td") // IP
+    td2.textContent = devices[i].ip
+    tr.appendChild(td2)
 
-    // Limpiar si hay cosas
-    while (tabla.firstChild) {
-        tabla.removeChild(tabla.firstChild)
-    }
+    let td3 = document.createElement("td") // Status
+    td3.textContent = devices[i].status
+    tr.appendChild(td3)
 
-    // Crear filas de la tabla
-    for (let i = 0; i < devices.length; i++) {
+    let td4 = document.createElement("td") // Uptime
+    td4.textContent = devices[i].uptime
+    tr.appendChild(td4)
 
-        let tr = document.createElement("tr")
-        
-        let td1 = document.createElement("td") // Nick
-        td1.textContent = devices[i].nickname
-        tr.appendChild(td1)
-        
-        let td2 = document.createElement("td") // IP
-        td2.textContent = devices[i].ip
-        tr.appendChild(td2)
+    let td5 = document.createElement("td") // Model
+    td5.textContent = devices[i].model
+    tr.appendChild(td5)
 
-        let td3 = document.createElement("td") // Status
-        td3.textContent = devices[i].status
-        tr.appendChild(td3)
+    let td6 = document.createElement("td") // Firmware
+    td6.textContent = devices[i].firmware
+    tr.appendChild(td6)
 
-        let td4 = document.createElement("td") // Uptime
-        td4.textContent = devices[i].uptime
-        tr.appendChild(td4)
+    let td7 = document.createElement("td") // Actions
+    td7.classList.add("actions")
 
-        let td5 = document.createElement("td") // Model
-        td5.textContent = devices[i].model
-        tr.appendChild(td5)
+      // Botón de editar
+      let btnEdit = document.createElement("button")
+      btnEdit.classList.add("btn")
+      btnEdit.classList.add("edit")
+      btnEdit.textContent = "✏️"
+      btnEdit.setAttribute("onclick", `mountMenu(${i})`)
+      btnEdit.id = "edit-" + devices[i].id
 
-        let td6 = document.createElement("td") // Firmware
-        td6.textContent = devices[i].firmware
-        tr.appendChild(td6)
+      // Botón de reiniciar
+      let btnRestart = document.createElement("button")
+      btnRestart.classList.add("btn")
+      btnRestart.classList.add("restart")
+      btnRestart.textContent = "🔁"
+      btnEdit.id = "restart-" + devices[i].id
 
-        let td7 = document.createElement("td") // Actions
-        td7.classList.add("actions")
+      td7.appendChild(btnEdit)
+      td7.appendChild(btnRestart)
 
-            // Botón de editar
-            let btnEdit = document.createElement("button")
-            btnEdit.classList.add("btn")
-            btnEdit.classList.add("edit")
-            btnEdit.textContent = "✏️"
-            btnEdit.setAttribute("onclick", `mountMenu(${i})`)
-            btnEdit.id = "edit-" + devices[i].id
+    tr.appendChild(td7)
 
-            // Botón de reiniciar
-            let btnRestart = document.createElement("button")
-            btnRestart.classList.add("btn")
-            btnRestart.classList.add("restart")
-            btnRestart.textContent = "🔁"
-            btnEdit.id = "restart-" + devices[i].id
-
-            td7.appendChild(btnEdit)
-            td7.appendChild(btnRestart)
-
-        tr.appendChild(td7)
-        
-        tabla.appendChild(tr)
+    tabla.appendChild(tr)
     }
 }
 
@@ -117,6 +117,7 @@ function toggleMenu() {
 function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     
     let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
+    console.log(`enseñando menú para ${device}`)
 
     // Crear filas de la tabla de <radios>
     let wifiTable = document.getElementById("wifi-status")
