@@ -6,3 +6,7 @@
 >> Más adelante
 - Añadir un slideshow / pagina principal en el login o algo
 - Multiidioma :_v
+
+>> Segunda entrega:
+- Implementar gravatar
+- API para leer datos de dispositivos

@@ -19,27 +19,32 @@
     <div class="main_div">
       <main class="main_content">
         
-        <div class="row">
+        <div class="cards">
           <div class="card">
             <h2>Interface</h2>
             <div class="option">
               <p>Language: </p>
-              <select class="btn selector" id="selector" name="operador">
-                <option value="spanish">spanish</option>
-                <option value="english">english</option>
+              <select class="btn selector" id="selector_language" name="operador">
+                <option value="spanish">Spanish</option>
+                <option value="english">English</option>
               </select>
             </div>
             <div class="option">
               <p>Background: </p>
-              <select class="btn selector" id="selector" name="operador">
-                <option value="spanish">Color</option>
-                <option value="english">Bing Images</option>
+              <select class="btn selector" id="selector_background" name="operador">
+                <option value="color">Color</option>
+                <option value="bing-images">Bing Images</option>
+              </select>
+            </div>
+            <div class="option">
+              <p>Theme: </p>
+              <select class="btn selector" id="selector_theme" name="operador">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
               </select>
             </div>
           </div>
-        </div>
 
-        <div class="row">
           <div class="card">
             <h2>Account</h2>
             <div class="option">
@@ -49,21 +54,31 @@
             <div class="option">
               <p>Change Password</p> <br>
                 <input type="text" id="new-passwd" placeholder="new password">
-                <button onclick="changePassword('new-passwd')" type="button" class="btn">Change</button>
+                <button onclick="changePassword(0, 'new-passwd')" type="button" class="btn">Change</button>
             </div>
             <div class="option">
               <p>></p>
               <button onclick="resetdb()" type="button" class="btn reset-btn critical">Reset Storage</button>
             </div>
           </div>
-        </div>
 
+          <div class="card">
+            <h2>Profile</h2>
+            <div class="option">
+              <p id="user_name"></p>
+            </div>
+            <div class="option">
+              <img id="user_avatar" src="../assets/favicon.ico">
+            </div>
+          </div>
+
+        </div>
       </main>
     </div>
   </div>
 <script src="../scripts/actions.js"></script>
 <script src="../data/db.js"></script>
 <script src="../scripts/pages/settings.js"></script>
-
+<script>populate(0)</script>
 </body>
 </html>

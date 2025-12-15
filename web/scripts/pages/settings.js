@@ -1,14 +1,29 @@
+// Load fields
+function populate(user_id) {
+  let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+
+  document.getElementById("selector_language").value = account[user_id].language
+  document.getElementById("selector_background").value = account[user_id].background
+  document.getElementById("selector_theme").value = account[user_id].theme
+  
+  console.log(account[user_id].username)
+  document.getElementById("user_name").textContent = account[user_id].username
+  document.getElementById("user_avatar").src = account[user_id].avatar
+}
+
+
 // Funcion usada para cambiar contraseña
-function changePassword(id) {
-    let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+function changePassword(user_id, element) {
+  let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
 
-    const contenido = document.getElementById(id).value
+  const contenido = document.getElementById(element).value
 
-    console.log(`Vieja contraseña: ${account[0].password} || Nueva contraseña: ${contenido}`)
-    log('Password changed', `OpenFi Account`, 'Warn', `La contraseña de ${account[0].username} ha sido cambiada.`)
+  console.log(`Vieja contraseña: ${account[user_id].password} || Nueva contraseña: ${contenido}`)
+  log('Password changed', `OpenFi Account`, 'Warn', `La contraseña de ${account[0].username} ha sido cambiada.`)
 
-    account[0].password = contenido
+  account[user_id].password = contenido
 
-    // recargar tabla
-    localStorage.setItem("devices", JSON.stringify(devices)) // guardar localstorage
+  localStorage.setItem("account", JSON.stringify(account)) // guardar localstorage
+
+  updatePage('logs', document.querySelector('.nav_menu li[data-page="logs"]'), true)
 }

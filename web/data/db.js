@@ -103,7 +103,10 @@ account = [
         username: "admin",
         password: "coll147",
         firsttime: "yes",
-        avatar: "cat.png"
+        avatar: "https://soggy.cat/static/ssoggycat/main/images/soggycat.webp",
+        language: "english",
+        background: "bing-images",
+        theme: "dark",
     }
 ];
 
