@@ -1,20 +1,61 @@
-function loadTable(filterRisk = "All"){ // Creación de la tabla
+// Init variables
+let sortTime = "ascendente"
+let riskFilter = "All"
+
+// Ordenar por tiempo
+document.getElementById('time').addEventListener('click', () => {
+    const arrowElement = document.getElementById('time_arrow')
+    // timeorder es igual a 'asc'? true = desc, false = asc  
+    if (arrowElement.textContent === "▲") {
+        arrowElement.textContent = "▼"
+        sortTime = "descendente"
+    } else {
+        arrowElement.textContent = "▲"
+        sortTime = "ascendente"
+    }
+
+    loadTable()
+    console.log(`= logs.js > filterLogs: filtrar por ${sortTime}`)
+})
+
+// Filtrar logs por importancia
+function filterLogs() {
+    riskFilter = document.getElementById('riskFilter').value
+    console.log(`= logs.js > filterLogs: filtrar por ${riskFilter}`)
+    loadTable()
+}
+
+function loadTable(){ // Creación de la tabla
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     const tabla = document.getElementById("devices-tbody")
+    if (riskFilter === undefined) riskFilter = 'All'
+    if (sortTime === undefined) sortTime = 'ascendente'
 
     // Limpiar contenido anterior
     while (tabla.firstChild) {
         tabla.removeChild(tabla.firstChild)
     }
 
-    console.log(`= logs.js > loadTable: cargando tabla con <${filterRisk}>`)
+    console.log(`= logs.js > loadTable: ordenando por ${sortTime}`)
+    logs.sort((a, b) => {
+        const dateA = parseDate(a.time);
+        const dateB = parseDate(b.time);
+
+        if (sortTime === "ascendente") {
+            return dateA - dateB // Ascendente
+        } else {
+            return dateB - dateA // Descendente
+        }
+    })
+
+    console.log(`= logs.js > loadTable: cargando tabla con <${riskFilter}>`)
     // Crear filas de la tabla
     for (let i = 0; i < logs.length; i++) {
 
-        if (filterRisk === "All") {
+        if (riskFilter === "All") {
             //console.log('todo cargado')
         } 
-        else if (logs[i].risk === filterRisk) {
+        else if (logs[i].risk == `${riskFilter}`) {
             //console.log('fitrado por riesgo')
         }
         else {
@@ -72,14 +113,6 @@ function loadTable(filterRisk = "All"){ // Creación de la tabla
         
         tabla.appendChild(tr)
     }
-}
-
-
-// Filtrar logs
-function filterLogs() {
-    const option = document.getElementById('riskFilter').value
-    console.log(`= logs.js > filterLogs: filtrar por ${option}`)
-    loadTable(option)
 }
 
 
@@ -233,7 +266,7 @@ setTimeout(() => {
 }, 2000)
 
 // Cerrar menús secundarios al pulsar dondesea
-document.body.addEventListener("click", function(data) {
+document.body.addEventListener("click", function() {
     console.log("Hiciste click en alguna parte del body");
     toggleMenu(false)
 })
