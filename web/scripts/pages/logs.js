@@ -1,4 +1,4 @@
-function loadTable(){ // Creación de la tabla
+function loadTable(Filterrisk = 'all'){ // Creación de la tabla
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
     const tabla = document.getElementById("devices-tbody")
 
@@ -30,22 +30,26 @@ function loadTable(){ // Creación de la tabla
         tr.appendChild(td2)
 
         let td3 = document.createElement("td") // Risk / Importancy
-        td3.textContent = logs[i].risk
         switch (logs[i].risk) {
             case 'High':
+                if ()
+                td3.textContent = logs[i].risk
                 td3.style.color = "red"
                 break;
 
             case 'Warn':
+                td3.textContent = logs[i].risk
                 td3.style.color = "yellow"
                 break;
 
             case 'Info':
+                td3.textContent = logs[i].risk
                 td3.style.color = "blue"
                 break;
             
             default:
-                td3.style.color = ""
+                td3.textContent = logs[i].risk
+                td3.style.color = "pink"
                 break;
 
         }
@@ -216,3 +220,8 @@ document.body.addEventListener("click", function(data) {
     console.log("Hiciste click en alguna parte del body");
     toggleMenu(false)
 })
+
+
+
+
+// Filtrar logs
