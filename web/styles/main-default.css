@@ -102,6 +102,12 @@ body {
     border: none;
   }
 
+.main_content {
+  flex: 1;
+  max-width: 1200px;
+}
+
+
 .main_header {
   display: flex;
   flex-direction: row;
