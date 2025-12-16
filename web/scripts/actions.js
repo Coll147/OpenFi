@@ -7,8 +7,8 @@ function setTheme() {
     document.documentElement.style.setProperty('--sb-color', '#474747');
     document.documentElement.style.setProperty('--text-color', '#ffffff');
     document.documentElement.style.setProperty('--card-bg', '#4e4e4e');
-    document.documentElement.style.setProperty('--table', '#707070');
-    document.documentElement.style.setProperty('--table-thead', '#5a5a5a');
+    document.documentElement.style.setProperty('--table-head', '#5a5a5a');
+    document.documentElement.style.setProperty('--table-body', '#707070');
   }
   else if (account[user_id].theme === "light") {
     document.documentElement.style.setProperty('--bg-color', '#ffffffff');
@@ -16,7 +16,7 @@ function setTheme() {
     document.documentElement.style.setProperty('--text-color', '#000000ff');
     document.documentElement.style.setProperty('--card-bg', 'peru');
     document.documentElement.style.setProperty('--table-head', '#ffc8c5ff');
-    document.documentElement.style.setProperty('--table-body', '#acffb1ff');
+    document.documentElement.style.setProperty('--table-body', '#aaffb0ff');
   }
   else {
     console.error(`> actions.js > setTheme: Tema ${account[user_id].theme} no reconocido.`)
