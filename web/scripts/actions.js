@@ -10,7 +10,10 @@ function setTheme() {
     document.documentElement.style.setProperty('--table-head', '#5a5a5a');
     document.documentElement.style.setProperty('--table-body', '#707070');
 
-    document.getElementById('openfi-logo').src = "assets/logo.png"
+    if (document.getElementById('openfi-logo')){
+      document.getElementById('openfi-logo').src = "assets/logo.png"
+    }
+    
   }
   else if (account[user_id].theme === "light") {
     document.documentElement.style.setProperty('--bg-color', '#ffffffff');
@@ -20,14 +23,18 @@ function setTheme() {
     document.documentElement.style.setProperty('--table-head', '#ffc8c5ff');
     document.documentElement.style.setProperty('--table-body', '#aaffb0ff');
 
-    document.getElementById('openfi-logo').src = "assets/dark-logo.png"
+    if (document.getElementById('openfi-logo')){
+      document.getElementById('openfi-logo').src = "assets/dark-logo.png"
+    }
   }
   else {
     console.error(`> actions.js > setTheme: Tema ${account[user_id].theme} no reconocido.`)
   }
   
 }
-setTheme()
+document.addEventListener('DOMContentLoaded', () => {
+  setTheme();
+});
 
 // Loguear un evento
 function log(event, device, risk, info) {
