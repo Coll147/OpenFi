@@ -25,5 +25,20 @@ function changePassword(user_id, element) {
 
   localStorage.setItem("account", JSON.stringify(account)) // guardar localstorage
 
-  updatePage('logs', document.querySelector('.nav_menu li[data-page="logs"]'), true)
+  window.parent.updatePage('logs', document.querySelector('.nav_menu li[data-page="logs"]'), true)
+}
+
+
+// Funcion usada para cambiar valor
+function changeValue(user_id, element_id, db_value) {
+  let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+
+  const contenido = document.getElementById(element_id).value
+  console.log(`settings.js > changeValue: Cambiado ${db_value} a ${contenido}`)
+
+  account[user_id][db_value] = contenido
+
+  localStorage.setItem("account", JSON.stringify(account)) // guardar localstorage
+  window.top.location.reload()
+
 }

@@ -2,7 +2,7 @@
 function updatePage(page, element, push = true) {
   // Actualizar iframe
   const frame = document.getElementById('content-frame')
-  const src = "./dashboard/" + page + ".html"
+  const src = "/web/dashboard/" + page + ".html"
   frame.contentWindow.location.replace(src)
 
   // Actualizar NAV
