@@ -12,7 +12,7 @@ function setup() {
   } else {
     console.log('Las contraseñas no coinciden')
   }
-  //window.location.href = "../login.html"
+  window.location.href = "../login.html"
 }
 
 // Funcion que guarda hash - solo se usa para la contraseña por ahora
