@@ -1,5 +1,5 @@
 // Load fields
-function populate(user_id) {
+async function populate(user_id) {
   let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
 
   document.getElementById("selector_language").value = account[user_id].language
@@ -8,7 +8,8 @@ function populate(user_id) {
   
   console.log(account[user_id].username)
   document.getElementById("user_name").textContent = account[user_id].username
-  document.getElementById("user_avatar").src = account[user_id].avatar
+  document.getElementById("user_avatar").src = `https://gravatar.com/avatar/${await sha256(account[user_id].email)}`
+  console.log(account[user_id].email)
 }
 
 

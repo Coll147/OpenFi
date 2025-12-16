@@ -52,14 +52,14 @@
               <button onclick="window.top.location.href = '../login.html'" type="button" class="btn logout-btn">Log Out</button>
             </div>
             <div class="option">
-              <p>Change Password</p> <br>
-                <input type="text" id="new-passwd" placeholder="new password">
+              <p>Change Password</p> <span id="show-password">👁️</span> <br>
+                <input type="password" id="new-passwd" placeholder="new password">
                 <button onclick="changeValueSHA(0, 'new-passwd', 'password')" type="button" class="btn">Change</button>
             </div>
             <div class="option">
               <p>Change Email</p> <br>
                 <input type="text" id="new-email" placeholder="set email">
-                <button onclick="changeValueSHA(0, 'new-email', 'email')" type="button" class="btn">Change</button>
+                <button onclick="changeValue(0, 'new-email', 'email')" type="button" class="btn">Change</button>
             </div>
             <div class="option">
               <p>></p>

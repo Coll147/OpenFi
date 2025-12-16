@@ -103,7 +103,6 @@ account = [
         username: "admin",
         password: "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918", // admin
         firsttime: "yes",
-        avatar: "https://soggy.cat/static/ssoggycat/main/images/soggycat.webp",
         email: "", // no default, you set it :)
         language: "english",
         background: "bing-images",
