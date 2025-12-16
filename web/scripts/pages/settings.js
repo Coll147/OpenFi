@@ -18,7 +18,7 @@ document.getElementById('show-password').addEventListener('click', () => {
 })
 
 // Funcion usada para cambiar contraseña
-function changePasswordSHA(user_id, element, db_value) {
+function changeValueSHA(user_id, element, db_value) {
   let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
 
   const contenido = document.getElementById(element).value
