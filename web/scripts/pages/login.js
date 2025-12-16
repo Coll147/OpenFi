@@ -17,6 +17,7 @@ function setBg() {
     document.body.style.backgroundImage = `url("${loginbg}")`
 }
 
+
 function initDB() {
     const DBdata = localStorage.getItem("account")
 
