@@ -1,8 +1,19 @@
+// Detectar ruta (que luego github pages llora)
+let basePath = ''
+const pathParts = window.location.pathname.split('/')
+if (pathParts[1]) {
+  basePath = '/' + pathParts[1]
+}
+window.BASE_PATH = basePath
+
+
+
+
 // Actualizar contenido
 function updatePage(page, element, push = true) {
   // Actualizar iframe
   const frame = document.getElementById('content-frame')
-  const src = "/web/dashboard/" + page + ".html"
+  const src = `${BASE_PATH}/web/dashboard/${page}.html`
   frame.contentWindow.location.replace(src)
 
   // Actualizar NAV
@@ -11,7 +22,7 @@ function updatePage(page, element, push = true) {
 
   // Actualizar URL
   if (push) { // solo cuando se navegue (no direct load)
-    history.pushState({ page }, "", `?page=${page}`)
+    history.pushState({ page: page },  "", `${window.BASE_PATH}/?page=${page}`)
   }
 
   // Ajustar CSS
