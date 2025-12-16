@@ -1,3 +1,6 @@
-Now working on the frontend side. This works with a little bit of dreams and magic
+<img width="300" alt="image" src="web/assets/logo.png" />
 
-If anyone's wondering why I'm doing the frontend, it's because it's for school project
+Proyect Status:
+- Now working on the frontend side
+
+Ideas and suggestions are welcome https://discord.gg/xqgQXM4Zpw
