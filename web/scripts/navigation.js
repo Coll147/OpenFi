@@ -1,10 +1,10 @@
-let BASE_PATH = window.location.pathname.startsWith('/OpenFi') ? '/OpenFi' : '/web'
+let BASE_PATH = window.location.pathname.startsWith('/OpenFi') ? '/OpenFi' : ''
 
 // Actualizar contenido
 function updatePage(page, element, push = true) {
   // Actualizar iframe
   const frame = document.getElementById('content-frame')
-  const src = `${BASE_PATH}/dashboard/${page}.html`
+  const src = `${BASE_PATH}/web/dashboard/${page}.html`
   frame.contentWindow.location.replace(src)
 
   // Actualizar NAV
@@ -13,7 +13,7 @@ function updatePage(page, element, push = true) {
 
   // Actualizar URL
   if (push) { // solo cuando se navegue (no direct load)
-    history.pushState({ page: page },  "", `${BASE_PATH}/main.html?page=${page}`)
+    history.pushState({ page }, '', `?page=${page}`)
   }
 
   // Ajustar CSS
