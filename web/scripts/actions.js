@@ -1,3 +1,30 @@
+// Theme system
+function setTheme() {
+  const account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+  user_id=0
+  if (account[user_id].theme === "dark") {
+    document.documentElement.style.setProperty('--bg-color', '#6b6b6b');
+    document.documentElement.style.setProperty('--sb-color', '#474747');
+    document.documentElement.style.setProperty('--text-color', '#ffffff');
+    document.documentElement.style.setProperty('--card-bg', '#4e4e4e');
+    document.documentElement.style.setProperty('--table', '#707070');
+    document.documentElement.style.setProperty('--table-thead', '#5a5a5a');
+  }
+  else if (account[user_id].theme === "light") {
+    document.documentElement.style.setProperty('--bg-color', '#ffffffff');
+    document.documentElement.style.setProperty('--sb-color', '#abababff');
+    document.documentElement.style.setProperty('--text-color', '#000000ff');
+    document.documentElement.style.setProperty('--card-bg', 'peru');
+    document.documentElement.style.setProperty('--table-head', '#ffc8c5ff');
+    document.documentElement.style.setProperty('--table-body', '#acffb1ff');
+  }
+  else {
+    console.error(`> actions.js > setTheme: Tema ${account[user_id].theme} no reconocido.`)
+  }
+  
+}
+setTheme()
+
 // Loguear un evento
 function log(event, device, risk, info) {
     let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage

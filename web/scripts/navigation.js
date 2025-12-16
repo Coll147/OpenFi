@@ -13,6 +13,9 @@ function updatePage(page, element, push = true) {
   if (push) { // solo cuando se navegue (no direct load)
     history.pushState({ page }, "", `?page=${page}`)
   }
+
+  // Ajustar CSS
+  window.addEventListener("DOMContentLoaded", () => { setTheme() })
 }
 
 
