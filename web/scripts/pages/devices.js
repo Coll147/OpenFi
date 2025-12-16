@@ -78,6 +78,10 @@ function loadTable(){ // Creación de la tabla - de dispositivos
 
     tr.appendChild(td7)
 
+    tabla.addEventListener("click", (event) => {
+      event.stopPropagation()
+    })
+
     tabla.appendChild(tr)
     }
 }
@@ -222,6 +226,10 @@ function mountMenu(device){ // Mostrar menú extra de cada dispositivo
         
 
         tbody.appendChild(tr)
+
+        statusTable.addEventListener("click", (event) => {
+            event.stopPropagation()
+        })
 
         statusTable.appendChild(tbody)
 

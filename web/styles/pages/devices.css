@@ -5,9 +5,12 @@
   gap: 10px;
 }
 
-.main_content {
-  flex: 1;
-  padding: 0px;
+.main_layout {
+  margin: 20px;
+}
+
+.context-menu {
+  min-width: 450px;
 }
 
 .btn {
