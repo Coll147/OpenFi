@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenFi Setup Wizard</title>
+  <meta name="description" content="OpenFi">
+
+  <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+	<link rel="stylesheet" href="../styles/main-default.css">
+	<link rel="stylesheet" href="./setup.css">
+
+	<!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=mystery" />
+</head>
+
+<body>
+  <div class="layout">
+    <nav class="nav">
+      <div class="nav_top">
+        <img class="nav_logo" id="openf-logo" src="./images/hero.png" alt="OpenFi Logo" draggable="false">
+      </div>
+
+      <footer>
+        <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
+      </footer>
+    </nav>
+
+		<main class="main_content">
+			<header class="setup_header">
+				<h1>Setup Time!</h1>
+				<p>This page will help you get your OpenFi installation up and running</p>
+			</header>
+				<div class="cards">
+          <div class="card">
+            <h2>Interface</h2>
+            <div class="option">
+              <p>Language: </p>
+              <select class="btn selector" id="selector_language" name="operador" onchange="changeValue(0, 'selector_language', 'language')">
+                <option value="spanish">Spanish</option>
+                <option value="english">English</option>
+              </select>
+            </div>
+            <div class="option">
+              <p>Background: </p>
+              <select class="btn selector" id="selector_background" name="operador" onchange="changeValue(0, 'selector_background', 'background')">
+                <option value="color">Color</option>
+                <option value="bing-images">Bing Images</option>
+              </select>
+            </div>
+            <div class="option">
+              <p>Theme: </p>
+              <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue(0, 'selector_theme', 'theme')">
+                <option value="light">Light Mode</option>
+                <option value="dark">Dark Mode</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="card">
+            <h2>Account</h2>
+            <div class="option">
+              <p>Password <span class="material-symbols-outlined clickable" id="show-password2">mystery</span></p>
+                <input type="password" id="passwd1" placeholder="password">
+								<input type="password" id="passwd2" placeholder="confirmpassword">
+            </div>
+            <div class="option">
+              <p>Email</p>
+                <input type="text" id="new-email" placeholder="set email">
+            </div>
+          </div>
+
+					<div class="card">
+            <button class="btn finish-btn" onclick="setup()">Finish setup</button>
+          </div>
+
+        </div>
+		</main>
+
+  </div>
+
+  <script src="../scripts/actions.js"></script>
+	<script src="setup.js"></script>
+</body>
+</html>

@@ -1,24 +1,18 @@
-// Load fields
-async function populate(user_id) {
-  let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+document.getElementById('show-password2').addEventListener('click', () => {
+    const element = document.getElementById('passwd1')
+    element.type = element.type === 'password' ? 'text' : 'password'
+})
 
-  document.getElementById("selector_language").value = account[user_id].language
-  document.getElementById("selector_background").value = account[user_id].background
-  document.getElementById("selector_theme").value = account[user_id].theme
-  
-  console.log(account[user_id].username)
-  document.getElementById("user_name").textContent = account[user_id].username
-  document.getElementById("user_avatar").src = `https://gravatar.com/avatar/${await sha256(account[user_id].email)}`
-  console.log(account[user_id].email)
+function setup() {
+  if (document.getElementById('passwd1').value === document.getElementById('passwd2').value) {
+    console.log('contraseñas coinciden')
+    changeValueSHA(0, 'passwd1', 'password') // set password
+    changeValue(0, 'new-email', 'email') // set email
+    log('User Setup', `OpenFi System`, 'Info', `Welcome to OpenFi`)
+  } else {
+    console.log('Las contraseñas no coinciden')
+  }
 }
-
-if(document.getElementById('show-password')){
-  document.getElementById('show-password').addEventListener('click', () => {
-      const element = document.getElementById('new-passwd')
-      element.type = element.type === 'password' ? 'text' : 'password'
-  })
-}
-
 
 // Funcion que guarda hash - solo se usa para la contraseña por ahora
 async function changeValueSHA(user_id, element, db_value) {
@@ -42,12 +36,11 @@ async function changeValueSHA(user_id, element, db_value) {
 
   localStorage.setItem("account", JSON.stringify(account))
 
-  log(`${db_value} changed`,'OpenFi Account','Warn',`${db_value} de ${account[user_id].username} ha sido cambiada.`)
+  log(`${db_value} changed`,'OpenFi Account','Warn',`${db_value} de ${account[user_id].username} ha sido configurada.`)
 
   console.log('Password updated correctly')
   console.log(`Old ${db_value}: ${oldValue}`)
   console.log(`New ${db_value}: ${newHash}`)
-  window.parent.updatePage('logs', document.querySelector('.nav_menu li[data-page="logs"]'), true)
 }
 
 
@@ -66,5 +59,4 @@ function changeValue(user_id, element_id, db_value) {
   account[user_id][db_value] = contenido
 
   localStorage.setItem("account", JSON.stringify(account)) // guardar localstorage
-  window.top.location.reload()
 }

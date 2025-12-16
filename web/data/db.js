@@ -1,5 +1,5 @@
 // Dispositivos
-    const devices = [
+    const devicesDefault = [
         {
             id: 1,
             nickname: "AP Salón",
@@ -82,7 +82,7 @@
 
 
     // Networks
-    const networks = [
+    const networksDefault = [
         {
             id: 1,
             name: "Default",
@@ -103,7 +103,7 @@
 
 
     // Logs
-    const logs = [
+    const logsDefault = [
         {
             id: 1,
             type: "Placeholder",
@@ -118,7 +118,7 @@
 
 
     // Account data
-    const account = [
+    const accountDefault = [
         {
             id: 0,
             username: "admin",
@@ -128,6 +128,7 @@
             language: "english",
             background: "bing-images",
             theme: "dark",
+            instanceName: ""
         }
     ];
 
@@ -139,19 +140,30 @@ function resetdb() {
 }
 
 function initdb() {
-    
 
-    localStorage.setItem("devices", JSON.stringify(devices))
-    localStorage.setItem("logs", JSON.stringify(logs))
-    localStorage.setItem("networks", JSON.stringify(networks))
-    localStorage.setItem("account", JSON.stringify(account))
+    // Devices
+    if (!localStorage.getItem("devices")) {
+        localStorage.setItem("devices", JSON.stringify(devicesDefault))
+        console.log("created devices db")
+    }
+
+    // Logs
+    if (!localStorage.getItem("logs")) {
+        localStorage.setItem("logs", JSON.stringify(logsDefault))
+        console.log("created logs db")
+    }
+
+    // Networks
+    if (!localStorage.getItem("networks")) {
+        localStorage.setItem("networks", JSON.stringify(networksDefault))
+        console.log("created networks db")
+    }
+
+    // Account
+    if (!localStorage.getItem("account")) {
+        localStorage.setItem("account", JSON.stringify(accountDefault))
+        console.log("created account db")
+    }
+
     console.log("DB Ready")
-
-    log('Database Init', `OpenFi System`, 'Info', `The database has been created :) Welcome to OpenFi`)
-
-
-    console.log(JSON.parse(localStorage.getItem("devices")))
-    console.log(JSON.parse(localStorage.getItem("networks")))
-    console.log(JSON.parse(localStorage.getItem("logs")))
-    console.log(JSON.parse(localStorage.getItem("account")))
 }

@@ -1,6 +1,4 @@
-// Detectar la base de la ruta (GitHub Pages o local)
 let BASE_PATH = window.location.pathname.startsWith('/OpenFi') ? '/OpenFi' : '/web'
-
 
 // Actualizar contenido
 function updatePage(page, element, push = true) {
@@ -23,35 +21,36 @@ function updatePage(page, element, push = true) {
 }
 
 
-// Listener de click en los elementos del nav
-document.querySelectorAll('.nav_menu li').forEach(link => {
-  link.addEventListener('click', function(e) { // listener en el click
-    e.preventDefault()
 
-    const page = this.dataset.page
-    console.log(this)
-    console.log(page)
-    updatePage(page, this, true)
+  // Listener de click en los elementos del nav
+  document.querySelectorAll('.nav_menu li').forEach(link => {
+    link.addEventListener('click', function(e) { // listener en el click
+      e.preventDefault()
+
+      const page = this.dataset.page
+      console.log(this)
+      console.log(page)
+      updatePage(page, this, true)
+    })
   })
-})
 
 
-// Soporte para botón atrás/adelante del navegador
-window.addEventListener("popstate", e => {
-  const page = e.state?.page || "dashboard"
-  const li = document.querySelector(`.menu li[data-page="${page}"]`)
+  // Soporte para botón atrás/adelante del navegador
+  window.addEventListener("popstate", e => {
+    const page = e.state?.page || "dashboard"
+    const li = document.querySelector(`.menu li[data-page="${page}"]`)
 
-  updatePage(page, li, false)
-})
+    updatePage(page, li, false)
+  })
 
 
-// Cargar página inicial si llega desde URL completa (con el ?)
-  window.addEventListener("DOMContentLoaded", () => { // cuando cargue el dom
+  // Cargar página inicial si llega desde URL completa (con el ?)
+    window.addEventListener("DOMContentLoaded", () => { // cuando cargue el dom
+      
+    const url = new URLSearchParams(window.location.search)
+    const page = url.get("page") || "dashboard"
     
-  const url = new URLSearchParams(window.location.search)
-  const page = url.get("page") || "dashboard"
-  
-  const li = document.querySelector(`.nav_menu li[data-page="${page}"]`)
-  updatePage(page, li, false)
-  console.log(page, li, false)
-})
+    const li = document.querySelector(`.nav_menu li[data-page="${page}"]`)
+    updatePage(page, li, false)
+    console.log(page, li, false)
+  })

@@ -3,10 +3,11 @@
 - Comenzar las paginas de Red y después Wifi
 - filtro en los logs
 
->> Más adelante
-- Añadir un slideshow / pagina principal en el login o algo
-- Multiidioma :_v
-
 >> Segunda entrega:
 - Implementar gravatar
 - API para leer datos de dispositivos
+
+>> Más adelante
+- Añadir un slideshow / pagina principal en el login o algo
+- Multiidioma :_v
+- en el welcome sustituir el png por iframes mostrando la web real

@@ -1,7 +1,8 @@
-function setBg() {
+function setbg() {
     const account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
     let loginbg
 
+    console.log(account[0].background)
     switch (account[0].background){
 
         case "bing-images":
@@ -15,20 +16,6 @@ function setBg() {
     }
 
     document.body.style.backgroundImage = `url("${loginbg}")`
-}
-
-
-function initDB() {
-    const DBdata = localStorage.getItem("account")
-
-    if (DBdata) {
-        console.log("La DB ya está lista")
-    } else {
-        console.log("La DB no existe, creando...")
-        localStorage.setItem("devices", JSON.stringify(devices))
-        localStorage.setItem("logs", JSON.stringify(logs))
-        localStorage.setItem("account", JSON.stringify(account))
-    }
 }
 
 function showText(text) {
