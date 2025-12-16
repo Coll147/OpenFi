@@ -42,15 +42,21 @@ function showText(text) {
 }
 
 
-function login(id) {
+async function login(id) {
     console.log("login function called")
     let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
     const password = document.getElementById(id).value
-    console.log(password)
-    if (password == account[0].password) {
-        window.location.href='./main.html'
-    }
-    else {
+
+    // Esperar el hash
+    const passwordHash = await sha256(password)
+
+    console.log(passwordHash === account[0].password)
+    console.log(passwordHash)
+    console.log(account[0].password)
+
+    if (passwordHash === account[0].password) {
+        window.location.href = './main.html'
+    } else {
         showText("Contraseña Incorrecta")
     }
 }

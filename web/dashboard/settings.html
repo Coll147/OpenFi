@@ -54,7 +54,12 @@
             <div class="option">
               <p>Change Password</p> <br>
                 <input type="text" id="new-passwd" placeholder="new password">
-                <button onclick="changePassword(0, 'new-passwd')" type="button" class="btn">Change</button>
+                <button onclick="changeValueSHA(0, 'new-passwd', 'password')" type="button" class="btn">Change</button>
+            </div>
+            <div class="option">
+              <p>Change Email</p> <br>
+                <input type="text" id="new-email" placeholder="set email">
+                <button onclick="changeValueSHA(0, 'new-email', 'email')" type="button" class="btn">Change</button>
             </div>
             <div class="option">
               <p>></p>
@@ -68,7 +73,7 @@
               <p id="user_name"></p>
             </div>
             <div class="option">
-              <img id="user_avatar" src="../assets/favicon.ico">
+              <img id="user_avatar" src="../assets/missing-texture.png">
             </div>
           </div>
 
