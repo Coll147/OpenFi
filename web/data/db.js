@@ -89,6 +89,13 @@
             router: "<default router>",
             subnet: "192.168.1.0/24",
             concesions: "2 / 254",
+            gateway: "192.168.1.1/24",
+            ipBroadcast: "192.168.1.255",
+            ipAvailable: "253",
+            ipRange: "192.168.1.1 - 192.168.1.254",
+            subnetMask: "255.255.255.0",
+            dhcpPool: "249",
+            dhcpRange: "192.168.1.5 - 192.168.1.254",
             comments: ""
         }
     ];
