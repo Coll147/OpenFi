@@ -15,7 +15,7 @@ function updatePage(page, element, push = true) {
 
   // Actualizar URL
   if (push) { // solo cuando se navegue (no direct load)
-    history.pushState({ page: page },  "", `${BASE_PATH}/?page=${page}`)
+    history.pushState({ page: page },  "", `${BASE_PATH}/main.html?page=${page}`)
   }
 
   // Ajustar CSS
