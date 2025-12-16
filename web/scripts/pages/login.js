@@ -50,7 +50,6 @@ async function login(id) {
 
 // Para activar la función si pulso enter
 // https://stackoverflow.com/questions/7060750/detect-the-enter-key-in-a-text-input-field
-
 document.querySelectorAll(".input-group").forEach(input => { 
     // Meto el listener a los dos grupos de input aunque ahora solo se puede escribir en password
     input.addEventListener("keyup", (e) => {
