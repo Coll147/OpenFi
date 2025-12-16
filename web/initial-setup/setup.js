@@ -7,18 +7,16 @@ function setup() {
   if (document.getElementById('passwd1').value === document.getElementById('passwd2').value) {
     console.log('contraseñas coinciden')
     changeValueSHA(0, 'passwd1', 'password') // set password
-    changeValue(0, 'new-email', 'email') // set email
+    changeValue(0, 'email-set', 'email') // set email
     log('User Setup', `OpenFi System`, 'Info', `Welcome to OpenFi`)
   } else {
     console.log('Las contraseñas no coinciden')
   }
-  window.location.href = "../login.html"
+  //window.location.href = "../login.html"
 }
 
 // Funcion que guarda hash - solo se usa para la contraseña por ahora
 async function changeValueSHA(user_id, element, db_value) {
-  initdb()
-
   let account = JSON.parse(localStorage.getItem("account"))
 
   const contenido = document.getElementById(element)?.value
@@ -57,7 +55,7 @@ function changeValue(user_id, element_id, db_value) {
     console.error('Contenido vacío')
     return 
   }
-  console.log(`settings.js > changeValue: Cambiado ${db_value} a ${contenido}`)
+  console.log(`setup.js > changeValue: Cambiado ${db_value} a ${contenido}`)
 
   account[user_id][db_value] = contenido
 

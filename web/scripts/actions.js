@@ -32,6 +32,7 @@ function setTheme() {
   }
   
 }
+
 document.addEventListener('DOMContentLoaded', () => {
   setTheme();
 });

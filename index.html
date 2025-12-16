@@ -33,7 +33,6 @@
     const account = JSON.parse(localStorage.getItem("account"))
 
     if (!localStorage.getItem("account")) {
-      localStorage.setItem("account", JSON.stringify(accountDefault))
       console.log("no account detected, going to setup")
       window.location.href = "./web/initial-setup/setup.html"
     }

@@ -36,21 +36,24 @@
             <h2>Interface</h2>
             <div class="option">
               <p>Language: </p>
-              <select class="btn selector" id="selector_language" name="operador" onchange="changeValue(0, 'selector_language', 'language')">
+              <select class="btn selector" id="selector_language" name="operador" onchange="changeValue(0, 'selector_language', 'language')" required>
+                <option value="" disabled selected></option>
                 <option value="spanish">Spanish</option>
                 <option value="english">English</option>
               </select>
             </div>
             <div class="option">
               <p>Background: </p>
-              <select class="btn selector" id="selector_background" name="operador" onchange="changeValue(0, 'selector_background', 'background')">
+              <select class="btn selector" id="selector_background" name="operador" onchange="changeValue(0, 'selector_background', 'background')" required>
+                <option value="" disabled selected></option>
                 <option value="color">Color</option>
                 <option value="bing-images">Bing Images</option>
               </select>
             </div>
             <div class="option">
               <p>Theme: </p>
-              <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue(0, 'selector_theme', 'theme')">
+              <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue(0, 'selector_theme', 'theme')" required>
+                <option value="" disabled selected></option>
                 <option value="light">Light Mode</option>
                 <option value="dark">Dark Mode</option>
               </select>
@@ -61,12 +64,12 @@
             <h2>Account</h2>
             <div class="option">
               <p>Password <span class="material-symbols-outlined clickable" id="show-password2">mystery</span></p>
-                <input type="password" id="passwd1" placeholder="password">
-								<input type="password" id="passwd2" placeholder="confirmpassword">
+                <input type="password" id="passwd1" placeholder="password" required>
+								<input type="password" id="passwd2" placeholder="confirmpassword" required>
             </div>
             <div class="option">
               <p>Email</p>
-                <input type="text" id="new-email" placeholder="set email">
+                <input type="text" id="email-set" placeholder="set email" required>
             </div>
           </div>
 
@@ -82,5 +85,6 @@
   <script src="../data/db.js"></script>
   <script src="../scripts/actions.js"></script>
 	<script src="setup.js"></script>
+  <script>initdb()</script>
 </body>
 </html>
