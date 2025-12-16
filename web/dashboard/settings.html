@@ -7,6 +7,9 @@
   <meta name="description" content="OpenFi Settings Page">
   <link rel="stylesheet" type="text/css" href="../styles/main-default.css">
   <link rel="stylesheet" type="text/css" href="../styles/pages/settings.css">
+
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=mystery" />
 </head>
 
 <body>
@@ -52,7 +55,7 @@
               <button onclick="window.top.location.href = '../login.html'" type="button" class="btn logout-btn">Log Out</button>
             </div>
             <div class="option">
-              <p>Change Password</p> <span id="show-password">👁️</span> <br>
+              <p>Change Password</p> <span class="material-symbols-outlined clickable" id="show-password">mystery</span> <br>
                 <input type="password" id="new-passwd" placeholder="new password">
                 <button onclick="changeValueSHA(0, 'new-passwd', 'password')" type="button" class="btn">Change</button>
             </div>

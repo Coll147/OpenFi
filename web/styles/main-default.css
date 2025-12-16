@@ -196,6 +196,9 @@ tbody tr:hover {
 }
   /* more at devices.css and login.css */
 
+.clickable {
+  cursor: pointer;
+}
 
 /* CARDS */
 .cards {

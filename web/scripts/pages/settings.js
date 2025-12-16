@@ -12,6 +12,10 @@ async function populate(user_id) {
   console.log(account[user_id].email)
 }
 
+document.getElementById('show-password').addEventListener('click', () => {
+    const element = document.getElementById('new-passwd')
+    element.type = element.type === 'password' ? 'text' : 'password'
+})
 
 // Funcion usada para cambiar contraseña
 function changePasswordSHA(user_id, element, db_value) {
