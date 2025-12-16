@@ -1,3 +1,22 @@
+function setBg() {
+    const account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
+    let loginbg
+
+    switch (account[0].background){
+
+        case "bing-images":
+            loginbg = "https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=es_ES"
+            /* https://github.com/TimothyYe/bing-wallpaper */
+        break;
+
+        case "color":
+            loginbg = "#444444c2"
+        break;
+    }
+
+    document.body.style.backgroundImage = `url("${loginbg}")`
+}
+
 function initDB() {
     const DBdata = localStorage.getItem("account")
 
