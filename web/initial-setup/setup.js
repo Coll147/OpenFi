@@ -12,10 +12,13 @@ function setup() {
   } else {
     console.log('Las contraseñas no coinciden')
   }
+  window.location.href = "../login.html"
 }
 
 // Funcion que guarda hash - solo se usa para la contraseña por ahora
 async function changeValueSHA(user_id, element, db_value) {
+  initdb()
+
   let account = JSON.parse(localStorage.getItem("account"))
 
   const contenido = document.getElementById(element)?.value

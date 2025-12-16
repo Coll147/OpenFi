@@ -1,49 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="2; url=web/login.html">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenFi</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to OpenFi</title>
+  <meta name="description" content="OpenFi">
 
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-
-    <meta name="description" content="OpenFi Network Manager">
-    <style>
-        body {
-        background: #474747;
-        color: white;
-        font-family: 'Segoe UI', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        flex-direction: column;
-        }
-
-        .logo {
-            text-align: left;
-            margin: 0;
-            padding: 0;
-            width: 260px;
-            user-select: none;
-            -webkit-user-drag: none;
-            pointer-events: none;
-            display: block;
-        }
-
-        p {
-        margin-top: 20px;
-        color: #ccc;
-        }
-    </style>
+  <link rel="icon" type="image/x-icon" href="./web/assets/favicon.ico">
+	<link rel="stylesheet" href="./web/styles/pages/index.css">
 </head>
 
 <body>
-    <h1 class="logo">
-        <img src="web/assets/logo.png" alt="OpenFi" class="logo" draggable="false">
-    </h1>
-    <p>Loading OpenFi...</p>
-</body>
+<div class="layout">
+	<div class="main_content">
+			<header class="main_header">
+				<h1 id="title">Welcome to</h1>
+			</header>
+			<main class="main_container">
+				<img id="hero" src="./web/initial-setup/images/hero.png">
+			</main>
+			<div class="loader"></div>
+	</div>
+</div>
+    
 
+  <script src="./web/data/db.js"></script>
+  <script src="./web/scripts/actions.js"></script>
+  <script src="./web/scripts/pages/login.js"></script>
+  <script>
+
+  function redirect() {
+    const account = JSON.parse(localStorage.getItem("account"))
+
+    if (!localStorage.getItem("account")) {
+      localStorage.setItem("account", JSON.stringify(accountDefault))
+      console.log("no account detected, going to setup")
+      window.location.href = "./web/initial-setup/setup.html"
+    }
+    else if (localStorage.getItem("account")) {
+      console.log("account detected, going to login")
+      window.location.href = "./web/login.html"
+    }
+  }
+
+  setTimeout(redirect, 2000)
+
+	</script>
+</body>
 </html>
