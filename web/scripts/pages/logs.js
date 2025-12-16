@@ -197,7 +197,7 @@ function loadMenu(index){ // Mostrar menú extra de cada evento
 
         tbody.appendChild(tr)
 
-        dataTable.appendChild(tbody)
+    dataTable.appendChild(tbody)
 
         let deleteBtn = document.getElementById('deleteBtn')
             deleteBtn.setAttribute("onclick", `removeLog(${index})`)
