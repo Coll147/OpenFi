@@ -5,7 +5,7 @@ let riskFilter = "All"
 // Ordenar por tiempo
 document.getElementById('time').addEventListener('click', () => {
     const arrowElement = document.getElementById('time_arrow')
-    // timeorder es igual a 'asc'? true = desc, false = asc  
+
     if (arrowElement.textContent === "▲") {
         arrowElement.textContent = "▼"
         sortTime = "descendente"
