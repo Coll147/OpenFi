@@ -44,7 +44,7 @@ async function login(id) {
     if (passwordHash === account[0].password) {
         window.location.href = './main.html'
     } else {
-        showText("Contraseña Incorrecta")
+        showText("Wrong password")
     }
 }
 
