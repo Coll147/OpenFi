@@ -60,6 +60,19 @@ body {
   background: #4e4e4e;
 }
 
+.option {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* texto | input */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.option p {
+  margin: 0;
+  font-weight: 500;
+}
+
 label {
   margin-bottom: 5px;
   font-weight: 500;
