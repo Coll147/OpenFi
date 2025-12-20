@@ -246,3 +246,14 @@ tbody tr:hover {
     .card a:visited {
       color:aquamarine
     }
+
+select {
+  background: #444;
+  background-clip: padding-box;
+  color: rgb(0, 0, 0);
+
+  border: 2px solid #5a39ff;
+  border-radius: 8px;
+
+  padding: 6px 10px;
+}
