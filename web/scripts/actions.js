@@ -94,6 +94,7 @@ function parseDate(str) {
   return new Date(año, mes, dia, horas, minutos);
 }
 
+
 // SHA-256
 async function sha256(text) {
   // Convertir el texto a bytes
