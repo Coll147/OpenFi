@@ -1,40 +1,26 @@
-/* ===== Estilo general > main ===== */
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color:dimgrey;
-  color: white;
-}
-
-#show-password {
-  font-size: 18px;
-}
-
 .nav {
   min-width: 190px;
   max-width: 700px;
   background: #686868;
-  display: flex;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   flex: .5;
-  flex-direction: column;
-  justify-content: space-between;
+
 }
 
-.nav_top {
+.nav_top { /* Only used to center the logo */
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
+  padding: 30px 0;
   max-width: 100%;
+  flex: 0.8;
 }
 
 .nav_logo {
   max-width: 100%;
-  max-height: 100%;
-  -webkit-user-drag: none;
-  pointer-events: none;
+  display: flex;
+  flex: 1;
+  justify-content: center;
 }
 
 .main_content {
@@ -94,7 +80,7 @@ input:hover {
   border-color: #6c4fff;
 }
 
-.finish-btn{
+#btn_finish-setup{
   font-size: 20px;
   background-color: #6c4fff;
 }

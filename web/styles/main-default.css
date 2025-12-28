@@ -40,7 +40,7 @@ body {
   pointer-events: none;
 }
 
-.nav_menu {
+.nav_menu { 
   list-style: none;
   padding: 0;
   margin-top: 10vh;
@@ -170,7 +170,7 @@ tbody tr:hover {
 
 
 
-/* ===== Botones ===== */
+/* ===== Buttons ===== */
 .btn {
   background: #5a39ff57;
   border: 2px solid #5a39ff;
@@ -191,6 +191,34 @@ tbody tr:hover {
 }
   /* more at devices.css and login.css */
 
+
+/* === Options menús (the settings thing) === */
+.option {
+    margin: 10px 0px;
+}
+  .option p {
+    display: inline;
+    margin: 0px 10px 0px 0px;
+  }
+
+  .option button {
+    margin: 0px 10px 0px 0px;
+  }
+
+
+.btn.critical {
+  background: #cc530257;
+  border: 2px solid #cc5302;
+  color: white;
+  font-size: 15px;
+  padding: 1px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+  .btn.critical:hover {
+    background: #ff0000;
+    border: 2px solid #ff0000;
+  }
 
 
 /* ===== Cards ===== */
