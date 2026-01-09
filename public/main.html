@@ -12,32 +12,30 @@
   <!-- <link rel="stylesheet" type="text/css" href="./styles/main-mobile.css"> -->
 </head>
 
-<body>
-  <div class="layout">
-    <nav class="nav">
-      <div clas="nav_top">
-        <img class="nav_logo" id="openfi-logo" src="./assets/missing-texture.png" alt="OpenFi Logo" draggable="false">
+<body class="layout">
+  <nav class="navbar">
+    <div clas="navbar__top">
+      <img class="navbar__logo" id="openfi-logo" src="./assets/missing-texture.png" alt="OpenFi Logo" draggable="false">
 
-        <ul class="nav_menu">
-          <li data-page="dashboard" class="active">📊 Dashboard</li>
-          <li data-page="topology">🧭 Topology</li>
-          <li data-page="devices">📶 Devices</li>
-          <li data-page="logs">📜 Logs</li>
-          <li data-page="wifi">📡 Wi-Fi</li>
-          <li data-page="network">🌐 Network</li>
-          <li data-page="settings">⚙️ Settings</li>
-          <li data-page="information">📞 Information</li>
-        </ul>
-      </div>
+      <ul class="navbar__menu">
+        <li data-page="dashboard" class="active">📊 Dashboard</li>
+        <li data-page="topology">🧭 Topology</li>
+        <li data-page="devices">📶 Devices</li>
+        <li data-page="logs">📜 Logs</li>
+        <li data-page="wifi">📡 Wi-Fi</li>
+        <li data-page="network">🌐 Network</li>
+        <li data-page="settings">⚙️ Settings</li>
+        <li data-page="information">📞 Information</li>
+      </ul>
+    </div>
 
-      <footer>
-        <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
-      </footer>
-    </nav>
+    <footer>
+      <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2025</a>
+    </footer>
+  </nav>
 
-      <iframe id="content-frame" src="./assets/favicon.ico"></iframe>
-
-  </div>
+  <iframe id="content-frame" src=""> <!-- Main web content --> </iframe>
+  <!-- I know this isnt the best way to do this but I just need it to work for now -->
 
   <script src="./scripts/navigation.js"></script>
   <script src="./scripts/actions.js"></script>
