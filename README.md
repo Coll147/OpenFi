@@ -1,4 +1,4 @@
-<img width="300" alt="image" src="web/assets/logo.png" />
+<img width="300" alt="image" src="public/assets/logo.png" />
 
 Proyect Status:
 - Now working on the frontend side
