@@ -6,8 +6,8 @@
   <title>Welcome to OpenFi</title>
   <meta name="description" content="OpenFi">
 
-  <link rel="icon" type="image/x-icon" href="./web/assets/favicon.ico">
-	<link rel="stylesheet" href="./web/styles/pages/index.css">
+  <link rel="icon" type="image/x-icon" href="./public/assets/favicon.ico">
+	<link rel="stylesheet" href="./public/styles/pages/index.css">
 </head>
 
 <body>
@@ -17,16 +17,16 @@
 				<h1 id="title">Welcome to</h1>
 			</header>
 			<main class="main_container">
-				<img id="hero" src="./web/initial-setup/images/hero.png">
+				<img id="hero" src="./public/initial-setup/images/hero.png">
 			</main>
 			<div class="loader"></div>
 	</div>
 </div>
     
 
-  <script src="./web/data/db.js"></script>
-  <script src="./web/scripts/actions.js"></script>
-  <script src="./web/scripts/pages/login.js"></script>
+  <script src="./public/data/db.js"></script>
+  <script src="./public/scripts/actions.js"></script>
+  <script src="./public/scripts/pages/login.js"></script>
   <script>
 
   function redirect() {
@@ -34,11 +34,11 @@
 
     if (!localStorage.getItem("account")) {
       console.log("no account detected, going to setup")
-      window.location.href = "./web/initial-setup/setup.html"
+      window.location.href = "./public/initial-setup/setup.html"
     }
     else if (localStorage.getItem("account")) {
       console.log("account detected, going to login")
-      window.location.href = "./web/login.html"
+      window.location.href = "./public/login.html"
     }
   }
 
