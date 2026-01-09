@@ -35,15 +35,7 @@ function updatePage(page, element, push = true) {
   })
 
 
-  // Soporte para botón atrás/adelante del navegador
-  window.addEventListener("popstate", e => {
-    const page = e.state?.page || "dashboard"
-    const li = document.querySelector(`.menu li[data-page="${page}"]`)
-
-    updatePage(page, li, false)
-  })
-
-
+  
   // Cargar página inicial si llega desde URL completa (con el ?)
     window.addEventListener("DOMContentLoaded", () => { // cuando cargue el dom
       
