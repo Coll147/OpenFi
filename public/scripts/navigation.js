@@ -4,7 +4,7 @@ let BASE_PATH = window.location.pathname.startsWith('/OpenFi') ? '/OpenFi' : ''
 function updatePage(page, element, push = true) {
   // Actualizar iframe
   const frame = document.getElementById('content-frame')
-  const src = `${BASE_PATH}/web/dashboard/${page}.html`
+  const src = `${BASE_PATH}/public/dashboard/${page}.html`
   frame.contentWindow.location.replace(src)
 
   // Actualizar NAV
