@@ -35,7 +35,7 @@ function updatePage(page, element, push = true) {
   })
 
 
-  
+
   // Cargar página inicial si llega desde URL completa (con el ?)
     window.addEventListener("DOMContentLoaded", () => { // cuando cargue el dom
       
