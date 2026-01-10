@@ -156,15 +156,15 @@ tbody tr:hover {
 
 
 /* ===== Status ===== */
-.status.online {
+.status--online {
   color: #9cff9c;
 }
 
-.status.warning {
+.status--warning {
   color: #ffd866;
 }
 
-.status.error {
+.status--error {
   color: #f30e0e;
 }
 
@@ -270,8 +270,14 @@ tbody tr:hover {
       color:aquamarine
     }
 
+.cards__row { 
+    display:flex; 
+    gap:25px; 
+    margin-bottom:25px; 
+}
+
 select {
-  background: #444;
+  background: #ff0000;
   background-clip: padding-box;
   color: rgb(0, 0, 0);
 
