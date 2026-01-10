@@ -85,14 +85,20 @@ body {
 
 /* ===== Main Content > iframe ===== */
 
-.main_layout {
+.main_layout { /* Flex for header and content */
   display: flex;
   flex-direction: column;
-  margin: 50px;
+  margin: 20px;
   height: 100%;
 }
 
-.main_div {
+.main_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main_wrapper { /* Flex for content > main and aside */
   display: flex;
 }
 
@@ -109,11 +115,7 @@ body {
 }
 
 
-.main_header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
+
 
 
 
@@ -188,7 +190,9 @@ tbody tr:hover {
 
 .btn.main_btn {
   align-items: center;
-  margin-left: 80%;
+  padding: 4px 8px;
+  font-size: 20px;
+  margin: 10px 5px;
 }
   /* more at devices.css and login.css */
 

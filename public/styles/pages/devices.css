@@ -5,19 +5,9 @@
   gap: 10px;
 }
 
-.main_layout {
-  margin: 20px;
-}
-
 .context-menu {
   min-width: 450px;
 }
-
-.btn {
-  padding: 4px 8px;
-  font-size: 20px;
-}
-
 
 
   .btn.edit {
