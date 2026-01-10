@@ -15,17 +15,20 @@
       <header class="main_header">
         <h1 class="main-header__title">Logs</h1>
 
-        <select id="riskFilter" class="btn main_btn" onchange="filterLogs()">
-          <option value="All">All</option>
-          <option value="Info">Info</option>
-          <option value="Warn">Warning</option>
-          <option value="High">High</option>
-        </select>
+
       </header>
 
       <div class="main_wrapper">
 
         <main class="main_content">
+          <label for="riskFilter">Filter risk</label>
+          <select id="riskFilter" class="btn" onchange="filterLogs()">
+            <option value="All">All</option>
+            <option value="Info">Info</option>
+            <option value="Warn">Warning</option>
+            <option value="High">High</option>
+          </select>
+
           <table>
             <thead>
               <tr>
