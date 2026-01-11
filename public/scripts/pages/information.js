@@ -1,5 +1,5 @@
-// 1. Usamos fetch() para solicitar el archivo JSON
 function cargarDatosJSON() {
+// 1. Usamos fetch() para solicitar el archivo JSON
 fetch('https://api.github.com/repos/coll147/OpenFi/commits')
 
   // 2. Primer .then(): La petición fue exitosa. La respuesta aún es
