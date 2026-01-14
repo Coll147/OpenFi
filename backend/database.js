@@ -8,27 +8,41 @@ const conexion = mysql.createConnection({
   database: 'openfi'
 });
 
-conexion.connect(err => {
-if (err) {
-  console.error('Error conexión:', err.message);
-  process.exit(1);
+function readData() {
+  conexion.connect(err => {
+  if (err) {
+    console.error('Error conexión:', err.message);
+    process.exit(1);
+  }
+    console.log('Conexión OK con mysql2');
+  });
+
+
+  const usuario = "SELECT * FROM devices";
+    conexion.query(usuario,function(error,rows){
+    if(error){
+      throw error;
+    }
+    else{
+      console.log(rows)
+    }
+  });
+
+  setTimeout(() => conexion.end(), 100);
 }
-  console.log('Conexión OK con mysql2');
-});
-
-
-const usuario = "SELECT * FROM devices";
-  conexion.query(usuario,function(error,rows){
-  if(error){
-    throw error;
-  }
-  else{
-    console.log(rows)
-  }
-});
 
 
 function addValue(name, model) {
+  // Conectar
+  conexion.connect(err => {
+    if (err) {
+      console.error('Error conexión:', err.message);
+      process.exit(1);
+    }
+      console.log('Conexión OK con mysql2');
+  });
+
+  // Añadir dato
   conexion.query("SELECT MAX(id) AS maxId FROM devices", function(error, rows) {
     if (error) throw error;
 
@@ -40,9 +54,10 @@ function addValue(name, model) {
       console.log('Datos registrados');
     });
   });
+
+  // Cerrar
+  setTimeout(() => conexion.end(), 100);
 }
 
 addValue('Gateway', 'Ubiquiti Edgerouter 4');
-
-
-setTimeout(() => conexion.end(), 100);
+readData();
