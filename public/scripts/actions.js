@@ -97,18 +97,13 @@ function parseDate(str) {
 
 // SHA-256
 async function sha256(text) {
-  // Convertir el texto a bytes
-  const encoder = new TextEncoder()
-  const data = encoder.encode(text)
+  const res = await fetch('/api/hash', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ text })
+  });
 
-  // Calcular hash
-  const hashBuffer = await crypto.subtle.digest('SHA-256', data)
+  const data = await res.json();
 
-  // Convertir bytes a hex
-  const hashArray = Array.from(new Uint8Array(hashBuffer))
-  const hashHex = hashArray
-    .map(b => b.toString(16).padStart(2, '0'))
-    .join('')
-
-  return hashHex
+  document.getElementById('out').innerText = data.hash;
 }

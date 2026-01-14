@@ -1,4 +1,5 @@
 const express = require("express");
+const crypto = require('crypto');
 const fs = require("fs");
 const path = require("path");
 
@@ -8,14 +9,11 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
 
-
-// Ruta para obtener datos
+// Control de JSON
 app.get("/api/devices", (req, res) => {
   const data = fs.readFileSync("./server/data.json", "utf-8");
   res.json(JSON.parse(data).usuarios);
 });
-
-// Ruta para guardar datos
 app.post("/api/devices", (req, res) => {
   const nuevoUsuario = req.body;
 
@@ -24,6 +22,15 @@ app.post("/api/devices", (req, res) => {
 
   fs.writeFileSync("./server/data.json", JSON.stringify(data, null, 2));
   res.json({ mensaje: "Usuario guardado" });
+});
+
+// Generar hash
+app.post('/api/hash', (req, res) => {
+  const { text } = req.body;
+  if (!text) return res.status(400).json({ error: "no hay valor" });
+
+  const hash = crypto.createHash('sha256').update(text).digest('hex');
+  res.json({ hash });
 });
 
 
