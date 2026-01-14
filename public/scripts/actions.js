@@ -104,6 +104,6 @@ async function sha256(text) {
   });
 
   const data = await res.json();
-
-  document.getElementById('out').innerText = data.hash;
+  console.log(data.hash)
+  return data.hash
 }
