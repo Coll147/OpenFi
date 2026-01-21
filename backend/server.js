@@ -3,18 +3,24 @@ const crypto = require('crypto');
 const fs = require("fs");
 const path = require("path");
 
-const app = express();
+const webserver = express();
 const PORT = process.env.PORT;
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, "../public")));
+webserver.use(express.json());
+
+
+// Ruta inicial
+webserver.use(express.static("public"));
+
+// Views
+webserver.set("view engine", "ejs");
 
 // Control de JSON
-app.get("/api/devices", (req, res) => {
+webserver.get("/api/devices", (req, res) => {
   const data = fs.readFileSync("./server/data.json", "utf-8");
   res.json(JSON.parse(data).usuarios);
 });
-app.post("/api/devices", (req, res) => {
+webserver.post("/api/devices", (req, res) => {
   const nuevoUsuario = req.body;
 
   const data = JSON.parse(fs.readFileSync("./server/data.json", "utf-8"));
@@ -25,7 +31,7 @@ app.post("/api/devices", (req, res) => {
 });
 
 // Generar hash
-app.post('/api/hash', (req, res) => {
+webserver.post('/api/hash', (req, res) => {
   const { text } = req.body;
   if (!text) return res.status(400).json({ error: "no hay valor" });
 
@@ -34,7 +40,7 @@ app.post('/api/hash', (req, res) => {
 });
 
 
-app.listen(PORT, () => {
+webserver.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
   console.log('ready');
 });
