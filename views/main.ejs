@@ -19,23 +19,16 @@
   <%- include ('partials/navbar') %>
 
   <!-- contenido -->
-  <main>
+  <main id="content">
     <%- body -%>
   </main>
 
   <script>
-    async function loadPage(url) {
-  const res = await fetch(url);
-  const html = await res.text();
-  document.getElementById('content').innerHTML = html;
-}
-
 document.querySelectorAll('.navbar__menu li').forEach(li => {
   li.addEventListener('click', () => {
-    loadPage(`/${li.dataset.page}`);
+    window.location.href = `/${li.dataset.page}`;
   });
 });
-
   </script>
 
 </body>
