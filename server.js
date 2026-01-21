@@ -81,6 +81,7 @@ webserver.get("/dashboard/information", (req, res) => {
   });
 });
 
+
 // INICIO SERVIDOR
 webserver.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
