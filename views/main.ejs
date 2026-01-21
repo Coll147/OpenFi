@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title><%= title %></title>
   <link rel="stylesheet" href="/styles/main-default.css">
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   <script>
     document.documentElement.style.setProperty('--bg-color', '#6b6b6b');
     document.documentElement.style.setProperty('--sb-color', '#474747');
@@ -24,11 +25,19 @@
   </main>
 
   <script>
-document.querySelectorAll('.navbar__menu li').forEach(li => {
-  li.addEventListener('click', () => {
-    window.location.href = `/${li.dataset.page}`;
-  });
-});
+    document.querySelectorAll('.navbar__menu li').forEach(li => {
+      li.addEventListener('click', () => {
+        window.location.href = `/${li.dataset.page}`;
+      });
+    });
+
+    const path = window.location.pathname;
+    const currentPage = path.split('/').filter(Boolean).pop();
+    document.querySelectorAll('.navbar__menu li').forEach(item => {
+      if (item.dataset.page === currentPage) {
+        item.classList.add('active');
+      }
+    });
   </script>
 
 </body>
