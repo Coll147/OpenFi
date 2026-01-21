@@ -1,0 +1,50 @@
+const express = require("express");
+const engine = require('ejs-mate');
+
+const crypto = require("crypto");
+const fs = require("fs");
+const path = require("path");
+
+
+
+const webserver = express();
+const PORT = process.env.PORT || 3000;
+
+webserver.use(express.json());
+
+// Static files
+webserver.use(express.static("public"));
+
+// Views & EJS
+webserver.engine('ejs', engine);
+webserver.set('views', path.join(__dirname, 'views'));
+webserver.set('view engine', 'ejs');
+
+
+// API
+webserver.post('/api/hash', (req, res) => {
+  const { text } = req.body;
+  if (!text) return res.status(400).json({ error: "no hay valor" });
+
+  const hash = crypto.createHash('sha256').update(text).digest('hex');
+  res.json({ hash });
+});
+
+
+// Web routes
+webserver.get('/', (req, res) => {
+  res.redirect('/dashboard');
+});
+
+webserver.get("/dashboard", (req, res) => {
+  res.render("pages/dashboard", {
+    title: "Dashboard",
+    publicIP: "192.168.1.1"
+  });
+});
+
+
+// INICIO SERVIDOR
+webserver.listen(PORT, () => {
+  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+});
