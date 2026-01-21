@@ -32,49 +32,52 @@ webserver.post('/api/hash', (req, res) => {
 
 
 // Web routes
-webserver.get('/', (req, res) => {
-  res.redirect('/dashboard');
+webserver.get("/", (req, res) => {
+  res.render("dashboard", {
+    title: "OpenFi",
+    publicIP: "192.168.1.1"
+  });
 });
 
 webserver.get("/dashboard", (req, res) => {
   res.render("pages/dashboard", {
-    title: "Dashboard",
+    title: "OpenFi - Dashboard",
     publicIP: "192.168.1.1"
   });
 });
 webserver.get("/topology", (req, res) => {
   res.render("pages/topology", {
-    title: "topology",
+    title: "OpenFi - Topology",
   });
 });
 webserver.get("/devices", (req, res) => {
   res.render("pages/devices", {
-    title: "devices",
+    title: "OpenFi - Devices",
   });
 });
 webserver.get("/logs", (req, res) => {
   res.render("pages/logs", {
-    title: "logs",
+    title: "OpenFi - Logs",
   });
 });
 webserver.get("/wifi", (req, res) => {
   res.render("pages/wifi", {
-    title: "wifi",
+    title: "OpenFi - Wifi",
   });
 });
 webserver.get("/network", (req, res) => {
   res.render("pages/network", {
-    title: "network",
+    title: "OpenFi - Network",
   });
 });
 webserver.get("/settings", (req, res) => {
   res.render("pages/settings", {
-    title: "settings",
+    title: "OpenFi - Settings",
   });
 });
 webserver.get("/information", (req, res) => {
   res.render("pages/information", {
-    title: "information",
+    title: "OpenFi - Information",
   });
 });
 
