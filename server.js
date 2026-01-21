@@ -42,7 +42,41 @@ webserver.get("/dashboard", (req, res) => {
     publicIP: "192.168.1.1"
   });
 });
-
+webserver.get("/topology", (req, res) => {
+  res.render("pages/topology", {
+    title: "topology",
+  });
+});
+webserver.get("/devices", (req, res) => {
+  res.render("pages/devices", {
+    title: "devices",
+  });
+});
+webserver.get("/logs", (req, res) => {
+  res.render("pages/logs", {
+    title: "logs",
+  });
+});
+webserver.get("/wifi", (req, res) => {
+  res.render("pages/wifi", {
+    title: "wifi",
+  });
+});
+webserver.get("/network", (req, res) => {
+  res.render("pages/network", {
+    title: "network",
+  });
+});
+webserver.get("/settings", (req, res) => {
+  res.render("pages/settings", {
+    title: "settings",
+  });
+});
+webserver.get("/information", (req, res) => {
+  res.render("pages/information", {
+    title: "information",
+  });
+});
 
 // INICIO SERVIDOR
 webserver.listen(PORT, () => {
