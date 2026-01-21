@@ -27,7 +27,7 @@
   <script>
     document.querySelectorAll('.navbar__menu li').forEach(li => {
       li.addEventListener('click', () => {
-        window.location.href = `/${li.dataset.page}`;
+        window.location.href = `/dashboard/${li.dataset.page}`;
       });
     });
 
