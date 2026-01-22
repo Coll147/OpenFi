@@ -1,9 +1,21 @@
 const express = require("express");
 const engine = require('ejs-mate');
-
+const mysql = require('mysql2');
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
+import { env, loadEnvFile } from "node:process";
+loadEnvFile("./.env");
+
+
+const conection = mysql.createConnection({
+  host: env.DB_HOST,
+  port: env.DB_PORT,
+  user: env.DB_USER,
+  password: env.DB_PASS,
+  database: env.DB_NAME
+});
+
 
 
 
