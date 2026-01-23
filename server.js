@@ -16,23 +16,6 @@ const conection = mysql.createConnection({
   database: process.env.DB_NAME
 });
 
-conection.query("SELECT * FROM devices", function(error, rows) {
-  console.log(rows);
-});
-conection.query("SELECT * FROM logs", function(error, rows) {
-  console.log(rows);
-});
-conection.query("SELECT * FROM networks", function(error, rows) {
-  console.log(rows);
-});
-conection.query("SELECT * FROM wifi", function(error, rows) {
-  console.log(rows);
-});
-conection.query("SELECT * FROM userdata", function(error, rows) {
-  console.log(rows);
-});
-
-
 const webserver = express();
 const PORT = process.env.PORT || 3000;
 
@@ -49,17 +32,29 @@ webserver.set('view engine', 'ejs');
 
 // API
 webserver.post('/api/hash', (req, res) => {
-  const { text } = req.body;
-  if (!text) return res.status(400).json({ error: "no hay valor" });
+  const { value } = req.body;
 
-  const hash = crypto.createHash('sha256').update(text).digest('hex');
+  const hash = crypto.createHash('sha256').update(value).digest('hex');
   res.json({ hash });
+  console.log(hash)
 });
 
+webserver.post('/api/storage', (req, res) => {
+  const { table, key, value } = req.body;
+
+  if (table && !key && !value) {
+    const query = 'SELECT * FROM ??'
+    conection.query(query, [table], (error,rows) => {
+      console.log(rows)
+
+      return res.json(rows);
+    })
+  }
+})
 
 // Web routes
 webserver.get("/", (req, res) => {
-  res.render("dashboard", {
+  res.render("pages/dashboard", {
     title: "OpenFi",
     publicIP: "192.168.1.1"
   });

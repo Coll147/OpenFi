@@ -3,74 +3,80 @@
 
 <div class="main_layout">
 
-    <header class="main_header">
-      <h1>Settings</h1>
-    </header>
+  <header class="main_header">
+    <h1>Settings</h1>
+  </header>
 
-    <div class="main_div">
-      <main class="main_content">
-        
-        <div class="cards">
-          <div class="card">
-            <h2>Interface</h2>
-            <div class="option">
-              <p>Language: </p>
-              <select class="btn selector" id="selector_language" name="operador" onchange="changeValue(0, 'selector_language', 'language')">
-                <option value="spanish">Spanish</option>
-                <option value="english">English</option>
-              </select>
-            </div>
-            <div class="option">
-              <p>Background: </p>
-              <select class="btn selector" id="selector_background" name="operador" onchange="changeValue(0, 'selector_background', 'background')">
-                <option value="color">Color</option>
-                <option value="bing-images">Bing Images</option>
-              </select>
-            </div>
-            <div class="option">
-              <p>Theme: </p>
-              <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue(0, 'selector_theme', 'theme')">
-                <option value="light">Light Mode</option>
-                <option value="dark">Dark Mode</option>
-              </select>
-            </div>
+  <div class="main_div">
+    <main class="main_content">
+      
+      <div class="cards">
+        <div class="card">
+          <h2>Interface</h2>
+          <div class="option">
+            <p>Language: </p>
+            <select class="btn selector" id="selector_language" name="operador" onchange="changeValue(0, 'selector_language', 'language')">
+              <option value="spanish">Spanish</option>
+              <option value="english">English</option>
+            </select>
           </div>
-
-          <div class="card">
-            <h2>Account</h2>
-            <div class="option">
-              <label></label>
-              <button onclick="window.top.location.href = '../login.html'" type="button" class="btn logout-btn">Log Out</button>
-            </div>
-            <div class="option">
-              <label for="new-passwd">Change Password</label> <span class="material-symbols-outlined clickable" id="show-password">mystery</span> <span id="settingsPaswdchgAlertbox"></span> <br>
-                <input type="password" id="new-passwd" placeholder="new password">
-                <button onclick="changeValueSHA(0, 'new-passwd', 'password')" type="button" class="btn">Change</button>
-            </div>
-            <div class="option">
-              <label for="new-email">Change Email</label> <br>
-                <input type="text" id="new-email" placeholder="set email">
-                <button onclick="changeValue(0, 'new-email', 'email')" type="button" class="btn">Change</button>
-            </div>
-            <div class="option">
-              <label></label>
-              <button onclick="resetdb()" type="button" class="btn reset-btn critical">Reset Storage</button>
-            </div>
+          <div class="option">
+            <p>Background: </p>
+            <select class="btn selector" id="selector_background" name="operador" onchange="changeValue(0, 'selector_background', 'background')">
+              <option value="color">Color</option>
+              <option value="bing-images">Bing Images</option>
+            </select>
           </div>
-
-          <div class="card">
-            <h2>Profile</h2>
-            <div class="option">
-              <p id="user_name"></p>
-            </div>
-            <div class="option">
-              <a href="https://gravatar.com/profile" target="_blank">
-                <img id="user_avatar" src="../assets/missing-texture.png">
-              </a>
-            </div>
+          <div class="option">
+            <p>Theme: </p>
+            <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue(0, 'selector_theme', 'theme')">
+              <option value="light">Light Mode</option>
+              <option value="dark">Dark Mode</option>
+            </select>
           </div>
-
         </div>
-      </main>
-    </div>
+
+        <div class="card">
+          <h2>Account</h2>
+          <div class="option">
+            <label></label>
+            <button onclick="window.top.location.href = '../login.html'" type="button" class="btn logout-btn">Log Out</button>
+          </div>
+          <div class="option">
+            <label for="new-passwd">Change Password</label> <span class="material-symbols-outlined clickable" id="show-password">mystery</span> <span id="settingsPaswdchgAlertbox"></span> <br>
+              <input type="password" id="new-passwd" placeholder="new password">
+              <button onclick="changeValueSHA(0, 'new-passwd', 'password')" type="button" class="btn">Change</button>
+          </div>
+          <div class="option">
+            <label for="new-email">Change Email</label> <br>
+              <input type="text" id="new-email" placeholder="set email">
+              <button onclick="changeValue(0, 'new-email', 'email')" type="button" class="btn">Change</button>
+          </div>
+          <div class="option">
+            <label></label>
+            <button onclick="resetdb()" type="button" class="btn reset-btn critical">Reset Storage</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>Profile</h2>
+          <div class="option">
+            <p id="user_name"></p>
+          </div>
+          <div class="option">
+            <a href="https://gravatar.com/profile" target="_blank">
+              <img id="user_avatar" src="../assets/missing-texture.png">
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
   </div>
+</div>
+
+<script src="/scripts/global.js"></script>
+<script src="/scripts/pages/settings.js"></script>
+<script>
+  populate(0);
+</script>
