@@ -4,20 +4,33 @@ const mysql = require('mysql2');
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
-import { env, loadEnvFile } from "node:process";
+const { loadEnvFile } = require('node:process');
 loadEnvFile("./.env");
 
 
 const conection = mysql.createConnection({
-  host: env.DB_HOST,
-  port: env.DB_PORT,
-  user: env.DB_USER,
-  password: env.DB_PASS,
-  database: env.DB_NAME
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME
 });
 
-
-
+conection.query("SELECT * FROM devices", function(error, rows) {
+  console.log(rows);
+});
+conection.query("SELECT * FROM logs", function(error, rows) {
+  console.log(rows);
+});
+conection.query("SELECT * FROM networks", function(error, rows) {
+  console.log(rows);
+});
+conection.query("SELECT * FROM wifi", function(error, rows) {
+  console.log(rows);
+});
+conection.query("SELECT * FROM userdata", function(error, rows) {
+  console.log(rows);
+});
 
 const webserver = express();
 const PORT = process.env.PORT || 3000;
