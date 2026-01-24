@@ -5,7 +5,6 @@ async function populate(user_id) {
   const userdata = db_data[user_id];
 
   document.getElementById("selector_language").value = userdata.language
-  document.getElementById("selector_background").value = userdata.background
   document.getElementById("selector_theme").value = userdata.theme
   
   console.log(userdata.username)
