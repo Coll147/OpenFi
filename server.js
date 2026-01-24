@@ -40,17 +40,31 @@ webserver.post('/api/hash', (req, res) => {
 });
 
 webserver.post('/api/storage', (req, res) => {
-  const { table, key, value } = req.body;
+  const { table, column, value, pk, id } = req.body;
 
-  if (table && !key && !value) {
+  if (table && !column && !value) {
+    console.log('read start')
     const query = 'SELECT * FROM ??'
     conection.query(query, [table], (error,rows) => {
       console.log(rows)
+      console.log('read complete')
+
+      return res.json(rows);
+    })
+  }
+  else if (table && column && value && pk && id) {
+    console.log('update start')
+    const query = 'UPDATE ?? SET ?? = ? WHERE ?? = ?'
+    //UPDATE userdata SET email = 'coll147@example.com' WHERE username = 'coll147';
+    conection.query(query, [table, column, value, pk, id], (error,rows) => {
+      console.log(rows)
+      console.log('update complete')
 
       return res.json(rows);
     })
   }
 })
+
 
 // Web routes
 webserver.get("/", (req, res) => {
