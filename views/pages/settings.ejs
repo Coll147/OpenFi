@@ -15,21 +15,22 @@
           <h2>Interface</h2>
           <div class="option">
             <p>Language: </p>
-            <select class="btn selector" id="selector_language" name="operador" onchange="changeValue(0, 'selector_language', 'language')">
+            <select class="btn selector" id="selector_language" name="operador" onchange="changeValue('selector_language', 'language')">
               <option value="spanish">Spanish</option>
               <option value="english">English</option>
             </select>
           </div>
           <div class="option">
             <p>Background: </p>
-            <select class="btn selector" id="selector_background" name="operador" onchange="changeValue(0, 'selector_background', 'background')">
+            <select class="btn selector" id="selector_background" name="operador">
               <option value="color">Color</option>
               <option value="bing-images">Bing Images</option>
             </select>
           </div>
           <div class="option">
             <p>Theme: </p>
-            <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue(0, 'selector_theme', 'theme')">
+            <select class="btn selector" id="selector_theme" name="operador" onchange="changeValue('selector_theme', 'theme')">
+              <option value="system">System</option>
               <option value="light">Light Mode</option>
               <option value="dark">Dark Mode</option>
             </select>
