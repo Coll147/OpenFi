@@ -48,7 +48,6 @@ webserver.post('/api/storage', (req, res) => {
     conection.query(query, [table], (error,rows) => {
       console.log(rows)
       console.log('read complete')
-
       return res.json(rows);
     })
   }
@@ -64,6 +63,17 @@ webserver.post('/api/storage', (req, res) => {
     })
   }
 })
+
+webserver.get('/api/mac/:mac', async (req, res) => {
+  const mac = req.params.mac;
+  try {
+    const response = await fetch(`https://api.maclookup.app/v2/macs/${mac}`);
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: 'Error fetching MAC vendor' });
+  }
+});
 
 
 // Web routes

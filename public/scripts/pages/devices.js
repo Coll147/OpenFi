@@ -208,7 +208,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     tr.appendChild(td1)
     
       td2 = document.createElement("td")
-      const res = await fetch(`/api/mac/${mac}`);
+      const res = await fetch(`/api/mac/${devices[device].mac}`);
       const data = await res.json();
       td2.textContent = data.company
     tr.appendChild(td2)
@@ -238,7 +238,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
       td1 = document.createElement("td")
       td1.textContent = "Firmware version"
     tr.appendChild(td1)
-    
+
       td2 = document.createElement("td")
       td2.textContent = devices[device].version
     tr.appendChild(td2)
