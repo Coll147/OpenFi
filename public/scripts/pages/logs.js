@@ -74,7 +74,6 @@ async function loadTable(riskFilter, sortTime) {
 
 // Cambiar comentario de un evento
 function changeText(index) {
-  let logs = JSON.parse(localStorage.getItem("logs"));
   const contenido = document.getElementById("event-commentaries").value;
 
   console.log(`= logs.js > changeText: comentario del evento ${logs[index].id} cambiado :)`);
@@ -109,8 +108,8 @@ async function loadMenu(index) {
 
   // Dispositivo
   tr = document.createElement("tr");
-  td1 = document.createElement("td");
-  td1.textContent = "Device Involved";
+    td1 = document.createElement("td");
+    td1.textContent = "Device Involved";
   tr.appendChild(td1);
   td2 = document.createElement("td");
   td2.textContent = logs[index].device;

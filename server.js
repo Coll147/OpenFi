@@ -38,7 +38,7 @@ webserver.post('/api/hash', (req, res) => {
   res.json({ hash });
   console.log(hash)
 });
-
+  
 webserver.post('/api/storage', (req, res) => {
   const { table, column, value, pk, id } = req.body;
 
@@ -51,6 +51,7 @@ webserver.post('/api/storage', (req, res) => {
       return res.json(rows);
     })
   }
+
   else if (table && column && value && pk && id) {
     console.log('update start')
     const query = 'UPDATE ?? SET ?? = ? WHERE ?? = ?'
@@ -58,7 +59,17 @@ webserver.post('/api/storage', (req, res) => {
     conection.query(query, [table, column, value, pk, id], (error,rows) => {
       console.log(rows)
       console.log('update complete')
+      return res.json(rows);
+    })
+  }
 
+  else if (table && !column && !value && pk && id) {
+    console.log('delete start')
+    const query = 'DELETE FROM ?? WHERE ?? = ?'
+    //DELETE FROM nombre_tabla WHERE id = X;
+    conection.query(query, [table, pk, id], (error,rows) => {
+      console.log(rows)
+      console.log('delete complete')
       return res.json(rows);
     })
   }
