@@ -90,10 +90,16 @@ async function loadTable(){ // Creación de la tabla - de dispositivos
 
 
 
-function toggleMenu() {
+function toggleMenu(value) {
   // Enseñar menú
   const element = document.getElementById("context-menu")
-  const actualState = element.style.display
+  let actualState
+  if (value === false) {
+    actualState = 'block'
+  }
+  else {
+    actualState = element.style.display
+  }
 
   let statusTable = document.getElementById("device-status")
   let wifiTable = document.getElementById("wifi-status")
@@ -230,7 +236,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
 
     statusTable.appendChild(tbody)
 
-    toggleMenu()
+    toggleMenu(true)
 
 
 // Cerrar menús secundarios al pulsar dondesea
