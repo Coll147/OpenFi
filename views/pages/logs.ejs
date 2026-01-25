@@ -2,48 +2,49 @@
 
 
 <div class="main_layout">
+  <header class="main_header">
+    <h1 class="main-header__title">Logs</h1>
+  </header>
 
-      <header class="main_header">
-        <h1 class="main-header__title">Logs</h1>
+  <div class="main_wrapper">
 
+  <main class="main_content">
+    <label for="riskFilter">Filter risk</label>
+    <select id="riskFilter" class="btn" onchange="filterLogs()">
+      <option value="All">All</option>
+      <option value="Info">Info</option>
+      <option value="Warn">Warning</option>
+      <option value="High">High</option>
+    </select>
 
-      </header>
+    <table>
+      <thead>
+        <tr>
+          <th>Event</th>
+          <th>Device</th>
+          <th id="time">Time <span class="sort_arrow" id="time_arrow">▲</span> </th>
+          <th>Risk</th>
+          <th>Information</th>
+        </tr>
+      </thead>
+      <tbody id="devices-tbody">
+        <!-- ./logs.js -->
+      </tbody>
+    </table>
+  </main>
 
-      <div class="main_wrapper">
+  <aside style="display: none;" id="context-menu" class="context-menu">
+    <h2>Logs Information</h2>
 
-        <main class="main_content">
-          <label for="riskFilter">Filter risk</label>
-          <select id="riskFilter" class="btn" onchange="filterLogs()">
-            <option value="All">All</option>
-            <option value="Info">Info</option>
-            <option value="Warn">Warning</option>
-            <option value="High">High</option>
-          </select>
+    <table id="context-data">
+      <!-- tbody from ./logs.js -->
+    </table>
+    <button class="btn restart" id="deleteBtn"> Delete Event </button>
+  </aside>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Event</th>
-                <th>Device</th>
-                <th id="time">Time <span class="sort_arrow" id="time_arrow">▲</span> </th>
-                <th>Risk</th>
-                <th>Information</th>
-              </tr>
-            </thead>
-            <tbody id="devices-tbody">
-              <!-- ./logs.js -->
-            </tbody>
-          </table>
-        </main>
-
-        <aside style="display: none;" id="context-menu" class="context-menu">
-          <h2>Logs Information</h2>
-
-          <table id="context-data">
-            <!-- tbody from ./logs.js -->
-          </table>
-          <button class="btn restart" id="deleteBtn"> Delete Event </button>
-        </aside>
-
-      </div>
   </div>
+
+</div>
+
+<script src="/scripts/pages/logs.js"></script>
+<script>loadtable()</script>
