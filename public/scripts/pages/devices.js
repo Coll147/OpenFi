@@ -184,38 +184,34 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     tr = document.createElement("tr") // Nick
       td1 = document.createElement("td")
       td1.textContent = "Device Name"
-      tr.appendChild(td1)
+    tr.appendChild(td1)
     
       td2 = document.createElement("td")
       //td2.textContent = devices[device].nickname -- pendiente cambiarlo por unos create element pero por ahora funciona :v
       td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nick}" onblur="changeNick(${device})">`
-      tr.appendChild(td2)
+    tr.appendChild(td2)
     tbody.appendChild(tr)
 
     tr = document.createElement("tr") // Model
       td1 = document.createElement("td")
       td1.textContent = "Model"
-      tr.appendChild(td1)
+    tr.appendChild(td1)
     
       td2 = document.createElement("td")
       td2.textContent = devices[device].model
-      tr.appendChild(td2)
+    tr.appendChild(td2)
     tbody.appendChild(tr)
 
     tr = document.createElement("tr") // Vendor
       td1 = document.createElement("td")
       td1.textContent = "Vendor"
-      tr.appendChild(td1)
+    tr.appendChild(td1)
     
       td2 = document.createElement("td")
-
+      const res = await fetch(`/api/mac/${mac}`);
+      const data = await res.json();
       td2.textContent = data.company
-      fetch(`https://api.maclookup.app/v2/macs/${devices[device].mac}`)
-        .then(response => {})
-        .then(data => {
-          td2.textContent = data.company
-        })
-      tr.appendChild(td2)
+    tr.appendChild(td2)
     tbody.appendChild(tr)
 
     tr = document.createElement("tr") // IP
@@ -225,26 +221,27 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     
       td2 = document.createElement("td")
       td2.textContent = devices[device].ip
-      tr.appendChild(td2)      
+    tr.appendChild(td2)      
     tbody.appendChild(tr)
 
     tr = document.createElement("tr") // IP
       td1 = document.createElement("td")
       td1.textContent = "MAC Addr."
-      tr.appendChild(td1)
+    tr.appendChild(td1)
     
       td2 = document.createElement("td")
       td2.textContent = devices[device].mac
-      tr.appendChild(td2)
+    tr.appendChild(td2)
     tbody.appendChild(tr)
 
     tr = document.createElement("tr") // Version
       td1 = document.createElement("td")
       td1.textContent = "Firmware version"
-      tr.appendChild(td1)
+    tr.appendChild(td1)
+    
       td2 = document.createElement("td")
       td2.textContent = devices[device].version
-      tr.appendChild(td2)
+    tr.appendChild(td2)
     tbody.appendChild(tr)
 
     statusTable.addEventListener("click", (event) => {
