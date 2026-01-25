@@ -129,6 +129,8 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
   const devices = await loadDB('devices');
   console.log(`enseñando menú para ${device}`)
 
+  document.getElementById('device_aside_title').textContent = devices[device].nick
+
   // Crear filas de la tabla de <radios>
   // comentado hasta que se implemente la api para recibir la infomación
   // let wifiTable = document.getElementById("wifi-status")
@@ -186,7 +188,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     
       td2 = document.createElement("td")
       //td2.textContent = devices[device].nickname -- pendiente cambiarlo por unos create element pero por ahora funciona :v
-      td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nickname}" onblur="changeNick(${device})">`
+      td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nick}" onblur="changeNick(${device})">`
       tr.appendChild(td2)
     tbody.appendChild(tr)
 
@@ -197,6 +199,22 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     
       td2 = document.createElement("td")
       td2.textContent = devices[device].model
+      tr.appendChild(td2)
+    tbody.appendChild(tr)
+
+    tr = document.createElement("tr") // Vendor
+      td1 = document.createElement("td")
+      td1.textContent = "Vendor"
+      tr.appendChild(td1)
+    
+      td2 = document.createElement("td")
+
+      td2.textContent = data.company
+      fetch(`https://api.maclookup.app/v2/macs/${devices[device].mac}`)
+        .then(response => {})
+        .then(data => {
+          td2.textContent = data.company
+        })
       tr.appendChild(td2)
     tbody.appendChild(tr)
 
@@ -236,11 +254,10 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
     statusTable.appendChild(tbody)
 
     toggleMenu(true)
-
+}
 
 // Cerrar menús secundarios al pulsar dondesea
 document.body.addEventListener("click", function(data) {
   console.log("Hiciste click en alguna parte del body");
   toggleMenu(false)
 })
-}
