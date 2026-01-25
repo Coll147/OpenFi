@@ -1,4 +1,4 @@
-// Funcion usada para cambiar el nickname de un dispositivo
+// Cambio de nick
 async function changeNick(index) {
   console.log(index)
 
@@ -15,7 +15,8 @@ async function changeNick(index) {
 }
 
 
-async function loadTable(){ // Creación de la tabla - de dispositivos
+// Cargar tabla
+async function loadTable(){ 
 
   const devices = await loadDB('devices');
   console.log(devices)
@@ -88,9 +89,8 @@ async function loadTable(){ // Creación de la tabla - de dispositivos
 
 
 
-
+// Enseñar menú
 function toggleMenu(value) {
-  // Enseñar menú
   const element = document.getElementById("context-menu")
   let actualState
   if (value === false) {
@@ -123,6 +123,8 @@ function toggleMenu(value) {
       console.log(actualState)
   }
 }
+
+
 
 async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
   
@@ -252,6 +254,8 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
 
     toggleMenu(true)
 }
+
+
 
 // Cerrar menús secundarios al pulsar dondesea
 document.body.addEventListener("click", function(data) {
