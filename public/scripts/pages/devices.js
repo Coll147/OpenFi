@@ -186,7 +186,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
       td1.textContent = "Device Name"
     tr.appendChild(td1)
     
-      td2 = document.createElement("td")
+    td2 = document.createElement("td")
       //td2.textContent = devices[device].nickname -- pendiente cambiarlo por unos create element pero por ahora funciona :v
       td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nick}" onblur="changeNick(${device})">`
     tr.appendChild(td2)
@@ -197,7 +197,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
       td1.textContent = "Model"
     tr.appendChild(td1)
     
-      td2 = document.createElement("td")
+    td2 = document.createElement("td")
       td2.textContent = devices[device].model
     tr.appendChild(td2)
     tbody.appendChild(tr)
@@ -207,19 +207,19 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
       td1.textContent = "Vendor"
     tr.appendChild(td1)
     
-      td2 = document.createElement("td")
+    td2 = document.createElement("td")
       const res = await fetch(`/api/mac/${devices[device].mac}`);
       const data = await res.json();
-      td2.textContent = data.company
+    td2.textContent = data.company
     tr.appendChild(td2)
     tbody.appendChild(tr)
 
     tr = document.createElement("tr") // IP
-      td1 = document.createElement("td")
+    td1 = document.createElement("td")
       td1.textContent = "IP Addr."
-      tr.appendChild(td1)
+    tr.appendChild(td1)
     
-      td2 = document.createElement("td")
+    td2 = document.createElement("td")
       td2.textContent = devices[device].ip
     tr.appendChild(td2)      
     tbody.appendChild(tr)
@@ -229,7 +229,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
       td1.textContent = "MAC Addr."
     tr.appendChild(td1)
     
-      td2 = document.createElement("td")
+    td2 = document.createElement("td")
       td2.textContent = devices[device].mac
     tr.appendChild(td2)
     tbody.appendChild(tr)
@@ -239,7 +239,7 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
       td1.textContent = "Firmware version"
     tr.appendChild(td1)
 
-      td2 = document.createElement("td")
+    td2 = document.createElement("td")
       td2.textContent = devices[device].version
     tr.appendChild(td2)
     tbody.appendChild(tr)
