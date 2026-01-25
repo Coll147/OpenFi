@@ -1,17 +1,16 @@
 // Funcion usada para cambiar el nickname de un dispositivo
-function changeNick(index) {
+async function changeNick(index) {
   console.log(index)
 
-  let devices = JSON.parse(localStorage.getItem("devices")) // cargar localstorage
-  const contenido = document.getElementById("device-nick").value
+  const devices = await loadDB('devices');
+  const new_name = document.getElementById("device-nick").value
 
-  console.log(`Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
-  log('Nick changed', `${devices[index].model}`, 'Warn', `Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
+  console.log(`Nombre de ${devices[index].model} cambiado de ${devices[index].nick} a ${new_name}`)
+  //log('Nick changed', `${devices[index].model}`, 'Warn', `Nombre de ${devices[index].model} cambiado de ${devices[index].nickname} a ${contenido}`)
 
-  devices[index].nickname = contenido
-
+  const response = await writeDB('devices', 'nick', new_name, 'mac', devices[index].mac)
+  console.log(response)
   // recargar tabla
-  localStorage.setItem("devices", JSON.stringify(devices)) // guardar localstorage
   loadTable()
 }
 
