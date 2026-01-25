@@ -207,11 +207,11 @@ async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
 
     tr = document.createElement("tr") // IP
       td1 = document.createElement("td")
-      td1.textContent = "IP Addr."
+      td1.textContent = "MAC Addr."
       tr.appendChild(td1)
     
       td2 = document.createElement("td")
-      td2.textContent = devices[device].ip
+      td2.textContent = devices[device].mac
       tr.appendChild(td2)
     tbody.appendChild(tr)
 
