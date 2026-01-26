@@ -29,7 +29,7 @@ console.log(value)
   const response = await writeDB('userdata', key, value, 'username', 'coll147')
   console.log(response)
 
-  //window.top.location.reload()
+  window.top.location.reload()
 }
 
 

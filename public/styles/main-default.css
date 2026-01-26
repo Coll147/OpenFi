@@ -1,6 +1,10 @@
 /* themes config on actions.js */
 
-
+html {
+    background-color: #8b8b8b; /* modo claro por defecto */
+    color: #000000;
+    transition: background-color 0.3s, color 0.3s; /* suaviza el cambio */
+}
 
 /* ===== Estilo general ===== */
 * {

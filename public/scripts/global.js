@@ -1,15 +1,67 @@
 // === Funciones globales ===
 async function loadTheme(){
-  const preferences = await loadDB('userdata');
+  const db_data = await loadDB('userdata');
+  const preferences = db_data[0]; // Assuming single user or first row
+
+  if (!preferences || !preferences.theme) {
+    console.log('No theme preferences found, using default light theme');
+    // Let the user something is wrong
+    document.documentElement.style.setProperty('--bg-color', '#ff0000');
+    document.documentElement.style.setProperty('--sb-color', '#000000');
+    document.documentElement.style.setProperty('--text-color', '#000000');
+    document.documentElement.style.setProperty('--card-bg', '#0f37eb');
+    document.documentElement.style.setProperty('--table-head', '#e0e0e0');
+    document.documentElement.style.setProperty('--table-body', '#6b2e2e');
+    document.getElementById('openfi-logo').src = '/assets/dark-logo.png';
+    return;
+  }
+
+  if (preferences.theme === 'system') {
+    const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+      console.log("El navegador está en modo oscuro");
+      document.documentElement.style.setProperty('--bg-color', '#6b6b6b');
+      document.documentElement.style.setProperty('--sb-color', '#474747');
+      document.documentElement.style.setProperty('--text-color', '#ffffff');
+      document.documentElement.style.setProperty('--card-bg', '#4e4e4e');
+      document.documentElement.style.setProperty('--table-head', '#5a5a5a');
+      document.documentElement.style.setProperty('--table-body', '#707070');
+      document.getElementById('openfi-logo').src = '/assets/logo.png'
+    } 
+    else {
+      console.log("El navegador está en modo claro");
+      document.documentElement.style.setProperty('--bg-color', '#ffffff');
+      document.documentElement.style.setProperty('--sb-color', '#f0f0f0');
+      document.documentElement.style.setProperty('--text-color', '#000000');
+      document.documentElement.style.setProperty('--card-bg', '#f9f9f9');
+      document.documentElement.style.setProperty('--table-head', '#e0e0e0');
+      document.documentElement.style.setProperty('--table-body', '#ffffff');
+      document.getElementById('openfi-logo').src = '/assets/dark-logo.png'
+    }
+  }
+  else if (preferences.theme === 'dark'){
+    document.documentElement.style.setProperty('--bg-color', '#6b6b6b');
+    document.documentElement.style.setProperty('--sb-color', '#474747');
+    document.documentElement.style.setProperty('--text-color', '#ffffff');
+    document.documentElement.style.setProperty('--card-bg', '#4e4e4e');
+    document.documentElement.style.setProperty('--table-head', '#5a5a5a');
+    document.documentElement.style.setProperty('--table-body', '#707070');
+    document.getElementById('openfi-logo').src = '/assets/logo.png'
+  }
+  else if (preferences.theme === 'light') {
+    document.documentElement.style.setProperty('--bg-color', '#ffffff');
+    document.documentElement.style.setProperty('--sb-color', '#f0f0f0');
+    document.documentElement.style.setProperty('--text-color', '#000000');
+    document.documentElement.style.setProperty('--card-bg', '#f9f9f9');
+    document.documentElement.style.setProperty('--table-head', '#e0e0e0');
+    document.documentElement.style.setProperty('--table-body', '#ffffff');
+    document.getElementById('openfi-logo').src = '/assets/dark-logo.png'
+  }
   
-  document.documentElement.style.setProperty('--bg-color', '#6b6b6b');
-  document.documentElement.style.setProperty('--sb-color', '#474747');
-  document.documentElement.style.setProperty('--text-color', '#ffffff');
-  document.documentElement.style.setProperty('--card-bg', '#4e4e4e');
-  document.documentElement.style.setProperty('--table-head', '#5a5a5a');
-  document.documentElement.style.setProperty('--table-body', '#707070');
 }
-loadTheme()
+document.addEventListener('DOMContentLoaded', () => {
+  loadTheme();
+});
 
 
 async function loadDB(table, column, value) {
@@ -78,77 +130,36 @@ async function sha256(value) {
 
 
 
-// Theme system
-function setTheme() {
-  const account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
-  user_id=0
-  if (account[user_id].theme === "dark") {
-    document.documentElement.style.setProperty('--bg-color', '#6b6b6b');
-    document.documentElement.style.setProperty('--sb-color', '#474747');
-    document.documentElement.style.setProperty('--text-color', '#ffffff');
-    document.documentElement.style.setProperty('--card-bg', '#4e4e4e');
-    document.documentElement.style.setProperty('--table-head', '#5a5a5a');
-    document.documentElement.style.setProperty('--table-body', '#707070');
-
-    if (document.getElementById('openfi-logo')){
-      document.getElementById('openfi-logo').src = "assets/logo.png"
-    }
-    
-  }
-  else if (account[user_id].theme === "light") {
-    document.documentElement.style.setProperty('--bg-color', '#ffffffff');
-    document.documentElement.style.setProperty('--sb-color', '#abababff');
-    document.documentElement.style.setProperty('--text-color', '#000000ff');
-    document.documentElement.style.setProperty('--card-bg', 'peru');
-    document.documentElement.style.setProperty('--table-head', '#ffc8c5ff');
-    document.documentElement.style.setProperty('--table-body', '#aaffb0ff');
-
-    if (document.getElementById('openfi-logo')){
-      document.getElementById('openfi-logo').src = "assets/dark-logo.png"
-    }
-  }
-  else {
-    console.error(`> actions.js > setTheme: Tema ${account[user_id].theme} no reconocido.`)
-  }
-  
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  setTheme();
-});
-
 // Loguear un evento
 function log(event, device, risk, info) {
-    let logs = JSON.parse(localStorage.getItem("logs")) // cargar localstorage
+  // Tomar fecha actual
+  const ahora = new Date()
 
-    // Tomar fecha actual
-    const ahora = new Date()
+  const dia = String(ahora.getDate()).padStart(2, '0')
+  const mes = String(ahora.getMonth() + 1).padStart(2, '0') // Meses 0-11
+  const ano = ahora.getFullYear()
 
-    const dia = String(ahora.getDate()).padStart(2, '0')
-    const mes = String(ahora.getMonth() + 1).padStart(2, '0') // Meses 0-11
-    const ano = ahora.getFullYear()
+  const horas = String(ahora.getHours()).padStart(2, '0')
+  const minutos = String(ahora.getMinutes()).padStart(2, '0')
 
-    const horas = String(ahora.getHours()).padStart(2, '0')
-    const minutos = String(ahora.getMinutes()).padStart(2, '0')
+  const time = `${dia}-${mes}-${ano} ${horas}:${minutos}`
 
-    const time = `${dia}-${mes}-${ano} ${horas}:${minutos}`
+  // Crear un nuevo log
+  const newLog = {
+    id: logs.length + 1, // Siguiente ID, inutil por ahora pero ok
+    type: event,
+    device: device,
+    time: time,
+    risk: risk,
+    info: info,
+    comments: ""
+  };
 
-    // Crear un nuevo log
-    const newLog = {
-        id: logs.length + 1, // Siguiente ID, inutil por ahora pero ok
-        type: event,
-        device: device,
-        time: time,
-        risk: risk,
-        info: info,
-        comments: ""
-    };
+  // Añadir al array
+  logs.unshift(newLog)
 
-    // Añadir al array
-    logs.unshift(newLog)
-
-    localStorage.setItem("logs", JSON.stringify(logs)) // guardar localstorage
-    console.log("Nuevo log añadido:", newLog)
+  localStorage.setItem("logs", JSON.stringify(logs)) // guardar localstorage
+  console.log("Nuevo log añadido:", newLog)
 }
 
 function parseDate(str) {
