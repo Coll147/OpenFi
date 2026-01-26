@@ -73,13 +73,12 @@ async function loadTable(riskFilter, sortTime) {
 
 
 // Cambiar comentario de un evento
-function changeText(index) {
-  const contenido = document.getElementById("event-commentaries").value;
+async function changeText(index) {
+  const logs = await loadDB('logs');
+  const id = logs[index].id;
+  const comentarios = document.getElementById("event-commentaries").value
 
-  console.log(`= logs.js > changeText: comentario del evento ${logs[index].id} cambiado :)`);
-  logs[index].comments = contenido;
-
-  localStorage.setItem("logs", JSON.stringify(logs));
+  await writeDB('logs', 'comments', comentarios, 'id', id)
   loadTable();
 }
 

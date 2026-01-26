@@ -24,6 +24,21 @@ webserver.set('view engine', 'ejs');
 // API
 webserver.use('/api/storage', require('./backend/api/database'));
 
+webserver.get('/api/settings', (req, res) => {
+  const settingsPath = path.join(__dirname, 'backend/settings.json');
+
+  fs.readFile(settingsPath, 'utf8', (err, data) => {
+    try {
+      const jsonData = JSON.parse(data);
+      res.json(jsonData);
+    } catch (err) {
+      console.error('Error parseando settings:', err);
+      res.status(500).json({ error: 'Error parseando settings.json' });
+    }
+  });
+});
+
+
 webserver.post('/api/hash', (req, res) => {
   const { value } = req.body;
 
