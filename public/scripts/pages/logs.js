@@ -72,16 +72,6 @@ async function loadTable(riskFilter, sortTime) {
 }
 
 
-// Cambiar comentario de un evento
-async function changeText(index) {
-  const logs = await loadDB('logs');
-  const id = logs[index].id;
-  const comentarios = document.getElementById("event-commentaries").value
-
-  await writeDB('logs', 'comments', comentarios, 'id', id)
-  loadTable();
-}
-
 
 // Mostrar menú de detalles de un evento
 async function loadMenu(index) {
@@ -167,11 +157,30 @@ function toggleMenu(show = true) {
   }
 }
 
+
+
+// Cambiar comentario de un evento
+async function changeText(index) {
+  const logs = await loadDB('logs');
+  const id = logs[index].id;
+  const comentarios = document.getElementById("event-commentaries").value
+
+  await writeDB('logs', 'comments', comentarios, 'id', id)
+  loadTable();
+}
+
+
 // Eliminar log
-function removeLog(index) {
-  let logs = JSON.parse(localStorage.getItem("logs"));
-  logs.splice(index, 1);
-  localStorage.setItem("logs", JSON.stringify(logs));
+async function removeLog(index) {
+  const logs = await loadDB('logs');
+  const id = logs[index].id;
+
+  const result = await removeDB('logs', 'id', id);
+
+  if (result.error) {
+    console.error('Error deleting log:', result.error);
+    return;
+  }
 
   console.log('removed log :>');
   loadTable();

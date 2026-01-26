@@ -17,6 +17,10 @@ router.post('/', (req, res) => {
     console.log('read start');
     const query = 'SELECT * FROM ??';
     conection.query(query, [table], (error,rows) => {
+      if (error) {
+        console.error('Read error:', error);
+        return res.status(500).json({ error: error.message });
+      }
       console.log(rows);
       console.log('read complete');
       return res.json(rows);
@@ -27,6 +31,10 @@ router.post('/', (req, res) => {
     console.log('update start');
     const query = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
     conection.query(query, [table, column, value, pk, id], (error,rows) => {
+      if (error) {
+        console.error('Update error:', error);
+        return res.status(500).json({ error: error.message });
+      }
       console.log(rows);
       console.log('update complete');
       return res.json(rows);
@@ -34,11 +42,15 @@ router.post('/', (req, res) => {
   }
 
   else if (table && !column && !value && pk && id) {
-    console.log('delete start');
+    console.log('remove start');
     const query = 'DELETE FROM ?? WHERE ?? = ?';
     conection.query(query, [table, pk, id], (error,rows) => {
+      if (error) {
+        console.error('Remove error:', error);
+        return res.status(500).json({ error: error.message });
+      }
       console.log(rows);
-      console.log('delete complete');
+      console.log('remove complete');
       return res.json(rows);
     });
   }

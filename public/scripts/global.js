@@ -44,6 +44,22 @@ async function writeDB(table, column, value, pk, id) {
 
 
 
+async function removeDB(table, pk, id) {
+  const res = await fetch('/api/storage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ table: table, pk: pk, id: id})
+  });
+
+  const data = await res.json();
+
+  console.log(data);
+
+  return(data)
+}
+
+
+
 async function sha256(value) {
   const res = await fetch('/api/hash', {
     method: 'POST',
