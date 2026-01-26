@@ -1,4 +1,19 @@
 // ---- EVENTOS ----
+// Ejemplo
+log('Status', 'OpenFi System', 'Warn', 'Bienvenido a los logs OpenFi');
+
+// Al inicio de logs.js
+function parseDate(str) {
+  const partes = str.split(" ");
+  const fecha = partes[0];
+  const hora = partes[1];
+
+  const [dia, mes, año] = fecha.split("-").map(Number);
+  const [horas, minutos] = hora.split(":").map(Number);
+
+  return new Date(año, mes - 1, dia, horas, minutos);
+}
+
 
 // Ordenar por tiempo
 document.getElementById('time').addEventListener('click', () => {

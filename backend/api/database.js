@@ -56,4 +56,32 @@ router.post('/', (req, res) => {
   }
 });
 
+router.post('/log', (req, res) => {
+  const { logEvent, logDevice, logRisk, logInfo } = req.body;
+
+  if (!logEvent || !logDevice || !logRisk || !logInfo) {
+    return res.status(400).json({ error: 'Faltan parámetros para el log' });
+  }
+
+  console.log('log insert start');
+
+  // Fecha en formato SQL
+  const ahora = new Date();
+  const time = ahora.toISOString().slice(0, 19).replace('T', ' ');
+
+  const query = 'INSERT INTO logs (type, device, time, risk, info, comments) VALUES (?, ?, ?, ?, ?, ?)';
+  const params = [logEvent, logDevice, time, logRisk, logInfo, ""];
+
+  conection.query(query, params, (error, result) => {
+    if (error) {
+      console.error('Log insert error:', error);
+      return res.status(500).json({ error: error.message });
+    }
+
+    console.log('Nuevo log añadido con id', result.insertId);
+    return res.json({ success: true, id: result.insertId });
+  });
+});
+
+
 module.exports = router;
