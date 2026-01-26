@@ -1,4 +1,6 @@
 const express = require('express');
+const path = require('path');
+const fs = require('fs');
 const router = express.Router();
 
 router.get("/", (req, res) => {
@@ -8,8 +10,27 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/login", (req, res) => {
-  res.render("login", {
+router.get('/login', (req, res) => {
+  const settingsPath = path.join(__dirname, 'settings.json');
+
+  fs.readFile(settingsPath, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error leyendo settings:', err);
+      return res.status(500).send('Error leyendo settings');
+    }
+
+    try {
+      const jsonData = JSON.parse(data);
+      const networkName = jsonData['nerwork-name'];
+
+      res.render('login', { 
+        network_name: networkName 
+      });
+
+    } catch (err) {
+      console.error('Error parseando settings:', err);
+      res.status(500).send('Error parseando settings.json');
+    }
   });
 });
 

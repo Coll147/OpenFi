@@ -8,8 +8,9 @@
 
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
 
-  <link rel="stylesheet" href="./styles/main-default.css">
-	<link rel="stylesheet" href="styles/pages/login.css">
+  <link rel="stylesheet" href="/styles/main-default.css">
+	<link rel="stylesheet" href="/styles/pages/login.css">
+	<script src="/scripts/global.js"></script>
 </head>
 
 <body>
@@ -43,7 +44,7 @@
 
 						<div class="login_input_div">
 						<form class="card">
-							<h2>Local Network</h2>
+							<h2><%= network_name %></h2>
 
 							<div class="input-group">
 								<span class="icon">👤</span>
@@ -51,9 +52,9 @@
 							</div>
 							<div class="input-group">
 								<span class="icon">🔒</span>
-								<input type="password" id="password" placeholder="password">
+								<input type="password" id="password_input" placeholder="password">
 							</div>
-							<button onclick="login('password')" type="button" class="login-btn">
+							<button onclick="login()" type="button" class="login-btn">
 								Log in
 							</button>
 						</form>
@@ -63,11 +64,9 @@
 </div>
     
 
-  <script src="./data/db.js"></script>
-  <script src="./scripts/actions.js"></script>
-  <script src="./scripts/pages/login.js"></script>
+  <script src="/scripts/extras/login.js"></script>
   <script>
-		setbg()
+		loadBackground()
 	</script>
 </body>
 </html>

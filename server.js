@@ -3,6 +3,7 @@ const engine = require('ejs-mate');
 const crypto = require("crypto");
 const fs = require("fs");
 const path = require("path");
+const mysql = require('mysql2');
 const { loadEnvFile } = require('node:process');
 loadEnvFile("./.env");
 
@@ -45,6 +46,44 @@ webserver.post('/api/hash', (req, res) => {
   const hash = crypto.createHash('sha256').update(value).digest('hex');
   res.json({ hash });
   console.log(hash)
+});
+
+
+webserver.post('/login', (req, res) => {
+  const { password_input } = req.body;
+
+  const conection = mysql.createConnection({
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
+  });
+
+  const hash = crypto.createHash('sha256').update(password_input).digest('hex');
+
+  const query = 'SELECT password FROM userdata WHERE username = ?';
+  conection.query(query, ['admin'], (error, rows) => {
+    if (error) {
+      console.error('Read error:', error);
+      return res.status(500).json({ error: error.message });
+    }
+
+    if (rows.length === 0) {
+      return res.status(401).json({ response: 'no', error: 'Usuario no encontrado' });
+    }
+
+    const actual_password = rows[0].password;
+
+    // Solo un res.json
+    if (hash === actual_password) {
+      console.log('Access granted');
+      return res.json({ response: 'yes' });
+    } else {
+      console.log('Access NOT granted');
+      return res.json({ response: 'no' });
+    }
+  });
 });
 
 webserver.get('/api/mac/:mac', async (req, res) => {

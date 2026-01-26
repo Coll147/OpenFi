@@ -1,22 +1,46 @@
-function setbg() {
-    const account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
-    let loginbg
+async function loadBackground() {
+  try {
+    const res = await fetch('/api/settings');
+    if (!res.ok) throw new Error('Error al cargar settings');
 
-    console.log(account[0].background)
-    switch (account[0].background){
+    const settings = await res.json();
+    console.log('Settings cargados:', settings);
 
-        case "bing-images":
-            loginbg = "https://bing.biturl.top/?resolution=1920&format=image&index=0&mkt=es_ES"
-            /* https://github.com/TimothyYe/bing-wallpaper */
-        break;
+    const mode = settings["login-background"]; // "bing" || "color"
 
-        case "color":
-            loginbg = "#444444c2"
-        break;
+    let loginbg;
+
+    if (mode === "bing") {
+      const width = window.innerWidth;
+      console.log(width)
+
+      let resolution = "1920"; // default
+      if (width >= 3840) resolution = "UHD";
+      else if (width >= 1920) resolution = "1920";
+      else if (width >= 1366) resolution = "1366";
+
+      loginbg = `https://bing.biturl.top/?resolution=${resolution}&format=image&index=0&mkt=es-ES`;
+
+      document.body.style.backgroundImage = `url("${loginbg}")`;
+
+    } 
+    
+    else if (mode === "color") {
+      loginbg = "#444444c2";
+      document.body.style.backgroundColor = loginbg;
+    } 
+    
+    else {
+      console.warn("Modo desconocido, let the user know");
+      document.body.style.backgroundColor = "#0400ffc2";
     }
 
-    document.body.style.backgroundImage = `url("${loginbg}")`
+  } catch (err) {
+    console.error('Error al obtener settings:', err);
+  }
 }
+
+
 
 function showText(text) {
     console.log("text function")
@@ -29,23 +53,20 @@ function showText(text) {
 }
 
 
-async function login(id) {
-    console.log("login function called")
-    let account = JSON.parse(localStorage.getItem("account")) // cargar localstorage
-    const password = document.getElementById(id).value
+async function login() {
+  const res = await fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ password_input: document.getElementById('password_input').value })
+  });
 
-    // Esperar el hash
-    const passwordHash = await sha256(password)
+  const data = await res.json();
 
-    console.log(passwordHash === account[0].password)
-    console.log(passwordHash)
-    console.log(account[0].password)
-
-    if (passwordHash === account[0].password) {
-        window.location.href = './main.html'
-    } else {
-        showText("Wrong password")
-    }
+  if (data.response === 'yes') {
+    window.location.href = '/dashboard/dashboard';
+  } else {
+    showText('Acceso Denegado');
+  }
 }
 
 // Para activar la función si pulso enter
