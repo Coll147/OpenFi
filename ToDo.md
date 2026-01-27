@@ -1,10 +1,10 @@
->> Pronto
+> Pronto
 - Vincular los logs a la dashboard
 - Hacer que aparezca el numero de dispositivos en la dash
 - Devolver el setup
 
 
->> A hacer
+> A hacer
 - Permitir OCULTAR el menu secundario haciendo click en cualquier lado del body (o del iframe?)
 
 - Comenzar con la página de Wifi y hacerla funcional

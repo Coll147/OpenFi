@@ -22,7 +22,6 @@ node_modules/
 *.zip
 
 *.log
-*.sql
 *.sqlite
 
 .DS_Store
