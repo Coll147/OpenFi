@@ -26,7 +26,7 @@ console.log(value)
   }
 console.log(value)
 
-  const response = await writeDB('userdata', key, value, 'username', 'coll147')
+  const response = await writeDB('userdata', key, value, 'username', 'admin')
   console.log(response)
 
   window.top.location.reload()

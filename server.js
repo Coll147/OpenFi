@@ -66,6 +66,9 @@ webserver.post('/login', (req, res) => {
 
   const query = 'SELECT password FROM userdata WHERE username = ?';
   conection.query(query, ['admin'], (error, rows) => {
+    // Always close the connection
+    conection.end();
+
     if (error) {
       console.error('Read error:', error);
       return res.status(500).json({ error: error.message });
@@ -77,7 +80,6 @@ webserver.post('/login', (req, res) => {
 
     const actual_password = rows[0].password;
 
-    // Solo un res.json
     if (hash === actual_password) {
       console.log('Access granted');
       return res.json({ response: 'yes' });

@@ -22,24 +22,23 @@ router.post('/', (req, res) => {
         console.error('Read error:', error);
         return res.status(500).json({ error: error.message });
       }
-      console.log(rows);
-      console.log('read complete');
+      //console.log(rows);
+      //console.log('read complete');
       return res.json(rows);
     });
   }
 
   else if (table && column && value && pk && id) {
     // VALUE UPDATE
-    console.log('update start');
+    console.log('update start', { table, column, value, pk, id });
     const query = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
-    conection.query(query, [table, column, value, pk, id], (error,rows) => {
+    conection.query(query, [table, column, value, pk, id], (error, result) => {
       if (error) {
         console.error('Update error:', error);
         return res.status(500).json({ error: error.message });
       }
-      console.log(rows);
-      console.log('update complete');
-      return res.json(rows);
+      console.log('update complete', { affectedRows: result.affectedRows });
+      return res.json({ success: true, affectedRows: result.affectedRows });
     });
   }
 
@@ -52,8 +51,8 @@ router.post('/', (req, res) => {
         console.error('Remove error:', error);
         return res.status(500).json({ error: error.message });
       }
-      console.log(rows);
-      console.log('remove complete');
+      // console.log(rows);
+      // console.log('remove complete');
       return res.json(rows);
     });
   }
@@ -68,8 +67,8 @@ router.post('/', (req, res) => {
         console.error('Read error:', error);
         return res.status(500).json({ error: error.message });
       }
-      console.log(rows);
-      console.log('specific read complete');
+      // console.log(rows);
+      // console.log('specific read complete');
       return res.json(rows);
     });
   }
