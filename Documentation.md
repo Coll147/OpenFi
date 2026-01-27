@@ -4,6 +4,7 @@
 ### 1. Create database
 Create a MySQL database with your favorite gestor / tool, for development I used Wampserver
 If you use phpmyadmin (db manager used in wampserver) just get the default-database.sql file and follow [this guide](https://help.one.com/hc/en-us/articles/115005588189-How-do-I-import-a-database-to-phpMyAdmin)
+In the case of wampserver per default is user root and there is no password. Consider changing mysql port to 3308 to avoid windows issues.
 
 ### 2. Environment variables
 In this repo there is a .env.example file, rename it to .env and fill the variables for the database connection
