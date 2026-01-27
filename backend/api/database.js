@@ -84,27 +84,46 @@ router.post('/log', (req, res) => {
 });
 
 
-router.post('/device', (req, res) => {
+
+
+router.post('/device', async (req, res) => {
   const { deviceMac, deviceIp, deviceModel } = req.body;
+  const { routerReadData } = require('./router-setup');
 
   if (!deviceMac) {
     return res.status(400).json({ error: 'Faltan parámetros para el log' });
   }
 
-  console.log('device insert start');
+  try {
+    // Ejecutar script remoto y capturar JSON
+    const deviceJson = await routerReadData({
+      host: deviceIp,
+      username: 'root',
+      password: 'iT5WqKC6',
+      url: 'https://raw.githubusercontent.com/openNDS/wifi-chipset-detect/refs/heads/1.0.0beta/src/wifi-chipset-detect',
+      remotePath: '/tmp/detect.sh'
+    });
 
-  const query = 'INSERT INTO devices (mac, model, nick) VALUES (?, ?, ?)';
-  const params = [deviceMac, deviceIp, deviceModel];
+    console.log(json);
 
-  conection.query(query, params, (error, result) => {
-    if (error) {
-      console.error('Log insert error:', error);
-      return res.status(500).json({ error: error.message });
-    }
+    // Continuar con tu insert
+    const query = 'INSERT INTO devices (mac, ip, nick, model, specs) VALUES (?, ?, ?, ?, ?)';
+    const params = [deviceMac, deviceIp, deviceModel, deviceModel, deviceJson];
 
-    console.log('Nuevo log añadido con id', result.insertId);
-    return res.json({ success: true, id: result.insertId });
-  });
+    conection.query(query, params, (error, result) => {
+      if (error) return res.status(500).json({ error: error.message });
+
+      return res.json({
+        success: true,
+        id: result.insertId,
+        routerData: json
+      });
+    });
+
+  } catch (err) {
+    console.error('SSH Error:', err);
+    return res.status(500).json(err);
+  }
 });
 
 

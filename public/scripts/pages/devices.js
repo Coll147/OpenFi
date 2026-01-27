@@ -137,7 +137,7 @@ async function mountMenu(device) {
   const statusTable = document.getElementById("device-status");
   const wifiTable = document.getElementById("wifi-status");
 
-  // 🔹 Limpiar tablas antes de rellenarlas
+  // Limpiar tablas antes de rellenarlas
   while (statusTable.firstChild) statusTable.removeChild(statusTable.firstChild);
   while (wifiTable.firstChild) wifiTable.removeChild(wifiTable.firstChild);
 
@@ -226,7 +226,7 @@ async function mountMenu(device) {
 
 async function AddDevice(e) {
   e.preventDefault(); // prevent page reload
-  console.log('añadiendoooooooooooooooooo')
+  console.log('añadiendooooo')
   const ip = document.getElementById('device-ip').value
   const mac = document.getElementById('device-mac').value
   const nick = document.getElementById('device-nick').value
