@@ -1,5 +1,7 @@
 # NodeJS
 node_modules/
+.tmp.drivedownload/
+.tmp.driveupload/
 
 
 # Default ignores
