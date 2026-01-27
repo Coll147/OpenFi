@@ -2,47 +2,53 @@
 
 
 <div class="main_layout">
-    <header class="main_header">
-        <h1>Devices</h1>
-        <button class="btn main_btn add-new">Add Device</button>
-    </header>
+  <header class="main_header">
+      <h1>Devices</h1>
+      <button id="add-device-btn" class="btn main_btn add-new">Add Device</button>
+  </header>
 
-    <div class="main_wrapper">
-      <main class="main_content">
-        <table>
-          <thead>
-            <tr>
-              <th>DEVICE</th>
-              <th>IP ADDR</th>
-              <th>STATUS</th>
-              <th>UPTIME</th>
-              <th>MODEL</th>
-              <th>VERSION</th>
-              <th>ACTIONS</th>
-            </tr>
-          </thead>
-          <tbody id="devices-tbody">
-            <!-- ./devices.js -->
-          </tbody>
-        </table>
-      </main>
+  <div class="main_wrapper">
+    <main class="main_content">
+      <table>
+        <thead>
+          <tr>
+            <th>DEVICE</th>
+            <th>IP ADDR</th>
+            <th>STATUS</th>
+            <th>UPTIME</th>
+            <th>MODEL</th>
+            <th>VERSION</th>
+            <th>ACTIONS</th>
+          </tr>
+        </thead>
+        <tbody id="devices-tbody">
+          <!-- ./devices.js -->
+        </tbody>
+      </table>
+    </main>
 
-      <aside style="display: none;" id="context-menu" class="context-menu">
-        <h1 id="device_aside_title">Device Name</h1>
-        
-        <h2>--- WiFi ---</h2>
-        <table id="wifi-status">
-          <!-- tbody from ./devices.js -->
-        </table>
+    <aside style="display: none;" id="context-menu" class="context-menu">
+      <h1 id="device_aside_title">Device Name</h1>
+      
+      <h2>--- WiFi ---</h2>
+      <table id="wifi-status">
+        <!-- tbody from ./devices.js -->
+      </table>
 
-        <h2>--- Device ---</h2>
-        <table id="device-status">
-          <!-- tbody from ./devices.js -->
-        </table>
-        
-      </aside>
+      <h2>--- Device ---</h2>
+      <table id="device-status">
+        <!-- tbody from ./devices.js -->
+      </table>
+      
+    </aside>
+  </div>
+
+  <div class="modal-wrapper" id="add-device-modal" style="z-index: -1;">
+    <div class="modal">
+      <h2>Título</h2>
+      <p>Contenido del modal...</p>
     </div>
-    
+  </div>
 </div>
 
 

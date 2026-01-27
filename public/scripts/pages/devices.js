@@ -126,139 +126,156 @@ function toggleMenu(value) {
 
 
 
-async function mountMenu(device){ // Mostrar menú extra de cada dispositivo
-  
+async function mountMenu(device) {
   const devices = await loadDB('devices');
-  console.log(`enseñando menú para ${device}`)
+  console.log(`enseñando menú para ${device}`);
 
-  document.getElementById('device_aside_title').textContent = devices[device].nick
+  const title = document.getElementById('device_aside_title');
+  title.textContent = devices[device].nick;
 
-  // Crear filas de la tabla de <radios>
-  // comentado hasta que se implemente la api para recibir la infomación
-  // let wifiTable = document.getElementById("wifi-status")
+  // Tablas
+  const statusTable = document.getElementById("device-status");
+  const wifiTable = document.getElementById("wifi-status");
 
-  // for (let i = 0; i < devices[device].radios.length; i++) {
+  // 🔹 Limpiar tablas antes de rellenarlas
+  while (statusTable.firstChild) statusTable.removeChild(statusTable.firstChild);
+  while (wifiTable.firstChild) wifiTable.removeChild(wifiTable.firstChild);
 
-  //     const tbody = document.createElement("tbody")
-  //     const tr = document.createElement("tr")
+  // Crear filas de <status>
+  const tbody = document.createElement("tbody");
 
-  //         let td1 = document.createElement("td") // radio name
-  //         td1.textContent = devices[device].radios[i].name
-  //         tr.appendChild(td1)
+  // Nick
+  let tr = document.createElement("tr");
+  let td1 = document.createElement("td");
+  td1.textContent = "Device Name";
+  tr.appendChild(td1);
 
-  //         let td2 = document.createElement("td") // channel
-  //         td2.append(
-  //             document.createTextNode(devices[device].radios[i].channel),
-  //             document.createTextNode(" "),
-  //             document.createTextNode(devices[device].radios[i].bandwidth),
-  //             document.createElement("br"),
-  //             document.createTextNode(devices[device].radios[i].frequency)
-  //         );
-  //         tr.appendChild(td2)
+  let td2 = document.createElement("td");
+  td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nick}" onblur="changeNick(${device})">`;
+  tr.appendChild(td2);
+  tbody.appendChild(tr);
 
-  //         let td3 = document.createElement("td") // wifi_standard
-  //         td3.textContent = devices[device].radios[i].wifi_standard
-  //         tr.appendChild(td3)
+  // Model
+  tr = document.createElement("tr");
+  td1 = document.createElement("td");
+  td1.textContent = "Model";
+  tr.appendChild(td1);
 
-  //         let td4 = document.createElement("td") // speed
-  //         td4.textContent = devices[device].radios[i].speed
-  //         tr.appendChild(td4)
+  td2 = document.createElement("td");
+  td2.textContent = devices[device].model;
+  tr.appendChild(td2);
+  tbody.appendChild(tr);
 
-  //         let td5 = document.createElement("td") // clients
-  //         td5.textContent = devices[device].radios[i].clients
-  //         tr.appendChild(td5)
+  // Vendor
+  tr = document.createElement("tr");
+  td1 = document.createElement("td");
+  td1.textContent = "Vendor";
+  tr.appendChild(td1);
 
-  //     tbody.appendChild(tr)
+  td2 = document.createElement("td");
+  const res = await fetch(`/api/mac/${devices[device].mac}`);
+  const data = await res.json();
+  td2.textContent = data.company;
+  tr.appendChild(td2);
+  tbody.appendChild(tr);
 
-  //     wifiTable.appendChild(tbody)
-  // }
+  // IP
+  tr = document.createElement("tr");
+  td1 = document.createElement("td");
+  td1.textContent = "IP Addr.";
+  tr.appendChild(td1);
 
+  td2 = document.createElement("td");
+  td2.textContent = devices[device].ip;
+  tr.appendChild(td2);
+  tbody.appendChild(tr);
 
-  // Crear filas de la tabla de <status>
-  let statusTable = document.getElementById("device-status")
+  // MAC
+  tr = document.createElement("tr");
+  td1 = document.createElement("td");
+  td1.textContent = "MAC Addr.";
+  tr.appendChild(td1);
 
-  let tbody = document.createElement("tbody")
+  td2 = document.createElement("td");
+  td2.textContent = devices[device].mac;
+  tr.appendChild(td2);
+  tbody.appendChild(tr);
 
-  let tr = ""
-  let td1 = ""
-  let td2 = ""
+  // Firmware version
+  tr = document.createElement("tr");
+  td1 = document.createElement("td");
+  td1.textContent = "Firmware version";
+  tr.appendChild(td1);
 
-    tr = document.createElement("tr") // Nick
-      td1 = document.createElement("td")
-      td1.textContent = "Device Name"
-    tr.appendChild(td1)
-    
-    td2 = document.createElement("td")
-      //td2.textContent = devices[device].nickname -- pendiente cambiarlo por unos create element pero por ahora funciona :v
-      td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nick}" onblur="changeNick(${device})">`
-    tr.appendChild(td2)
-    tbody.appendChild(tr)
+  td2 = document.createElement("td");
+  td2.textContent = devices[device].version;
+  tr.appendChild(td2);
+  tbody.appendChild(tr);
 
-    tr = document.createElement("tr") // Model
-      td1 = document.createElement("td")
-      td1.textContent = "Model"
-    tr.appendChild(td1)
-    
-    td2 = document.createElement("td")
-      td2.textContent = devices[device].model
-    tr.appendChild(td2)
-    tbody.appendChild(tr)
+  // Detener propagación al hacer click dentro de la tabla
+  statusTable.addEventListener("click", (event) => {
+    event.stopPropagation();
+  });
 
-    tr = document.createElement("tr") // Vendor
-      td1 = document.createElement("td")
-      td1.textContent = "Vendor"
-    tr.appendChild(td1)
-    
-    td2 = document.createElement("td")
-      const res = await fetch(`/api/mac/${devices[device].mac}`);
-      const data = await res.json();
-    td2.textContent = data.company
-    tr.appendChild(td2)
-    tbody.appendChild(tr)
+  statusTable.appendChild(tbody);
 
-    tr = document.createElement("tr") // IP
-    td1 = document.createElement("td")
-      td1.textContent = "IP Addr."
-    tr.appendChild(td1)
-    
-    td2 = document.createElement("td")
-      td2.textContent = devices[device].ip
-    tr.appendChild(td2)      
-    tbody.appendChild(tr)
-
-    tr = document.createElement("tr") // IP
-      td1 = document.createElement("td")
-      td1.textContent = "MAC Addr."
-    tr.appendChild(td1)
-    
-    td2 = document.createElement("td")
-      td2.textContent = devices[device].mac
-    tr.appendChild(td2)
-    tbody.appendChild(tr)
-
-    tr = document.createElement("tr") // Version
-      td1 = document.createElement("td")
-      td1.textContent = "Firmware version"
-    tr.appendChild(td1)
-
-    td2 = document.createElement("td")
-      td2.textContent = devices[device].version
-    tr.appendChild(td2)
-    tbody.appendChild(tr)
-
-    statusTable.addEventListener("click", (event) => {
-      event.stopPropagation()
-    })
-
-    statusTable.appendChild(tbody)
-
-    toggleMenu(true)
+  openMenu();
 }
 
 
 
-// Cerrar menús secundarios al pulsar dondesea
-document.body.addEventListener("click", function(data) {
-  console.log("Hiciste click en alguna parte del body");
-  toggleMenu(false)
-})
+function addDevice() {
+  const element = document.getElementById('add-device-modal')
+  element.style.zIndex = 1
+}
+
+
+
+// Handle buttons and menus
+const contextMenu = document.getElementById('context-menu');
+const addBtn = document.getElementById('add-device-btn');
+const modalWrapper = document.getElementById('add-device-modal');
+const modalBox = modalWrapper.querySelector('.modal');
+
+// open aside menu
+function openMenu() {
+  contextMenu.style.display = 'block';
+}
+
+// close aside menu
+function closeMenu() {
+  contextMenu.style.display = 'none';
+}
+
+// open add device
+function openModal() {
+  modalWrapper.style.zIndex = 1;
+}
+
+// close add device
+function closeModal() {
+  modalWrapper.style.zIndex = -1;
+}
+
+// add device button
+addBtn.addEventListener('click', (e) => {
+  e.stopPropagation()
+  openModal()
+});
+
+// stop propagation aside menu
+contextMenu.addEventListener('click', (e) => {
+  e.stopPropagation()
+});
+
+// stop propagation modal menu
+modalWrapper.addEventListener('click', (e) => {
+  
+});
+modalBox.addEventListener('click', e => e.stopPropagation());
+
+// close all on click body
+document.addEventListener('click', () => {
+  closeMenu()
+  closeModal()
+});
