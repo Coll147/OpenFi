@@ -85,7 +85,6 @@ router.post('/log', (req, res) => {
 
 
 
-
 router.post('/device', async (req, res) => {
   const { deviceMac, deviceIp, deviceModel } = req.body;
   const { routerReadData } = require('./router-setup');
@@ -95,7 +94,7 @@ router.post('/device', async (req, res) => {
   }
 
   try {
-    // Ejecutar script remoto y capturar JSON
+    // Ejecutar script y capturar JSON
     const deviceJson = await routerReadData({
       host: deviceIp,
       username: 'root',
