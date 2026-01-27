@@ -13,7 +13,7 @@
         <thead>
           <tr>
             <th>DEVICE</th>
-            <th>IP ADDR</th>
+            <th>IP</th>
             <th>STATUS</th>
             <th>UPTIME</th>
             <th>MODEL</th>
@@ -44,11 +44,33 @@
   </div>
 
   <div class="modal-wrapper" id="add-device-modal" style="z-index: -1;">
-    <div class="modal">
-      <h2>Título</h2>
-      <p>Contenido del modal...</p>
-    </div>
+  <div class="modal card">
+    <h2>Add Device</h2>
+    
+    <form id="add-device-form">
+      <div class="form-group">
+        <label for="device-ip">IP Address</label>
+        <input type="text" id="device-ip" name="ip" placeholder="192.168.1.10" required>
+      </div>
+
+      <div class="form-group">
+        <label for="device-mac">MAC Address</label>
+        <input type="text" id="device-mac" name="mac" placeholder="AA:BB:CC:DD:EE:FF" required>
+      </div>
+
+      <div class="form-group">
+        <label for="device-nick">Nick / Apodo</label>
+        <input type="text" id="device-nick" name="nick" placeholder="AP Room" required>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn modal--btn">Add Device</button>
+        <button type="button" class="btn modal--btn" onclick="closeAddDeviceModal()">Cancel</button>
+      </div>
+    </form>
+
   </div>
+</div>
 </div>
 
 
