@@ -15,17 +15,6 @@ async function changeNick(index) {
 }
 
 
-async function test(){
-  const rawJson = await loadDB('devices', 'specs', undefined, 'mac', '00:E0:4C:D2:01:E9' );
-  const routerData = JSON.parse(rawJson[0].specs);
-  console.log('DAAAAAAAAAAAAAAAAAAAAAAAAAATA')
-  console.log(routerData)
-  }
-test()
-
-
-
-
 // Cargar tabla
 async function loadTable(){ 
 
@@ -41,6 +30,11 @@ async function loadTable(){
   // Crear filas de la tabla
   for (let i = 0; i < devices.length; i++) {
 
+  const device = devices[i];
+  const specs = JSON.parse(device.specs);
+  const systemKey = Object.keys(specs)[0];
+  const systemInfo = specs[systemKey];
+
   let tr = document.createElement("tr")
 
     let td1 = document.createElement("td") // Nick
@@ -52,7 +46,12 @@ async function loadTable(){
     tr.appendChild(td2)
 
     let td3 = document.createElement("td") // Status
-    td3.textContent = devices[i].status
+    if (ping(devices[i].ip)){
+      td3.textContent = 'Online'
+    }
+    else {
+      td3.textContent = 'Error'
+    }
     tr.appendChild(td3)
 
     let td4 = document.createElement("td") // Uptime
@@ -64,7 +63,7 @@ async function loadTable(){
     tr.appendChild(td5)
 
     let td6 = document.createElement("td") // Version
-    td6.textContent = devices[i].firmware
+    td6.textContent = systemInfo.Release
     tr.appendChild(td6)
 
     let td7 = document.createElement("td") // Actions
@@ -122,10 +121,10 @@ function toggleMenu(value) {
     case "block":
       element.style.display = "none"
       while (statusTable.firstChild) {
-          statusTable.removeChild(statusTable.firstChild)
+        statusTable.removeChild(statusTable.firstChild)
       }
       while (wifiTable.firstChild) {
-          wifiTable.removeChild(wifiTable.firstChild)
+        wifiTable.removeChild(wifiTable.firstChild)
       }
       break;
 
@@ -137,12 +136,17 @@ function toggleMenu(value) {
 
 
 
-async function mountMenu(device) {
+async function mountMenu(id) {
   const devices = await loadDB('devices');
-  console.log(`enseñando menú para ${device}`);
+  console.log(`enseñando menú para ${id}`);
+
+  const device = devices[id];
+  const specs = JSON.parse(device.specs);
+  const systemKey = Object.keys(specs)[0];
+  const systemInfo = specs[systemKey];
 
   const title = document.getElementById('device_aside_title');
-  title.textContent = devices[device].nick;
+  title.textContent = devices[id].nick;
 
   // Tablas
   const statusTable = document.getElementById("device-status");
@@ -162,7 +166,7 @@ async function mountMenu(device) {
   tr.appendChild(td1);
 
   let td2 = document.createElement("td");
-  td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[device].nick}" onblur="changeNick(${device})">`;
+  td2.innerHTML = `<input type="text" id="device-nick" placeholder="${devices[id].nick}" onblur="changeNick(${id})">`;
   tr.appendChild(td2);
   tbody.appendChild(tr);
 
@@ -173,7 +177,7 @@ async function mountMenu(device) {
   tr.appendChild(td1);
 
   td2 = document.createElement("td");
-  td2.textContent = devices[device].model;
+  td2.textContent = devices[id].model;
   tr.appendChild(td2);
   tbody.appendChild(tr);
 
@@ -184,7 +188,7 @@ async function mountMenu(device) {
   tr.appendChild(td1);
 
   td2 = document.createElement("td");
-  const res = await fetch(`/api/mac/${devices[device].mac}`);
+  const res = await fetch(`/api/mac/${devices[id].mac}`);
   const data = await res.json();
   td2.textContent = data.company;
   tr.appendChild(td2);
@@ -197,7 +201,7 @@ async function mountMenu(device) {
   tr.appendChild(td1);
 
   td2 = document.createElement("td");
-  td2.textContent = devices[device].ip;
+  td2.textContent = devices[id].ip;
   tr.appendChild(td2);
   tbody.appendChild(tr);
 
@@ -208,7 +212,7 @@ async function mountMenu(device) {
   tr.appendChild(td1);
 
   td2 = document.createElement("td");
-  td2.textContent = devices[device].mac;
+  td2.textContent = devices[id].mac;
   tr.appendChild(td2);
   tbody.appendChild(tr);
 
@@ -219,7 +223,7 @@ async function mountMenu(device) {
   tr.appendChild(td1);
 
   td2 = document.createElement("td");
-  td2.textContent = devices[device].version;
+  td2.textContent = systemInfo.Description;
   tr.appendChild(td2);
   tbody.appendChild(tr);
 
@@ -229,6 +233,11 @@ async function mountMenu(device) {
   });
 
   statusTable.appendChild(tbody);
+
+  const removeBtn = document.getElementById('remove_device_btn');
+  removeBtn.onclick = (e) => {
+    removeDevice(devices[id].mac);
+  }
 
   openMenu();
 }
@@ -241,6 +250,13 @@ async function AddDevice(e) {
   const ip = document.getElementById('device-ip').value
   const nick = document.getElementById('device-nick').value
   console.log(ip, nick)
+
+  const isOnline = await ping(ip);
+  console.log(isOnline);
+  if (!isOnline) {
+    console.error('Device not online'); 
+    return;
+  }
   
   try {
     const payload = {
@@ -265,6 +281,13 @@ async function AddDevice(e) {
   
   loadTable()
   closeModal()
+}
+
+
+
+async function removeDevice(deviceMac) {
+  const result = await removeDB('devices', 'mac', deviceMac);
+  console.log('Resultado de la eliminación:', result);
 }
 
 

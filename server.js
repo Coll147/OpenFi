@@ -5,6 +5,7 @@ const { client } = require('ssh2');
 const fs = require("fs");
 const path = require("path");
 const mysql = require('mysql2');
+const ping = require('ping');
 const { loadEnvFile } = require('node:process');
 loadEnvFile("./.env");
 
@@ -96,6 +97,21 @@ webserver.get('/api/mac/:mac', async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: 'Error fetching MAC vendor' });
   }
+});
+
+webserver.get('/api/ping/:host', async (req, res) => {
+    const { host } = req.params;
+
+    try {
+        const result = await ping.promise.probe(host, { timeout: 2 });
+        // Devuelve status online/offline
+        res.json({
+            host,
+            status: result.alive ? 'Online' : 'Offline'
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Ping failed', details: error.message });
+    }
 });
 
 

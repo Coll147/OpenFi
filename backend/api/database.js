@@ -13,7 +13,7 @@ const conection = mysql.createConnection({
 router.post('/', (req, res) => {
   const { table, column, value, pk, id } = req.body;
 
-  if (table && !column && !value) {
+  if (table && !column && !value && !pk && !id) {
     // FULL TABLE READ
     console.log('read start');
     const query = 'SELECT * FROM ??';

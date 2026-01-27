@@ -160,3 +160,18 @@ async function log(event, device, risk, info) {
     console.error('Error de conexión al log:', err);
   }
 }
+
+
+
+async function ping(host) {
+  try {
+    const res = await fetch(`/api/ping/${host}`);
+    const data = await res.json();
+    // Devuelve true si el host está online, false si no
+    return data.status === 'Online';
+  } catch (err) {
+    // Si hay cualquier error (ej. servidor caído), devuelve false
+    return false;
+  }
+}
+
