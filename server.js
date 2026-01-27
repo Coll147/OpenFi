@@ -124,4 +124,5 @@ webserver.use('/', require('./backend/routes'));
 // INICIO SERVIDOR
 webserver.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log('ready')
 });
