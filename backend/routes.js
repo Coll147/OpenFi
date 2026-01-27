@@ -4,10 +4,7 @@ const fs = require('fs');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render("pages/dashboard", {
-    title: "OpenFi",
-    publicIP: "192.168.1.1"
-  });
+  res.redirect("/login");
 });
 
 router.get('/login', (req, res) => {
