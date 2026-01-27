@@ -84,4 +84,28 @@ router.post('/log', (req, res) => {
 });
 
 
+router.post('/device', (req, res) => {
+  const { deviceMac, deviceIp, deviceModel } = req.body;
+
+  if (!deviceMac) {
+    return res.status(400).json({ error: 'Faltan parámetros para el log' });
+  }
+
+  console.log('device insert start');
+
+  const query = 'INSERT INTO devices (mac, model, nick) VALUES (?, ?, ?)';
+  const params = [deviceMac, deviceIp, deviceModel];
+
+  conection.query(query, params, (error, result) => {
+    if (error) {
+      console.error('Log insert error:', error);
+      return res.status(500).json({ error: error.message });
+    }
+
+    console.log('Nuevo log añadido con id', result.insertId);
+    return res.json({ success: true, id: result.insertId });
+  });
+});
+
+
 module.exports = router;

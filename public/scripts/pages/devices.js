@@ -224,9 +224,37 @@ async function mountMenu(device) {
 
 
 
-function addDevice() {
-  const element = document.getElementById('add-device-modal')
-  element.style.zIndex = 1
+async function AddDevice(e) {
+  e.preventDefault(); // prevent page reload
+  console.log('añadiendoooooooooooooooooo')
+  const ip = document.getElementById('device-ip').value
+  const mac = document.getElementById('device-mac').value
+  const nick = document.getElementById('device-nick').value
+  console.log(ip, mac, nick)
+  
+  try {
+    const payload = {
+      deviceMac: mac,
+      deviceIp: ip,
+      deviceModel: nick
+    };
+
+    const response = await fetch('/api/storage/device', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json();
+
+  } catch (err) {
+    console.error('Error de conexión:', err);
+  }
+  
+  loadTable()
+  closeModal()
 }
 
 
@@ -279,3 +307,9 @@ document.addEventListener('click', () => {
   closeMenu()
   closeModal()
 });
+
+// form submission handler
+const addDeviceForm = document.getElementById('add-device-form');
+if (addDeviceForm) {
+  addDeviceForm.addEventListener('submit', AddDevice);
+}
