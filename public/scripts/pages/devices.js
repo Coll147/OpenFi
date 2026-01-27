@@ -15,6 +15,17 @@ async function changeNick(index) {
 }
 
 
+async function test(){
+  const rawJson = await loadDB('devices', 'specs', undefined, 'mac', '00:E0:4C:D2:01:E9' );
+  const routerData = JSON.parse(rawJson[0].specs);
+  console.log('DAAAAAAAAAAAAAAAAAAAAAAAAAATA')
+  console.log(routerData)
+  }
+test()
+
+
+
+
 // Cargar tabla
 async function loadTable(){ 
 
@@ -52,7 +63,7 @@ async function loadTable(){
     td5.textContent = devices[i].model
     tr.appendChild(td5)
 
-    let td6 = document.createElement("td") // Firmware
+    let td6 = document.createElement("td") // Version
     td6.textContent = devices[i].firmware
     tr.appendChild(td6)
 
@@ -228,15 +239,13 @@ async function AddDevice(e) {
   e.preventDefault(); // prevent page reload
   console.log('añadiendooooo')
   const ip = document.getElementById('device-ip').value
-  const mac = document.getElementById('device-mac').value
   const nick = document.getElementById('device-nick').value
-  console.log(ip, mac, nick)
+  console.log(ip, nick)
   
   try {
     const payload = {
-      deviceMac: mac,
       deviceIp: ip,
-      deviceModel: nick
+      deviceNick: nick
     };
 
     const response = await fetch('/api/storage/device', {
@@ -248,6 +257,7 @@ async function AddDevice(e) {
     });
 
     const result = await response.json();
+    console.log(result)
 
   } catch (err) {
     console.error('Error de conexión:', err);

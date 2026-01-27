@@ -9,6 +9,7 @@ html {
 /* ===== Estilo general ===== */
 * {
   box-sizing: border-box;
+  transition: all 0.3s ease; 
 }
 
 body {

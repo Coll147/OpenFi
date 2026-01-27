@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-async function loadDB(table, column, value) {
+async function loadDB(table, column, value, pk, id) {
   const res = await fetch('/api/storage', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ table: table, column: column, value: value})
+    body: JSON.stringify({ table: table, column: column, value: value, pk: pk, id: id})
   });
 
   const data = await res.json();
