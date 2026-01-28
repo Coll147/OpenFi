@@ -177,7 +177,7 @@ console.log(deviceNick, deviceIp)
     const deviceJson = await routerReadData({
       host: deviceIp,
       username: 'root',
-      password: 'iT5WqKC6',
+      password: 'root',
       url: 'https://raw.githubusercontent.com/openNDS/wifi-chipset-detect/refs/heads/1.0.0beta/src/wifi-chipset-detect',
       remotePath: '/tmp/detect.sh'
     });
