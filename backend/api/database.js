@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql2');
+const nodemailer = require('nodemailer');
 
 const conection = mysql.createConnection({
   host: process.env.DB_HOST,
@@ -97,9 +98,70 @@ router.post('/log', (req, res) => {
     }
 
     console.log('Nuevo log añadido con id', result.insertId);
+    
+    // Send email notification
+    sendLogEmail(logEvent, logDevice, logRisk, logInfo, time);
+    
     return res.json({ success: true, id: result.insertId });
   });
 });
+
+// Helper function to send email notification
+async function sendLogEmail(logEvent, logDevice, logRisk, logInfo, time) {
+  try {
+    // Get admin email from database
+    conection.query('SELECT email FROM userdata WHERE username = ?', ['admin'], (error, rows) => {
+      if (error) {
+        console.error('Error fetching admin email:', error);
+        return;
+      }
+
+      if (rows.length === 0) {
+        console.error('Admin user not found');
+        return;
+      }
+
+      const adminEmail = rows[0].email;
+
+      // Create transporter
+      const transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      });
+
+      // Email content
+      const mailOptions = {
+        from: process.env.SMTP_FROM,
+        to: adminEmail,
+        subject: `OpenFAI Log Alert - ${logRisk}: ${logEvent}`,
+        html: `
+          <h2>New Log Created</h2>
+          <p><strong>Event:</strong> ${logEvent}</p>
+          <p><strong>Device:</strong> ${logDevice}</p>
+          <p><strong>Risk Level:</strong> <span style="color: ${logRisk === 'High' ? 'red' : logRisk === 'Warn' ? 'orange' : 'blue'}">${logRisk}</span></p>
+          <p><strong>Info:</strong> ${logInfo}</p>
+          <p><strong>Time:</strong> ${time}</p>
+        `
+      };
+
+      // Send email
+      transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+          console.error('Error sending email:', error);
+        } else {
+          console.log('Email sent:', info.response);
+        }
+      });
+    });
+  } catch (err) {
+    console.error('Error in sendLogEmail:', err);
+  }
+}
 
 
 
