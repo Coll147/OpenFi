@@ -257,6 +257,8 @@ async function AddDevice(e) {
     console.error('Device not online'); 
     return;
   }
+
+  log('Added Device', 'OpenFi System', 'Info', `Se ha añadido el dispositivo ${ip}`);
   
   try {
     const payload = {

@@ -64,6 +64,7 @@ async function login() {
 
   if (data.response === 'yes') {
     window.location.href = '/dashboard/dashboard';
+    log('Log In', 'OpenFi System', 'Info', `Se ha iniciado sesión en el panel`);
   } else {
     showText('Acceso Denegado');
   }
