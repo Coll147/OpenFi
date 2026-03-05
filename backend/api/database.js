@@ -3,12 +3,18 @@ const router = express.Router();
 const mysql = require('mysql2');
 const nodemailer = require('nodemailer');
 
-const conection = mysql.createConnection({
+const connection = mysql.createConnection({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   user: process.env.DB_USER,
   password: process.env.DB_PASS,
   database: process.env.DB_NAME
+});
+
+connection.on('error', (err) => {
+  console.error('Database error:', err);
+  if (err.code === 'ECONNREFUSED') console.log('MySQL server is not running');
+  if (err.code === 'ECONNRESET') console.log('Connection was reset');
 });
 
 router.post('/', (req, res) => {
@@ -18,7 +24,7 @@ router.post('/', (req, res) => {
     // FULL TABLE READ
     console.log('read start');
     const query = 'SELECT * FROM ??';
-    conection.query(query, [table], (error,rows) => {
+    connection.query(query, [table], (error,rows) => {
       if (error) {
         console.error('Read error:', error);
         return res.status(500).json({ error: error.message });
@@ -33,7 +39,7 @@ router.post('/', (req, res) => {
     // VALUE UPDATE
     console.log('update start', { table, column, value, pk, id });
     const query = 'UPDATE ?? SET ?? = ? WHERE ?? = ?';
-    conection.query(query, [table, column, value, pk, id], (error, result) => {
+    connection.query(query, [table, column, value, pk, id], (error, result) => {
       if (error) {
         console.error('Update error:', error);
         return res.status(500).json({ error: error.message });
@@ -47,7 +53,7 @@ router.post('/', (req, res) => {
     // REMOVE ENTRY
     console.log('remove start');
     const query = 'DELETE FROM ?? WHERE ?? = ?';
-    conection.query(query, [table, pk, id], (error,rows) => {
+    connection.query(query, [table, pk, id], (error,rows) => {
       if (error) {
         console.error('Remove error:', error);
         return res.status(500).json({ error: error.message });
@@ -63,7 +69,7 @@ router.post('/', (req, res) => {
     console.log('specific read start');
     const query = 'SELECT ?? FROM ?? WHERE ?? = ?';
     //SELECT json_data FROM router_data WHERE device_mac = ? 
-    conection.query(query, [column, table, pk, id], (error,rows) => {
+    connection.query(query, [column, table, pk, id], (error,rows) => {
       if (error) {
         console.error('Read error:', error);
         return res.status(500).json({ error: error.message });
@@ -91,7 +97,7 @@ router.post('/log', (req, res) => {
   const query = 'INSERT INTO logs (type, device, time, risk, info, comments) VALUES (?, ?, ?, ?, ?, ?)';
   const params = [logEvent, logDevice, time, logRisk, logInfo, ""];
 
-  conection.query(query, params, (error, result) => {
+  connection.query(query, params, (error, result) => {
     if (error) {
       console.error('Log insert error:', error);
       return res.status(500).json({ error: error.message });
@@ -110,7 +116,7 @@ router.post('/log', (req, res) => {
 async function sendLogEmail(logEvent, logDevice, logRisk, logInfo, time) {
   try {
     // Get admin email from database
-    conection.query('SELECT email FROM userdata WHERE username = ?', ['admin'], (error, rows) => {
+    connection.query('SELECT email FROM userdata WHERE username = ?', ['admin'], (error, rows) => {
       if (error) {
         console.error('Error fetching admin email:', error);
         return;
@@ -168,7 +174,8 @@ async function sendLogEmail(logEvent, logDevice, logRisk, logInfo, time) {
 router.post('/device', async (req, res) => {
   const { deviceIp, deviceNick } = req.body;
   const { routerReadData } = require('./router-setup');
-console.log(deviceNick, deviceIp)
+  console.log(deviceNick, deviceIp)
+
   if (!deviceIp) {
     return res.status(400).json({ error: 'Faltan parámetros para el setup' });
   }
@@ -190,7 +197,7 @@ console.log(deviceNick, deviceIp)
     const query = 'INSERT INTO devices (mac, ip, nick, model, specs) VALUES (?, ?, ?, ?, ?)';
     const params = [macAddr, deviceIp, deviceNick, deviceModel, JSON.stringify(deviceJson)];
 
-    conection.query(query, params, (error, result) => {
+    connection.query(query, params, (error, result) => {
       if (error) {
         console.log(error.message);
         return res.status(500).json({ error: error.message });
