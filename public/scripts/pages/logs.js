@@ -38,10 +38,10 @@ document.getElementById('time').addEventListener('click', () => {
 // Cargar y crear tabla
 async function loadTable(riskFilter, sortTime) {
   const logs = await loadDB('logs');
-  const tabla = document.getElementById("devices-tbody");
+  const tabla = document.getElementById('devices-tbody');
 
-  // Defaults correctos
-  if (!riskFilter) riskFilter = 'All';
+  // Default values
+  if (!riskFilter) riskFilter = document.getElementById('riskFilter').value;
   if (!sortTime) sortTime = 'ascendente';
 
   // Limpiar tabla
