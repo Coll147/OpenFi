@@ -134,6 +134,11 @@ body {
   overflow: auto;
 }
 
+.main_content::-webkit-scrollbar {
+  display: none;
+}
+
+
 /* Modal menú */
 .modal-wrapper {
   position: fixed;
