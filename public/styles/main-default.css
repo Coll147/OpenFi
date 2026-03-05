@@ -99,6 +99,8 @@ body {
   margin: 20px;
   flex: 1;
   min-height: 0;
+  max-height: calc(100% - 20px);
+  box-sizing: border-box;
 }
 
 .main_header {
@@ -124,6 +126,7 @@ body {
 .main_content {
   flex: 1;
   min-width: 0; /* allow flex to shrink below content size */
+  min-height: 0; /* allow flex to shrink below content size */
   border-radius: 20px;
   display: flex;
   flex-direction: column;
