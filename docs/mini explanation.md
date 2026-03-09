@@ -1,10 +1,6 @@
-# OpenFAI - Open Fiber AI Network Management
+# OpenFi - Explicación de los archivos y esas cosas
 
-## 🚀 Proyecto Refactorizado - Versión 2.0
-
-Este proyecto ha sido completamente refactorizado para seguir las mejores prácticas de desarrollo y una arquitectura modular.
-
-## 📁 Estructura del Proyecto
+## 📁 Estructura
 
 ```
 openfai/
@@ -80,7 +76,7 @@ openfai/
 - Validación de datos de entrada
 - Código más limpio y legible
 
-## 🛠️ Instalación
+## 🛠️ Instalación / Puesta en marcha
 
 ```bash
 # 1. Copiar el archivo de ejemplo de variables de entorno
@@ -232,7 +228,3 @@ Las contribuciones son bienvenidas. Por favor, asegúrate de:
 ## 📄 Licencia
 
 MIT License - Ver LICENSE para más detalles
-
----
-
-**Desarrollado con ❤️ por el equipo OpenFAI**
