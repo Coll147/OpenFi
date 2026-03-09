@@ -6,9 +6,7 @@ async function loadBackground() {
     const settings = await res.json();
     console.log('Settings cargados:', settings);
 
-    const mode = settings["login-background"]; // "bing" || "color"
-
-    let loginbg;
+    const mode = settings["customization"]["login-bg"];
 
     if (mode === "bing") {
       const width = window.innerWidth;
@@ -54,7 +52,7 @@ function showText(text) {
 
 
 async function login() {
-  const res = await fetch('/login', {
+  const res = await fetch('/api/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ password_input: document.getElementById('password_input').value })
@@ -70,10 +68,7 @@ async function login() {
   }
 }
 
-// Para activar la función si pulso enter
-// https://stackoverflow.com/questions/7060750/detect-the-enter-key-in-a-text-input-field
 document.querySelectorAll(".input-group").forEach(input => { 
-    // Meto el listener a los dos grupos de input aunque ahora solo se puede escribir en password
     input.addEventListener("keyup", (e) => {
         if (e.key === "Enter") {
             login(e.target.id); // fix later

@@ -46,7 +46,7 @@ async function loadTable(){
     tr.appendChild(td2)
 
     let td3 = document.createElement("td") // Status
-    if (ping(devices[i].ip)){
+    if (await ping(devices[i].ip)){
       td3.textContent = 'Online'
     }
     else {
