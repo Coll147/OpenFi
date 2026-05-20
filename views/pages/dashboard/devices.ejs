@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../../partials/head'); %>
+</head>
+<body>
+    <nav class="main_nav">
+        <%- include('../../partials/navbar'); %>
+    </nav>
+    <main class="main_content">
+        <h1>Devices</h1>
+
+        <table>
+            <thead>
+                <tr>
+                <th>Name</th>
+                <th>Status</th>
+                <th>IP</th>
+                <th>Online</th>
+                </tr>
+            </thead>
+            <tbody id="device-list">
+                <script src="/public/scripts/dashboard/device-list.js"></script>
+                <tr>
+                <th>Chris</th>
+                <td>HTML tables</td>
+                <td>22</td>
+                </tr>
+                <tr>
+                <th>Dennis</th>
+                <td>Web accessibility</td>
+                <td>45</td>
+                </tr>
+                <tr>
+                <th>Sarah</th>
+                <td>JavaScript frameworks</td>
+                <td>29</td>
+                </tr>
+                <tr>
+                <th>Karen</th>
+                <td>Web performance</td>
+                <td>36</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </main>
+</body>
+</html>

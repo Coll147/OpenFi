@@ -1,0 +1,2 @@
+EJS Guide: https://www.digitalocean.com/community/tutorials/how-to-use-ejs-to-template-your-node-application
+SqLite 3: https://www.w3resource.com/sqlite/snippets/better-sqlite3.php
