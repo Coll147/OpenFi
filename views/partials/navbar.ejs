@@ -1,44 +1,18 @@
-<img src="/public/assets/logo.png" alt="OpenFi Network">
-
-<ul>
-    <li data-page="/dashboard/main"><div class="icon settings"></div><h3>Dashboard</h3></li>
-    <li data-page="/dashboard/devices">Devices</li>
-    <li data-page="/dashboard/logs">Logs</li>
-    <li data-page="/dashboard/wifi">WiFi</li>
-    <li data-page="/dashboard/networks">Networks</li>
-    <li data-page="/dashboard/system">System</li>
-</ul>
-
-<style>
-.main_nav li{
-    display: flex;
-    align-items: center;
-}
-
-.main_nav h3 {
-    display: inline-block;
-    margin: 0 0 0 7px;
-
-}
-
-/* Icons from feathericons.com */
-.icon {
-    display: inline-block;
-    width: 22px;
-    height: 22px;
-    background-color: #c50000;
-
-    mask-repeat: no-repeat;
-    mask-position: center;
-    mask-size: contain;
-
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-position: center;
-    -webkit-mask-size: contain;
-}
-
-.settings {
-    mask-image: url('/public/assets/icons/sliders.svg');
-    -webkit-mask-image: url('/public/assets/icons/sliders.svg');
-}
-</style>
+<nav class="navbar">
+  <div clas="navbar__top">
+    <img class="navbar__logo" id="openfi-logo" src="" alt="OpenFi Logo" draggable="false">
+    <ul class="navbar__menu">
+      <li data-page="dashboard">📊 Dashboard</li>
+      <li data-page="topology">🧭 Topology</li>
+      <li data-page="devices">📶 Devices</li>
+      <li data-page="logs">📜 Logs</li>
+      <li data-page="wifi">📡 Wi-Fi</li>
+      <li data-page="network">🌐 Network</li>
+      <li data-page="settings">⚙️ Settings</li>
+      <li data-page="information">📞 Information</li>
+    </ul>
+  </div>
+  <footer>
+    <a href="https://github.com/Coll147/OpenFi">OpenFi project | FOOS | 2026</a>
+  </footer>
+</nav>

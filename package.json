@@ -1,28 +1,30 @@
 {
   "name": "openfi",
   "version": "1.0.0",
-  "description": "centralized network management solution for openwrt devices",
-  "homepage": "https://github.com/Coll147/OpenFi#readme",
-  "bugs": {
-    "url": "https://github.com/Coll147/OpenFi/issues"
+  "description": "openwrt unified control dashboard",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Coll147/OpenFi.git"
   },
-  "license": "GPL-2.0-only",
-  "author": "coll147",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "type": "commonjs",
-  "main": "index.js",
-  "scripts": {
-    "test": "nodemon index.js"
+  "bugs": {
+    "url": "https://github.com/Coll147/OpenFi/issues"
   },
+  "homepage": "https://github.com/Coll147/OpenFi#readme",
   "dependencies": {
-    "better-sqlite3": "^12.8.0",
-    "ejs": "^5.0.1",
-    "express": "^5.2.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.14"
+    "ejs": "^4.0.1",
+    "ejs-mate": "^4.0.0",
+    "express": "^5.2.1",
+    "mysql2": "^3.16.0",
+    "nodemailer": "^7.0.13",
+    "ping": "^1.0.0",
+    "ssh2": "^1.17.0"
   }
 }

@@ -1,0 +1,26 @@
+.option {
+  margin: 10px 0px;
+}
+  .option p {
+    display: inline;
+    margin: 0px 10px 0px 0px;
+  }
+
+  .option button {
+    margin: 0px 10px 0px 0px;
+  }
+
+
+.btn.critical {
+  background: #cc530257;
+  border: 2px solid #cc5302;
+  color: white;
+  font-size: 15px;
+  padding: 1px 4px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+  .btn.critical:hover {
+    background: #ff0000;
+    border: 2px solid #ff0000;
+  }

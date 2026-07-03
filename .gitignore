@@ -1,2 +1,34 @@
-/node_modules
-/data
+# NodeJS
+node_modules/
+.tmp.drivedownload/
+.tmp.driveupload/
+
+
+# Default ignores
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+*.log
+*.sqlite
+
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+.env

@@ -1,0 +1,29 @@
+  /* -- Devices page */
+
+.actions {
+  display: flex;
+  gap: 10px;
+}
+
+.context-menu {
+  min-width: 450px;
+}
+
+
+  .btn.edit {
+    border-color: #1729e9;
+    color: white;
+  }
+  .btn.edit:hover {
+    background: #5a39ff;
+    color: white;
+  }
+
+  .btn.restart {
+    border-color: #ff4b4b;
+    color: #ff4b4b;
+  }
+  .btn.restart:hover {
+    background: #ff4b4b;
+    color: white;
+  }
